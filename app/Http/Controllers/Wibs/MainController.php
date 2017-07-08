@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Ebtke\Cms;
+namespace App\Http\Controllers\Wibs;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\CmsController;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Ebtke\Cms\Pages\Auth;
+namespace App\Http\Controllers\Wibs\Auth;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\CmsBaseController;

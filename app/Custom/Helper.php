@@ -5,7 +5,7 @@ if(!function_exists('asset'))
 {
 	function asset($path, $secure = null)
 	{
-		$config = config('ebtkeassets');
+		$config = config('wibs_assets');
 		$arr_elixir = array('js');
 		if($config['subdomain'])
 		{

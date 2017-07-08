@@ -14,7 +14,7 @@ class CmsController extends Controller
 {
     protected $currentLanguage;
 
-	const MAIN_BLADE_CMS = 'ebtke.cms.pages';
+	const MAIN_BLADE_CMS = 'wibs.pages';
 
 	public function __construct()
 	{
