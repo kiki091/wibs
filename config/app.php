@@ -176,8 +176,12 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        App\Providers\WibsServiceProvider::class,
+        App\Providers\MscServiceProvider::class,
         App\Providers\DataHelperServiceProvider::class,
+        App\Providers\RouteMenuLocationServiceProvider::class,
+
+        Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
+        Lord\Laroute\LarouteServiceProvider::class,
 
     ],
 
@@ -227,6 +231,11 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'MscHelper'=> App\Custom\Msc\Facades\MscHelper::class,
+        'RouteMenuLocation'=> App\Custom\Msc\Facades\RouteMenuLocation::class,
+        'DataHelper'=> App\Custom\Msc\Facades\DataHelper::class,
+        'JavaScript'=> Laracasts\Utilities\JavaScript\JavaScriptFacade::class,
 
     ],
 

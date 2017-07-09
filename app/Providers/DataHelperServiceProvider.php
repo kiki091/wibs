@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Custom\DataHelper;
+use App\Custom\Msc\DataHelper;
 
 class DataHelperServiceProvider extends ServiceProvider
 {

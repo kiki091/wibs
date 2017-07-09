@@ -24,10 +24,10 @@
             "App\\": "app/"
         },
         "files": [
-            "app/Custom/Helper.php",
-            "app/Services/Assets/default.php",
-            "app/Services/Assets/dimension.php",
-            "app/Services/Assets/main.php"
+            "app/Custom/Msc/Helper.php",
+            "app/Services/Assets/Msc/default.php",
+            "app/Services/Assets/Msc/dimension.php",
+            "app/Services/Assets/Msc/main.php"
         ]
     },
     "autoload-dev": {

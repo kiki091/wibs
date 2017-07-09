@@ -14,8 +14,8 @@ return array(
     'e7223560d890eab89cda23685e711e2c' => $vendorDir . '/psy/psysh/src/Psy/functions.php',
     'f0906e6318348a765ffb6eb24e0d0938' => $vendorDir . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
     '58571171fd5812e6e447dce228f52f4d' => $vendorDir . '/laravel/framework/src/Illuminate/Support/helpers.php',
-    '0a3fb554b9fcbf198e86d7945ee667ad' => $baseDir . '/app/Custom/Helper.php',
-    '1086202982095137670b21b1988e96d5' => $baseDir . '/app/Services/Assets/default.php',
-    'c83ba7a73605e56d64b15455469438a8' => $baseDir . '/app/Services/Assets/dimension.php',
-    '2a7b115a820943449acb55ac922a420c' => $baseDir . '/app/Services/Assets/main.php',
+    'c4b8aa0de7d94ad99ffc436937acc3a3' => $baseDir . '/app/Custom/Msc/Helper.php',
+    '8275704cbf1064b938116ad749c2a470' => $baseDir . '/app/Services/Assets/Msc/default.php',
+    '9afd3a30b76d0b9542764d95fc7a27af' => $baseDir . '/app/Services/Assets/Msc/dimension.php',
+    'be8bab78d5ac4cc5dd8745e56c1ceb5f' => $baseDir . '/app/Services/Assets/Msc/main.php',
 );

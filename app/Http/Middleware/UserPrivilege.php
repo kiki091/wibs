@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Route;
-use App\Services\Auth\PrivilegeChecker;
+use App\Services\Auth\Msc\PrivilegeChecker;
 
 class UserPrivilege
 {
