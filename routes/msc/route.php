@@ -11,4 +11,11 @@
 |
 */
 
-include __DIR__.'/msc/route.php';
+Route::group(['middleware' => ['web']], function () 
+{
+	Route::group(['domain' => env('WORLD_WIDE_WEB') . env('MSC_DOMAIN_PREFIX'). env('APP_DOMAIN')], function()
+	{
+		Route::get('/', 'Wibs\Msc\Pages\MainController@index')->name('index');
+		
+	});
+});
