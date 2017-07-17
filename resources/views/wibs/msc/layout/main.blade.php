@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        @include('ebtke.cms.partials.header')
+        @include('wibs.msc.partials.header')
     </head>
 
     <body class="nav-md">
@@ -9,8 +9,8 @@
 
             <div class="main_container">
                 <!-- PAGE -->
-                @include('ebtke.cms.partials.sidebar')
-                @include('ebtke.cms.partials.top-nav')
+                @include('wibs.msc.partials.sidebar')
+                @include('wibs.msc.partials.top-nav')
 
                 <div class="right_col" role="main">
                     @yield('content')
@@ -24,8 +24,8 @@
             <div class="clearfix"></div>
             <div id="notif-group" class="tabbed_notifications"></div>
         </div>
-        @include('ebtke.front.partials.vars')
-        @include('ebtke.cms.partials.js_footer')
+        @include('wibs.master.vars')
+        @include('wibs.msc.partials.js_footer')
         
     </body>
 </html>

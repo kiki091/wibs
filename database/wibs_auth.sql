@@ -26,11 +26,12 @@ CREATE TABLE `location` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   `slug` varchar(45) DEFAULT NULL,
+  `is_active` int(1) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug_UNIQUE` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +40,7 @@ CREATE TABLE `location` (
 
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
-INSERT INTO `location` VALUES (1,'user','user',NULL,NULL),(2,'admin','admin',NULL,NULL);
+INSERT INTO `location` VALUES (1,'SMP','smp',1,NULL,NULL),(2,'SMA','sma',1,NULL,NULL),(3,'USER','user',1,NULL,NULL),(4,'ADMIN','admin',1,NULL,NULL);
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -329,4 +330,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-08 20:24:27
+-- Dump completed on 2017-07-18  0:02:48

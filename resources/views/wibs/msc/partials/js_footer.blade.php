@@ -6,9 +6,9 @@
                                                
 -->
 <!-- jQuery Ajax Form -->
-<script type="text/javascript" src="{{ asset('themes/ebtke/cms/js/jquery.form.js') }}"></script>
+<script type="text/javascript" src="{{ asset('themes/wibs/msc/js/jquery.form.js') }}"></script>
 <!-- javascript compiled -->
-<script src="{{ asset('themes/ebtke/cms/build/js/core.js') }}"></script>
+<script src="{{ asset('themes/wibs/msc/build/js/core.js') }}"></script>
 <!-- Javascript Pace -->
 <script type="text/javascript" src="{{ asset('js/bower_components/pacejs/pace.js') }}"></script>
 <!-- Javascript Sortable -->
@@ -16,23 +16,21 @@
 <!-- Javascript CK editor -->
 <script type="text/javascript" src="{{ asset('js/bower_components/ckeditor/ckeditor.js') }}"></script>
 <!-- Javascript Laroute -->
-<script src="{{ asset('themes/ebtke/cms/build/js/laroute.js') }}"></script>
+<script src="{{ asset('themes/wibs/msc/build/js/laroute.js') }}"></script>
 <!-- Javascript VUE -->
 <script src="{{ asset('js/bower_components/vue/dist/vue.js') }}"></script>
 <script src="{{ asset('js/bower_components/vue/dist/vue.min.js') }}"></script>
 <script src="{{ asset('js/bower_components/vue/dist/vue-resource.js') }}"></script>
 
 <!-- Javascript General Configuration -->
-<script src="{{ asset('themes/ebtke/cms/components/main.js') }}"></script>
-<script src="{{ asset('themes/ebtke/cms/components/general.js') }}"></script>
-<script src="{{ asset('themes/ebtke/cms/components/menu.js') }}"></script>
+<script src="{{ asset('themes/wibs/msc/components/main.js') }}"></script>
+<script src="{{ asset('themes/wibs/msc/components/general.js') }}"></script>
+<script src="{{ asset('themes/wibs/msc/components/menu.js') }}"></script>
 <!-- Javascript Authentication -->
-<script src="{{ asset('themes/ebtke/cms/pages/auth/reset-password.js') }}"></script>
-<script src="{{ asset('themes/ebtke/cms/pages/auth/logout.js') }}"></script>
-<script src="{{ asset('themes/ebtke/cms/pages/auth/menu-group.js') }}"></script>
-<script src="{{ asset('themes/ebtke/cms/pages/auth/menu-navigation.js') }}"></script>
-<script src="{{ asset('themes/ebtke/cms/pages/auth/sub-menu-navigation.js') }}"></script>
-<script src="{{ asset('themes/ebtke/cms/pages/auth/user-account.js') }}"></script>
+<script src="{{ asset('themes/wibs/msc/pages/auth/reset-password.js') }}"></script>
+<script src="{{ asset('themes/wibs/msc/pages/auth/logout.js') }}"></script>
+<script src="{{ asset('themes/wibs/msc/pages/auth/menu-group.js') }}"></script>
+<script src="{{ asset('themes/wibs/msc/pages/auth/menu-navigation.js') }}"></script>
+<script src="{{ asset('themes/wibs/msc/pages/auth/sub-menu-navigation.js') }}"></script>
+<script src="{{ asset('themes/wibs/msc/pages/auth/user-account.js') }}"></script>
 
-<!-- Javascript CONTENT MANAGEMENT SYSTEM -->
-<script src="{{ asset('themes/ebtke/cms/pages/news.js') }}"></script>

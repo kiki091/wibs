@@ -44,6 +44,34 @@ LOCK TABLES `hadis` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `kelas`
+--
+
+DROP TABLE IF EXISTS `kelas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `kelas` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(45) NOT NULL,
+  `title_description` varchar(45) DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_by` int(5) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kelas`
+--
+
+LOCK TABLES `kelas` WRITE;
+/*!40000 ALTER TABLE `kelas` DISABLE KEYS */;
+INSERT INTO `kelas` VALUES (1,'VII','Kelas 7',NULL,NULL,NULL),(2,'VIII','Kelas 8',NULL,NULL,NULL),(3,'IX','Kelas 9',NULL,NULL,NULL),(4,'X','Kelas 10',NULL,NULL,NULL),(5,'XI','Kelas 11',NULL,NULL,NULL),(6,'XII','Kelas 12',NULL,NULL,NULL);
+/*!40000 ALTER TABLE `kelas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `kitab`
 --
 
@@ -340,7 +368,7 @@ CREATE TABLE `siswa` (
   `alamat_sekolah` text,
   `tanggal_nomer_sttb` text NOT NULL,
   `lama_belajar` int(2) DEFAULT NULL COMMENT 'Satuan = Tahun',
-  `kelas` tinyint(2) DEFAULT NULL,
+  `kelas_id` int(3) DEFAULT NULL,
   `tingkatan_id` int(2) NOT NULL,
   `is_active` tinyint(1) DEFAULT NULL,
   `status_siswa` tinyint(1) NOT NULL COMMENT '1 = Siswa Baru\n2 = Siswa Pindahan',
@@ -351,6 +379,8 @@ CREATE TABLE `siswa` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `nis_UNIQUE` (`nis`),
   KEY `fk_siswa_tingkatan_idx` (`tingkatan_id`),
+  KEY `fk_siswa_1_idx` (`kelas_id`),
+  CONSTRAINT `fk_siswa_1` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_siswa_tingkatan` FOREIGN KEY (`tingkatan_id`) REFERENCES `tingkatan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -444,7 +474,7 @@ CREATE TABLE `tingkatan` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `slug_UNIQUE` (`slug`),
   UNIQUE KEY `title_UNIQUE` (`title`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -453,6 +483,7 @@ CREATE TABLE `tingkatan` (
 
 LOCK TABLES `tingkatan` WRITE;
 /*!40000 ALTER TABLE `tingkatan` DISABLE KEYS */;
+INSERT INTO `tingkatan` VALUES (1,'SMP','smp',1,NULL,NULL,NULL),(2,'SMA','sma',1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `tingkatan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -508,4 +539,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-08 20:23:46
+-- Dump completed on 2017-07-18  0:02:24
