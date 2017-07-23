@@ -25,6 +25,11 @@ Route::group(['middleware' => ['web']], function ()
 
 			Route::get('/', 'Wibs\Msc\Pages\DashboardMscController@index')->name('msc_dashboard');
 			Route::get('data', 'Wibs\Msc\Pages\DashboardMscController@getData')->name('msc_get_data_siswa');
+
+			Route::group(['prefix' => 'student-monitoring'], function (){
+				Route::get('/', 'Wibs\Msc\Pages\StudentMonitoringController@index')->name('msc_student_monitoring');
+				Route::get('data', 'Wibs\Msc\Pages\StudentMonitoringController@getData')->name('msc_student_monitoring_get_data');
+			});
 		});
 		
 	});

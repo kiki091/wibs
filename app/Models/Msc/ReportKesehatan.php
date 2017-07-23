@@ -26,7 +26,7 @@ class ReportKesehatan extends BaseModel
      */
     public function siswa()
     {
-        return $this->belongsTo('App\Models\Msc\Siswa', 'id', 'siswa_id');
+        return $this->belongsTo('App\Models\Msc\Siswa', 'siswa_id', 'id');
     }
 
     /***************** Scope *****************/
@@ -37,6 +37,14 @@ class ReportKesehatan extends BaseModel
     public function scopeId($query, $params)
     {
         return $query->where('id', $params);
+    }
+    
+    /**
+     * @param $query
+     */
+    public function scopeSiswaId($query, $params)
+    {
+        return $query->where('siswa_id', $params);
     }
 
     /**

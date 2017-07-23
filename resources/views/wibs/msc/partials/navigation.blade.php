@@ -13,7 +13,7 @@
         </div>
 		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
           	<span class="count_top"></span>
-            <a href="javascript:void(0)" onclick="menu__student__monitoring()">
+            <a href="javascript:void(0)" onclick="menu_student_monitoring()">
               	<div class="count">Students</div>
               	<div class="count">Monitoring</div>
               	<span class="count_bottom"><i class="green"></i> Monitor Santri</span>

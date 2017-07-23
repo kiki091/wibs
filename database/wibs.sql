@@ -2,7 +2,7 @@
 --
 -- Host: localhost    Database: wibs
 -- ------------------------------------------------------
--- Server version	5.7.18-0ubuntu0.16.04.1
+-- Server version	5.7.19-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -54,10 +54,13 @@ CREATE TABLE `kelas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(45) NOT NULL,
   `title_description` varchar(45) DEFAULT NULL,
+  `tingkatan_id` int(2) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(5) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_kelas_1_idx` (`tingkatan_id`),
+  CONSTRAINT `fk_kelas_1` FOREIGN KEY (`tingkatan_id`) REFERENCES `tingkatan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -67,7 +70,7 @@ CREATE TABLE `kelas` (
 
 LOCK TABLES `kelas` WRITE;
 /*!40000 ALTER TABLE `kelas` DISABLE KEYS */;
-INSERT INTO `kelas` VALUES (1,'VII','Kelas 7',NULL,NULL,NULL),(2,'VIII','Kelas 8',NULL,NULL,NULL),(3,'IX','Kelas 9',NULL,NULL,NULL),(4,'X','Kelas 10',NULL,NULL,NULL),(5,'XI','Kelas 11',NULL,NULL,NULL),(6,'XII','Kelas 12',NULL,NULL,NULL);
+INSERT INTO `kelas` VALUES (1,'VII','Kelas 7',1,NULL,NULL,NULL),(2,'VIII','Kelas 8',1,NULL,NULL,NULL),(3,'IX','Kelas 9',1,NULL,NULL,NULL),(4,'X','Kelas 10',2,NULL,NULL,NULL),(5,'XI','Kelas 11',2,NULL,NULL,NULL),(6,'XII','Kelas 12',2,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `kelas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,6 +103,34 @@ CREATE TABLE `kitab` (
 LOCK TABLES `kitab` WRITE;
 /*!40000 ALTER TABLE `kitab` DISABLE KEYS */;
 /*!40000 ALTER TABLE `kitab` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `privilage_siswa`
+--
+
+DROP TABLE IF EXISTS `privilage_siswa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `privilage_siswa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `display_name` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(80) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `privilage_siswa`
+--
+
+LOCK TABLES `privilage_siswa` WRITE;
+/*!40000 ALTER TABLE `privilage_siswa` DISABLE KEYS */;
+INSERT INTO `privilage_siswa` VALUES (1,'Privillage Siswa WIBS','Privillage Siswa WIBS','Privillage Siswa WIBS',NULL,NULL);
+/*!40000 ALTER TABLE `privilage_siswa` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -225,7 +256,7 @@ CREATE TABLE `report_kesehatan` (
   PRIMARY KEY (`id`),
   KEY `fk_report_kesehatan_1_idx` (`siswa_id`),
   CONSTRAINT `fk_report_kesehatan_1` FOREIGN KEY (`siswa_id`) REFERENCES `siswa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -234,7 +265,35 @@ CREATE TABLE `report_kesehatan` (
 
 LOCK TABLES `report_kesehatan` WRITE;
 /*!40000 ALTER TABLE `report_kesehatan` DISABLE KEYS */;
+INSERT INTO `report_kesehatan` VALUES (1,60,176,'90/100','A','Flu dan Demam','Sehat Jasmani',NULL,1,'2017-07-01',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `report_kesehatan` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `role_siswa`
+--
+
+DROP TABLE IF EXISTS `role_siswa`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `role_siswa` (
+  `siswa_id` int(10) NOT NULL,
+  `privilage_siswa_id` int(10) NOT NULL,
+  PRIMARY KEY (`siswa_id`,`privilage_siswa_id`),
+  KEY `fk_role_siswa_2_idx` (`privilage_siswa_id`),
+  CONSTRAINT `fk_role_siswa_1` FOREIGN KEY (`siswa_id`) REFERENCES `siswa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_role_siswa_2` FOREIGN KEY (`privilage_siswa_id`) REFERENCES `privilage_siswa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `role_siswa`
+--
+
+LOCK TABLES `role_siswa` WRITE;
+/*!40000 ALTER TABLE `role_siswa` DISABLE KEYS */;
+INSERT INTO `role_siswa` VALUES (1,1);
+/*!40000 ALTER TABLE `role_siswa` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -373,6 +432,10 @@ CREATE TABLE `siswa` (
   `is_active` tinyint(1) DEFAULT NULL,
   `status_siswa` tinyint(1) NOT NULL COMMENT '1 = Siswa Baru\n2 = Siswa Pindahan',
   `description` text,
+  `foto` varchar(255) DEFAULT NULL,
+  `email` varchar(55) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(255) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(5) DEFAULT NULL,
@@ -382,7 +445,7 @@ CREATE TABLE `siswa` (
   KEY `fk_siswa_1_idx` (`kelas_id`),
   CONSTRAINT `fk_siswa_1` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_siswa_tingkatan` FOREIGN KEY (`tingkatan_id`) REFERENCES `tingkatan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -391,6 +454,7 @@ CREATE TABLE `siswa` (
 
 LOCK TABLES `siswa` WRITE;
 /*!40000 ALTER TABLE `siswa` DISABLE KEYS */;
+INSERT INTO `siswa` VALUES (1,'123456','Kiki Kurniawan','Kiki',1,'Jakarta',1,1,2,2,NULL,NULL,NULL,'Depok','081287679290',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,'12345',NULL,6,2,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.',NULL,'kikikurniawan091@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','aMxIWKPwRYYXNzDbq7dOONT2EfKG3gHu7M7v4d32O6vz2doYeQWXBhN04h61',NULL,NULL,NULL),(2,'123455','Febrina','Febri',2,'Bogor',1,1,4,5,NULL,NULL,NULL,'Depok','08963432952',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,'12344',NULL,5,1,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.',NULL,'febrinaniken093@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `siswa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -466,6 +530,7 @@ DROP TABLE IF EXISTS `tingkatan`;
 CREATE TABLE `tingkatan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(20) NOT NULL,
+  `title_alias` varchar(40) DEFAULT NULL,
   `slug` varchar(40) NOT NULL,
   `is_active` tinyint(1) NOT NULL,
   `created_at` datetime DEFAULT NULL,
@@ -483,7 +548,7 @@ CREATE TABLE `tingkatan` (
 
 LOCK TABLES `tingkatan` WRITE;
 /*!40000 ALTER TABLE `tingkatan` DISABLE KEYS */;
-INSERT INTO `tingkatan` VALUES (1,'SMP','smp',1,NULL,NULL,NULL),(2,'SMA','sma',1,NULL,NULL,NULL);
+INSERT INTO `tingkatan` VALUES (1,'SMP','Junior High School','smp',1,NULL,NULL,NULL),(2,'SMA','Senior High School','sma',1,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `tingkatan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -539,4 +604,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-18  0:02:24
+-- Dump completed on 2017-07-23 22:27:44

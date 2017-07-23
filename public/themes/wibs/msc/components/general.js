@@ -303,3 +303,13 @@ function mainGeneral(){
     setSelectedFolder();
     notify();
 }
+
+function init_student_monitoring()
+{
+    mainGeneral();
+    wizardSlide();
+    crud_student_monitoring();
+    buttonClickOpen();
+    buttonClickClose();
+    replaceToCkEditor();
+}

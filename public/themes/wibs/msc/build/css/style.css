@@ -17858,6 +17858,47 @@ input, textarea, select {
       bottom: -15px;
       opacity: 1; 
   }
+
+table.table__style {
+    width: 100%;
+    border: 1px solid #F0F0F0;
+    border-top: 1px solid transparent;
+}
+
+table.table__style tr th:first-child, table.table__style tr td:first-child {
+    text-align: center;
+    border-left: 1px solid transparent;
+}
+
+.msc_table .table__style td, .msc_table .table__style th {
+    text-align: left;
+}
+.msc_table .table__style th {
+    font-size: 18px;
+    color: #627F8F;
+}
+.msc_table .table__style td, .msc_table .table__style th {
+    text-align: left;
+}
+table.table__style tr th {
+    font-size: 14px !important;
+    padding: 15px 10px !important;
+    color: #627F8F;
+    font-family: "harriet_regular";
+    font-weight: normal;
+}
+
+.msc_table .table__style td, .msc_table .table__style th {
+    text-align: left;
+}
+table.table__style tr th, table.table__style tr td {
+    font-size: 12px;
+    color: #9B9B9B;
+    text-align: left;
+    padding: 12px;
+    border: 1px solid #F0F0F0;
+    border-top: 1px solid transparent;
+}
 /* This is a compiled file, you should be editing the file in the templates directory */
 .pace {
   -webkit-pointer-events: none;
