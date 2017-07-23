@@ -3,8 +3,9 @@
 namespace App\Models\Msc;
 
 use App\Models\BaseModel;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Siswa extends BaseModel
+class Siswa extends Authenticatable
 {
 	protected $table = 'siswa';
     public $timestamps = false;
@@ -22,7 +23,17 @@ class Siswa extends BaseModel
      */
     public function tingkatan()
     {
-        return $this->belongsTo('App\Models\Msc\Tingkatan', 'id', 'tingkatan_id');
+        return $this->belongsTo('App\Models\Msc\Tingkatan', 'tingkatan_id', 'id');
+    }
+
+    public function kelas()
+    {
+        return $this->belongsTo('App\Models\Msc\Kelas', 'kelas_id', 'id');
+    }
+
+    public function role_siswa()
+    {
+        return $this->belongsTo('App\Models\Msc\RoleSiswa', 'id', 'siswa_id')->with('privilage_siswa');
     }
 
     /***************** Scope *****************/

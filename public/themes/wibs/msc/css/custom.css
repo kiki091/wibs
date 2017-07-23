@@ -334,11 +334,11 @@ html , body{
 }
 .nav_menu {
     float: left;
-    background: #EDEDED;
+    background: #2dabb9;
     border-bottom: 1px solid #D9DEE4;
     margin-bottom: 10px;
     width: 100%;
-    position: relative
+    position: relative;
 }
 @media (min-width: 480px) {
     .nav_menu {
@@ -363,7 +363,6 @@ body .container.body .right_col {
 }
 .nav-md .container.body .right_col {
     padding: 10px 0px 0;
-    margin-left: 230px
 }
 .nav_title {
     width: 230px;
@@ -388,7 +387,7 @@ body .container.body .right_col {
         padding-right: 0
     }
     .right_col {
-        padding: 10px !important
+        padding: 0px !important
     }
 }
 @media (max-width: 1200px) {
@@ -498,7 +497,7 @@ body .container.body .right_col {
 .top_nav .nav .open>a,
 .top_nav .nav .open>a:focus,
 .top_nav .nav .open>a:hover {
-    background: #D9DEE4
+    background: #2dabb9
 }
 body {
     color: #73879C;
@@ -509,7 +508,6 @@ body {
 }
 .main_container .top_nav {
     display: block;
-    margin-left: 230px
 }
 .no-padding {
     padding: 0 !important
@@ -521,7 +519,6 @@ body {
     display: inline-table;
 }
 .page-title .title_left {
-    width: 100%;
     float: left;
     display: block
 }
@@ -532,8 +529,8 @@ body {
     margin: 9px 0
 }
 .page-title .title_right {
-    width: 55%;
-    float: left;
+    width: auto;
+    float: right;
     display: block
 }
 .page-title .title_right .pull-right {
@@ -648,8 +645,8 @@ table.no-margin .progress {
     padding-left: 10px
 }
 .row {
-    margin-right: -10px;
-    margin-left: -10px
+    margin-right: 0px;
+    margin-left: 0px
 }
 .grid_slider .col-md-6 {
     padding: 0 40px
@@ -843,7 +840,7 @@ a:focus {
     text-decoration: none
 }
 .nav.navbar-nav>li>a {
-    color: #515356 !important
+    color: #FFFFFF !important
 }
 .nav.top_menu>li>a {
     position: relative;
@@ -1080,7 +1077,8 @@ h2 {
     -moz-column-break-inside: avoid;
     column-break-inside: avoid;
     opacity: 1;
-    transition: all .2s ease
+    transition: all .2s ease;
+    margin-top: 10px;
 }
 .x_title {
     border-bottom: 2px solid #E6E9ED;
@@ -1701,8 +1699,8 @@ span.right {
     background: #425567
 }
 .tile_count {
-    margin-bottom: 20px;
-    margin-top: 20px
+    margin-bottom: 0px;
+    margin-top: 0px
 }
 .tile_count .tile_stats_count {
     border-bottom: 1px solid #D9DEE4;
@@ -1728,9 +1726,8 @@ span.right {
     content: "";
     position: absolute;
     left: 0;
-    height: 65px;
+    height: 100%;
     border-left: 2px solid #ADB2B5;
-    margin-top: 10px
 }
 @media (min-width: 992px) {
     .tile_count .tile_stats_count:first-child:before {
@@ -1738,13 +1735,13 @@ span.right {
     }
 }
 .tile_count .tile_stats_count .count {
-    font-size: 30px;
-    line-height: 47px;
+    font-size: 22px;
+    line-height: 30px;
     font-weight: 600
 }
 @media (min-width: 768px) {
     .tile_count .tile_stats_count .count {
-        font-size: 40px
+        font-size: 22px
     }
 }
 @media (min-width: 992px) and (max-width: 1100px) {
@@ -2982,7 +2979,8 @@ ul.user_data li .progress {
     border: 0;
     padding: 7px 0;
     display: -ms-flexbox;
-    display: flex
+    display: flex;
+    margin-bottom: 10px;
 }
 ul.stats-overview {
     border-bottom: 1px solid #e8e8e8;
@@ -3555,12 +3553,12 @@ form:after {
 .login_content form input[type="email"],
 .login_content form input[type="password"] {
     border-radius: 3px;
-    -ms-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0, 0, 0, 0.08) inset;
+    /*-ms-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0, 0, 0, 0.08) inset;
     -o-box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0, 0, 0, 0.08) inset;
-    box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0, 0, 0, 0.08) inset;
+    box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0, 0, 0, 0.08) inset;*/
     border: 1px solid #c8c8c8;
     color: #777;
-    margin: 0 0 20px;
+    margin: 0 0 10px;
     width: 100%
 }
 .login_content form input[type="text"]:focus,
@@ -4274,6 +4272,7 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
     color: #DE6060;
     margin-bottom: 5px;
     text-align: left;
+    display: flex;
 }
 
 .text__left {

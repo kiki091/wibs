@@ -177,8 +177,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\MscServiceProvider::class,
-        App\Providers\DataHelperServiceProvider::class,
-        App\Providers\RouteMenuLocationServiceProvider::class,
+        App\Providers\MscDataHelperServiceProvider::class,
+        App\Providers\RouteMscLocationServiceProvider::class,
 
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         Lord\Laroute\LarouteServiceProvider::class,
@@ -233,8 +233,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'MscHelper'=> App\Custom\Msc\Facades\MscHelper::class,
-        'RouteMenuLocation'=> App\Custom\Msc\Facades\RouteMenuLocation::class,
-        'DataHelper'=> App\Custom\Msc\Facades\DataHelper::class,
+        'RouteMscLocation'=> App\Custom\Msc\Facades\RouteMscLocation::class,
+        'MscDataHelper'=> App\Custom\Msc\Facades\MscDataHelper::class,
         'JavaScript'=> Laracasts\Utilities\JavaScript\JavaScriptFacade::class,
 
     ],

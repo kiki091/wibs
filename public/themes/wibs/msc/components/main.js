@@ -359,7 +359,7 @@ function notify(){
 
 
     /* FORM ERROR STYLE */
-  var img = 'http://'+ lintas.app_domain +'/themes/ebtke/cms/svg/ico-important.svg';
+  var img = 'http://'+ wibs.app_domain +'/themes/ebtke/cms/svg/ico-important.svg';
   var count = $( '.notif__content__li' ).size();
   $.notify.addStyle('notif-msg', {
     html:

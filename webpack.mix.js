@@ -11,25 +11,22 @@ const { mix } = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
-
 
 mix.styles([
-    'public/themes/wibs/pages/css/font-awesome.css',
-    'public/themes/wibs/pages/css/bootstrap.css',
-    'public/themes/wibs/pages/css/notify__custom.css',
-    'public/themes/wibs/pages/css/nprogress.css',
-    'public/themes/wibs/pages/css/animate.css',
-    'public/themes/wibs/pages/css/custom.css',
+    'public/themes/wibs/msc/css/font-awesome.css',
+    'public/themes/wibs/msc/css/bootstrap.css',
+    'public/themes/wibs/msc/css/notify__custom.css',
+    'public/themes/wibs/msc/css/nprogress.css',
+    'public/themes/wibs/msc/css/animate.css',
+    'public/themes/wibs/msc/css/custom.css',
     'public/js/bower_components/pacejs/pace-theme-flash.css',
     'public/js/bower_components/iCheck/skins/flat/flat.css',
-    'public/themes/wibs/pages/css/pop__up.css',
+    'public/themes/wibs/msc/css/pop__up.css',
     'public/js/bower_components/hold-on/HoldOn.min.css',
     'public/js/bower_components/sweetalert/dist/sweetalert.css',
     'public/js/bower_components/icheck-bootstrap/icheck-bootstrap.min.css',
     'public/js/bower_components/custom-scrollbar/jquery.mCustomScrollbar.min.css',
-], 'public/themes/wibs/pages/build/css/style.css');
+], 'public/themes/wibs/msc/build/css/style.css');
 
 mix.scripts([
 	'public/js/bower_components/jquery/dist/jquery.min.js',
@@ -40,12 +37,14 @@ mix.scripts([
     'public/js/bower_components/notifyjs/dist/notify.js',
     'public/js/bower_components/gsap/src/minified/TweenMax.min.js',
     'public/js/bower_components/pnotify/dist/pnotify.js',
+    'public/js/bower_components/morris.js/morris.min.js',
+    'public/js/bower_components/bootstrap-progressbar/bootstrap-progressbar.min.js',
     'public/js/bower_components/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js',
-], 'public/themes/wibs/pages/build/js/plugins.js');
+], 'public/themes/wibs/msc/build/js/plugins.js');
 
 mix.scripts([
-	'public/themes/wibs/pages/js/bootstrap.min.js',
+	'public/themes/wibs/msc/js/bootstrap.min.js',
 	//'public/js/bower_components/pacejs/pace.js',
-	'public/themes/wibs/pages/js/custom.min.js',
-	'public/themes/wibs/pages/js/nprogress.js',
-], 'public/themes/wibs/pages/build/js/core.js');
+	'public/themes/wibs/msc/js/custom.min.js',
+	'public/themes/wibs/msc/js/nprogress.js',
+], 'public/themes/wibs/msc/build/js/core.js');

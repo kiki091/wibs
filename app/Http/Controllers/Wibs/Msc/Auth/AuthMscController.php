@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Wibs\Msc\Auth;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 use App\Http\Controllers\Wibs\Msc\MscBaseController;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-//use App\Services\Bridge\Msc\Auth\Users as UserMscServices;
-use App\Custom\Facades\DataHelper;
+use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use App\Services\Bridge\Msc\Auth\Siswa as SiswaMscServices;
+use App\Custom\Msc\MscDataHelper;
 use App\Custom\RouteMenuLocation;
 use App\Services\Api\Response as ResponseService;
 use Session;
@@ -18,16 +19,16 @@ use Response;
 
 class AuthMscController extends MscBaseController
 {
-	use AuthenticatesUsers, ThrottlesLogins;
+	use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     protected $validationMessage = '';
     protected $validationChangePasswordForm = '';
     protected $response;
-    // protected $userMsc;
+    protected $userMsc;
 
-    public function __construct(/*UserMscServices $userMsc, */ResponseService $response)
+    public function __construct(SiswaMscServices $userMsc, ResponseService $response)
     {
-        // $this->userMsc = $userMsc;
+        $this->userMsc = $userMsc;
         $this->response = $response;
     }
 
@@ -44,126 +45,115 @@ class AuthMscController extends MscBaseController
         return abort(404);
     }
 
-    // public function authenticate(Request $request)
-    // {
-    // 	if (!$this->validationAuth($request->input())) {
-    //         return redirect(route('login'))->withInput($request->only($this->username(), 'remember'))->withErrors($this->validationMessage);
-    //     }
-
-    //     $credentials = $request->only($this->username(), 'password');
-    //     $credentials['is_active'] = true;
-
-    //     //TODO: Check Throttles
-    //     $throttles = $this->isUsingThrottlesLoginsTrait();
-
-    //     if ($throttles && $this->hasTooManyLoginAttempts($request)) {
-
-    //         return $this->sendLockoutResponse($request);
-    //     }
-
-
-    //     if (Auth::attempt($credentials)) {
-    //         //TODO: set session first
-
-    //         if ($this->userMsc->setAuthSession()) {
-    //             //TODO : redirect to dashboard
-    //             return $this->manageRedirectAfterLogin();
-    //             // return redirect()->route('CmsDashboardPage');
-    //         }
-    //     }
-
-    //     if ($throttles) {
-    //         $this->incrementLoginAttempts($request);
-    //     }
-
-
-    //     return redirect(route('msc_login'))
-    //         ->withInput($request->only($this->username(), 'remember'))
-    //         ->withErrors([
-    //             $this->username() => $this->getFailedLoginMessage(),
-    //         ]);
-
-    // }
-
     /**
-     * Change Password
      * @param Request $request
      */
-    // public function changePassword(Request $request)
-    // {
+    public function authenticate(Request $request)
+    {
+        //TODO: Validation Auth
+        if (!$this->validationAuth($request->input())) {
+            return redirect(route('msc_login'))
+                ->withInput($request->only($this->loginUsername(), 'remember'))
+                ->withErrors($this->validationMessage);
+        }
 
-    //     $validator = Validator::make($request->all(), $this->validationChangePasswordForm($request));
+        $credentials = $request->only('email', 'password');
+        $credentials['is_active'] = true;
 
-    //     if ($validator->fails()) {
-    //         //TODO: case fail
-    //         return $this->response->setResponseErrorFormValidation($validator->messages(), false);
+        //TODO: Check Throttles
+        $throttles = $this->isUsingThrottlesLoginsTrait();
 
-    //     } else {
-    //         //TODO: case pass
-    //         return $this->userMsc->changePassword($request->except(['_token']));
-    //     }
-    // }
+        if ($throttles && $this->hasTooManyLoginAttempts($request)) {
 
-    /*
+            return $this->sendLockoutResponse($request);
+        }
 
+        if (Auth::attempt($credentials)) {
+            //TODO: set session first
+            if ($this->userMsc->setMscAuthSession()) {
+                //TODO : redirect to dashboard
+               return $this->manageRedirectAfterLogin();
+            }
+        }
+
+        if ($throttles) {
+            $this->incrementLoginAttempts($request);
+        }
+
+        return redirect(route('msc_login'))
+            ->withInput($request->only($this->loginUsername(), 'remember'))
+            ->withErrors([
+                $this->loginUsername() => $this->getFailedLoginMessage(),
+            ]);
+    }
+
+    /**
+     * Get the login username to be used by the controller.
+     *
+     * @return string
+     */
+    public function loginUsername()
+    {
+        return property_exists($this, 'username') ? $this->username : 'email';
+    }
+
+    /**
+     * Determine if the class is using the ThrottlesLogins trait.
+     *
+     * @return bool
+     */
     protected function isUsingThrottlesLoginsTrait()
     {
         return in_array(
             ThrottlesLogins::class, class_uses_recursive(static::class)
         );
     }
-    
-    */
 
     /**
      * Get the failed login message.
      *
      * @return string
      */
-
-    /**
-
     protected function getFailedLoginMessage()
     {
-        return trans('message.failed');
+        return Lang::has('auth.failed')
+                ? Lang::get('auth.failed')
+                : 'These credentials do not match our records.';
     }
-
-    */
-
 
     /**
      * Manage redirect after login
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    // private function manageRedirectAfterLogin()
-    // {
-    //     $userInfo = DataHelper::userInfo();
-
-    //     if (isset($userInfo['user_location']['slug']) && !empty($userInfo['user_location']['slug']))
-    //     {
-    //         Session::forget('slug_menu');
-    //         Session::put('slug_menu', $userInfo['user_location']['slug']);
-
-    //         $user_location_slug = Session::get('slug_menu');
-            
-    //         return redirect('/'.$user_location_slug);
-    //         //return redirect()->route('CmsDashboardPage');
-    //     }
-
-    //     return redirect(route('msc_login'));
-    // }
-
-    
-    /**
-     * Logout
-     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
-     */
-    public function logout()
+    private function manageRedirectAfterLogin()
     {
-        Auth::logout();
-        Session::flush();
+        $siswaInfo = MscDataHelper::siswaInfo();
 
-        return redirect(route('msc_login'));
+        if (isset($siswaInfo['nama_lengkap']) && !empty($siswaInfo['nama_lengkap'])) {
+            
+            return redirect('/'.str_slug($siswaInfo['nama_lengkap']));
+        }
+
+        return redirect('/');
+    }
+
+    /**
+     * Change Password
+     * @param Request $request
+     */
+    public function changePassword(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), $this->validationChangePasswordForm($request));
+
+        if ($validator->fails()) {
+            //TODO: case fail
+            return $this->response->setResponseErrorFormValidation($validator->messages(), false);
+
+        } else {
+            //TODO: case pass
+            //return $this->userMsc->changePassword($request->except(['_token']));
+        }
     }
 
     /**
@@ -189,7 +179,7 @@ class AuthMscController extends MscBaseController
     private function getValidationRules()
     {
         return $rules = array(
-            'nis'           => 'required',
+            'email'         => 'required|email',
             'password'      => 'required',
         );
     }
@@ -205,6 +195,18 @@ class AuthMscController extends MscBaseController
             'new_password'      => 'required',
             'confirm_password'  => 'required|same:new_password',
         );
+    }
+    
+    /**
+     * Logout
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function logout()
+    {
+        Auth::logout();
+        Session::flush();
+
+        return redirect(route('msc_login'));
     }
 
 }

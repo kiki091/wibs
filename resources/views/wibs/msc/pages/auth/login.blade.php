@@ -20,37 +20,36 @@
       		<div class="login_wrapper">
           		<div class="animate form login_form">
               		<section class="login_content">
-                  		<form role="form" method="POST" action="#">
-                    		<h1>Login Form</h1>
-                        	@if (count($errors) > 0)
-                              	@foreach ($errors->all() as $error)
-                                  	<p class="form--error--message">{{ $error }}</p>
-                              	@endforeach
-                        	@else
-                            	<p>Please enter your username and password to login</p>
-                        	@endif
+                  		<form role="form" method="POST" id="msc_form_login" action="{{ route('msc_authenticate')  }}">
+                        		<h1>Login Form</h1>
+                            <p>Please enter your username and password to login</p>
 
-                    		<div class="form-group">
-                      			<input type="email" class="form-control" placeholder="Email" value="{{ old('email') }}" name="email" required="required" />
-                    		</div>
-                    				
-                    		<div class="form-group">
-                      			<input type="password" class="form-control" placeholder="Password" name="password" required="required" />
-                    		</div>
+                        		<div class="form-group">
+                          			<input type="text" class="form-control" placeholder="Email" value="{{ old('email') }}" name="email" id="email" />
+                                <span class="form--error--message--left" id="form--error--message--email"></span>
+                        		</div>
+                        				
+                        		<div class="form-group">
+                          			<input type="password" class="form-control" placeholder="Password" name="password" id="password" />
+                                <span class="form--error--message--left" id="form--error--message--password"></span>
+                        		</div>
 
-                        <div class="form-group">
-                          <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        			            <button class="full-width btn btn-primary submit" type="submit">Log in</button>
-        			        </div>
+                            @if (count($errors) > 0)
+                                  @foreach ($errors->all() as $error)
+                                      <p style="float: left; width: 50%" class="form--error--message--left">{{ $error }}</p>
+                                  @endforeach
+                            @endif
 
-        			        <div class="clearfix"></div>
+                            <div class="form-group">
+                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+            			               <button id="submit__msc__login__button" class="full-width btn btn-primary submit" type="submit">
+                                    Log in
+                                 </button>
+        			              </div>
 
-        			        <div class="separator">
-                        		<p class="change_link">New to site?
-                          			<a href="#signup" class="to_register"> Create Account </a>
-                        		</p>
-                        	</div>
-                        </form>
+        			              <div class="clearfix"></div>
+
+                      </form>
               		</section>
           		</div>
         	</div>
@@ -63,6 +62,6 @@
     	</div>
       @include('wibs.master.vars')
     	@include('wibs.msc.partials.js_footer')
-    	<script src="{{ asset('themes/ebtke/cms/pages/auth/registration.js') }}"></script>
+    	<script src="{{ asset('themes/wibs/msc/pages/auth/login.js') }}"></script>
 	</body>
 </html>

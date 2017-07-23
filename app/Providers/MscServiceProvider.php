@@ -30,9 +30,12 @@ class MscServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        // FRONT
+        // AUTH
+        $this->app->bind('App\Repositories\Contracts\Msc\Auth\Siswa', 'App\Repositories\Implementation\Msc\Auth\Siswa');
 
-        // $this->app->bind('App\Repositories\Contracts\Front\MainBanner', 'App\Repositories\Implementation\Front\MainBanner');
+        // PAGES
+        $this->app->bind('App\Repositories\Contracts\Msc\Siswa', 'App\Repositories\Implementation\Msc\Siswa');
+
     }
 
     /**
@@ -44,7 +47,8 @@ class MscServiceProvider extends ServiceProvider
     {
         return array(
 
-            // 'App\Repositories\Contracts\Front\MainBanner',
+            'App\Repositories\Contracts\Msc\Auth\Siswa',
+            'App\Repositories\Contracts\Msc\Siswa',
         );
     }
 }

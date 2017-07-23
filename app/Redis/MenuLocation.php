@@ -5,8 +5,7 @@ namespace App\Redis;
 class MenuLocation
 {
 
-    const PROPERTY_MENU_COLLECTION = "general:menu:list";
-    const MENU_COLLECTION = "default:menu";
-    const MENU_LOCATION = "menu";
+    const MSC_MENU_COLLECTION = "general:msc:menu:list";
+    const MSC_USER_SLUG_COLLECTION = "general:msc:slug:list";
 
 } 

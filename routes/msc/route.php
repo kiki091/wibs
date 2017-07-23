@@ -16,6 +16,16 @@ Route::group(['middleware' => ['web']], function ()
 	Route::group(['domain' => env('WORLD_WIDE_WEB') . env('MSC_DOMAIN_PREFIX'). env('APP_DOMAIN')], function()
 	{
 		Route::get('/', 'Wibs\Msc\Auth\AuthMscController@index')->name('msc_login');
+		Route::get('/login', 'Wibs\Msc\Auth\AuthMscController@index')->name('login');
+		Route::post('authenticate', 'Wibs\Msc\Auth\AuthMscController@authenticate')->name('msc_authenticate');
+		Route::post('change-password', 'Wibs\Msc\Auth\AuthMscController@changePassword')->name('msc_change_password');
+		Route::get('logout', 'Wibs\Msc\Auth\AuthMscController@logout')->name('msc_logout');
+
+		Route::group(['prefix' => RouteMscLocation::setUsernameMscToSlug(), 'middleware' => ['auth', 'msc.privilege']], function (){
+
+			Route::get('/', 'Wibs\Msc\Pages\DashboardMscController@index')->name('msc_dashboard');
+			Route::get('data', 'Wibs\Msc\Pages\DashboardMscController@getData')->name('msc_get_data_siswa');
+		});
 		
 	});
 });

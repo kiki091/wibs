@@ -17,7 +17,8 @@ class MscBaseController extends Controller
 	public function __construct()
 	{
 
-		$this->_init();
-        $this->setJavascriptVariable();
+        if (Auth::check() == null) {
+           return redirect()->route('msc_login');
+        }
 	}
 }
