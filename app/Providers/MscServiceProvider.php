@@ -36,6 +36,7 @@ class MscServiceProvider extends ServiceProvider
         // PAGES
         $this->app->bind('App\Repositories\Contracts\Msc\Siswa', 'App\Repositories\Implementation\Msc\Siswa');
         $this->app->bind('App\Repositories\Contracts\Msc\StudentMonitoring', 'App\Repositories\Implementation\Msc\StudentMonitoring');
+        $this->app->bind('App\Repositories\Contracts\Msc\QuranRecitationReport', 'App\Repositories\Implementation\Msc\QuranRecitationReport');
 
     }
 
@@ -51,6 +52,7 @@ class MscServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\Msc\Auth\Siswa',
             'App\Repositories\Contracts\Msc\Siswa',
             'App\Repositories\Contracts\Msc\StudentMonitoring',
+            'App\Repositories\Contracts\Msc\QuranRecitationReport',
         );
     }
 }

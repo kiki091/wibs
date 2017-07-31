@@ -30,6 +30,11 @@ Route::group(['middleware' => ['web']], function ()
 				Route::get('/', 'Wibs\Msc\Pages\StudentMonitoringController@index')->name('msc_student_monitoring');
 				Route::get('data', 'Wibs\Msc\Pages\StudentMonitoringController@getData')->name('msc_student_monitoring_get_data');
 			});
+
+			Route::group(['prefix' => 'quran-recitation'], function (){
+				Route::get('/', 'Wibs\Msc\Pages\QuranRecitationReportController@index')->name('msc_quran_recitation');
+				Route::get('data', 'Wibs\Msc\Pages\QuranRecitationReportController@getData')->name('msc_quran_recitation_get_data');
+			});
 		});
 		
 	});

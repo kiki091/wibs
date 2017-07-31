@@ -313,3 +313,13 @@ function init_student_monitoring()
     buttonClickClose();
     replaceToCkEditor();
 }
+
+function init__report__tahfidz()
+{
+    mainGeneral();
+    wizardSlide();
+    crud_report__tahfidz();
+    buttonClickOpen();
+    buttonClickClose();
+    replaceToCkEditor();
+}
