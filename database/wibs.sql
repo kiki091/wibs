@@ -213,14 +213,14 @@ CREATE TABLE `report_hafalan_quran` (
   `nilai_mahraj` int(3) NOT NULL,
   `description` text,
   `siswa_id` int(10) NOT NULL,
-  `report_form` date NOT NULL,
+  `report_from` date NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_report_tahfiz_1_idx` (`siswa_id`),
   CONSTRAINT `fk_report_tahfiz_1` FOREIGN KEY (`siswa_id`) REFERENCES `siswa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,6 +229,7 @@ CREATE TABLE `report_hafalan_quran` (
 
 LOCK TABLES `report_hafalan_quran` WRITE;
 /*!40000 ALTER TABLE `report_hafalan_quran` DISABLE KEYS */;
+INSERT INTO `report_hafalan_quran` VALUES (1,'A',12,85,86,72,NULL,1,'2017-07-01',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `report_hafalan_quran` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -454,7 +455,7 @@ CREATE TABLE `siswa` (
 
 LOCK TABLES `siswa` WRITE;
 /*!40000 ALTER TABLE `siswa` DISABLE KEYS */;
-INSERT INTO `siswa` VALUES (1,'123456','Kiki Kurniawan','Kiki',1,'Jakarta',1,1,2,2,NULL,NULL,NULL,'Depok','081287679290',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,'12345',NULL,6,2,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.',NULL,'kikikurniawan091@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','aMxIWKPwRYYXNzDbq7dOONT2EfKG3gHu7M7v4d32O6vz2doYeQWXBhN04h61',NULL,NULL,NULL),(2,'123455','Febrina','Febri',2,'Bogor',1,1,4,5,NULL,NULL,NULL,'Depok','08963432952',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,'12344',NULL,5,1,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.',NULL,'febrinaniken093@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy',NULL,NULL,NULL,NULL);
+INSERT INTO `siswa` VALUES (1,'123456','Kiki Kurniawan','Kiki',1,'Jakarta',1,1,2,2,NULL,NULL,NULL,'Depok','081287679290',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,'12345',NULL,6,2,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.',NULL,'kikikurniawan091@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','ojxIr0cQJoGhAy22fBNWdTtJoVDTEgNmsKKPaezd9H4Trgvo11ETyCqNBHYP',NULL,NULL,NULL),(2,'123455','Febrina','Febri',2,'Bogor',1,1,4,5,NULL,NULL,NULL,'Depok','08963432952',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,'12344',NULL,5,1,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.',NULL,'febrinaniken093@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy',NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `siswa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -604,4 +605,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-07-23 22:27:44
+-- Dump completed on 2017-08-01  0:17:54
