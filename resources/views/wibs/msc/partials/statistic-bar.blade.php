@@ -1,5 +1,5 @@
 <div class="col-md-3 col-sm-3 col-xs-12">
-		<h4>Penghafal Qur'an Terbaik</h4>
+		<h4>ترتيب الطلاب في الحفظ<br>Penghafal Qur'an Terbaik</h4>
   	<ul class="list-unstyled user_data">
       	<li>
         		<p>Anas Rizqullah</p>

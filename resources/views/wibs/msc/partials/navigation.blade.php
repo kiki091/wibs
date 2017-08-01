@@ -6,41 +6,36 @@
 		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
           	<span class="count_top"></span>
             <a href="{{ route('msc_dashboard') }}">
-              	<div class="count">Personal</div>
-              	<div class="count">Details</div>
-              	<span class="count_bottom"><i class="green"></i> Biodata</span>
+              	<div class="count">التعريف</div>
+              	<div class="count">Personal Details</div>
             </a>
         </div>
 		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
           	<span class="count_top"></span>
             <a href="javascript:void(0)" onclick="menu_student_monitoring()">
-              	<div class="count">Students</div>
-              	<div class="count">Monitoring</div>
-              	<span class="count_bottom"><i class="green"></i> Monitor Santri</span>
+              	<div class="count">كشف مراقبة الطلاب ومراعاتهم</div>
+              	<div class="count">Students Monitoring</div>
             </a>
         </div>
 		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
           	<span class="count_top"></span>
             <a href="javascript:void(0)" onclick="menu__report__tahfidz()">
-              	<div class="count">Raport</div>
-              	<div class="count">Tahfidz</div>
-              	<span class="count_bottom"><i class="green"></i> Raport Hafalan</span>
+              	<div class="count">كشف متابعة حفظ القرآن الكريم</div>
+              	<div class="count">Report Tahfidz Al-Qur'an</div>
             </a>
         </div>
 		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
           	<span class="count_top"></span>
             <a href="javascript:void(0)" onclick="menu__report__kesantrian()">
-              	<div class="count">Raport</div>
-              	<div class="count">Kesantrian</div>
-              	<span class="count_bottom"><i class="green"></i> Raport Kesantrian</span>
+              	<div class="count">كشف شؤون الطلاب</div>
+              	<div class="count">Report Kesantrian</div>
             </a>
         </div>
 		<div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
           	<span class="count_top"></span>
             <a href="javascript:void(0)" onclick="menu__report__akademik()">
-              	<div class="count">Raport</div>
-              	<div class="count">Academic</div>
-              	<span class="count_bottom"><i class="green"></i> Raport Akademik</span>
+              	<div class="count">كشف الدرجات</div>
+              	<div class="count">Report Academic</div>
             </a>
         </div>
     </div>

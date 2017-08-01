@@ -28,12 +28,12 @@
 						<tbody>
 							<tr>
 								<th>#</th>
-								<th>Report Bulan</th>
-								<th>Tinggi Badan</th>
-								<th>Berat Badan</th>
-								<th>Tensi Darah</th>
-								<th>Golongan Darah</th>
-								<th>Riwayat Penyakit</th>
+								<th>بيان الصحة<br>Mountly Report</th>
+								<th>طول الجسم<br>Hight</th>
+								<th>الوزن<br>Weight</th>
+								<th>ضغط الدم<br>Tension Blood</th>
+								<th>نوع الدم<br>Blood Type</th>
+								<th>خلفية المرض<br>Medical Record</th>
 							</tr>
 							<tr v-for="(report_student, index) in models.student_monitoring">
 								<th>@{{ index+1 }}</th>

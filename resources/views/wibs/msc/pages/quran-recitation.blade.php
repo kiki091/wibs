@@ -28,12 +28,12 @@
 						<tbody>
 							<tr>
 								<th>#</th>
-								<th>Report Bulan</th>
-								<th>Disiplin</th>
-								<th>Total Hafalan</th>
-								<th>Nilai Hafalan</th>
-								<th>Nilai Tajwid</th>
-								<th>Nilai Mahraj</th>
+								<th>متابعة الحفظ<br>Mountly Report</th>
+								<th>الحضور والانضباط<br>Discipline</th>
+								<th>عدد الحفظ<br>Total Memorization</th>
+								<th>درجة الحفظ <br>Score</th>
+								<th>درجة التجويد<br>Tazweed</th>
+								<th>درجة المخرج<br>Makhraj</th>
 							</tr>
 							<tr v-for="(report_quran, index) in models.quran_recitation">
 								<th>@{{ index+1 }}</th>
