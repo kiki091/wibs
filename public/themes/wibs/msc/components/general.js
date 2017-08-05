@@ -302,6 +302,7 @@ function mainGeneral(){
     datePicker();
     setSelectedFolder();
     notify();
+    progresBar();
 }
 
 function init_student_monitoring()

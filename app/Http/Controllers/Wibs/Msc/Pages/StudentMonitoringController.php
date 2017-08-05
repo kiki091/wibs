@@ -34,6 +34,11 @@ class StudentMonitoringController extends MscBaseController
         return abort(404);
 	}
 
+	/**
+	 * get data siswa
+	 * @return array()
+	 */
+
 	public function getData(Request $request) 
 	{
 		

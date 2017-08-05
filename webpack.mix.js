@@ -38,7 +38,7 @@ mix.scripts([
     'public/js/bower_components/gsap/src/minified/TweenMax.min.js',
     'public/js/bower_components/pnotify/dist/pnotify.js',
     'public/js/bower_components/morris.js/morris.min.js',
-    'public/js/bower_components/bootstrap-progressbar/bootstrap-progressbar.min.js',
+    'public/js/bower_components/bootstrap-progressbar/bootstrap-progressbar.js',
     'public/js/bower_components/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js',
 ], 'public/themes/wibs/msc/build/js/plugins.js');
 

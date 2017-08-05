@@ -3,6 +3,7 @@ $(document).ready(function(){
     cardAccordion();
     wizardSlide();
     vue();
+    progresBar();
 });
 
 /* BUTTON SHOW CARD PHOTO UPLOADER */
@@ -24,6 +25,10 @@ $(document).on('click', '.img__preview__big__close', function(){
         $('body').removeClass('popup__upload__preview__container');
     }, 200);
 });
+
+function progresBar() {
+
+}
 
 function datePicker(){
     /* DATE TIME PICKER SOTR*/

@@ -25,6 +25,8 @@ Route::group(['middleware' => ['web']], function ()
 
 			Route::get('/', 'Wibs\Msc\Pages\DashboardMscController@index')->name('msc_dashboard');
 			Route::get('data', 'Wibs\Msc\Pages\DashboardMscController@getData')->name('msc_get_data_siswa');
+			Route::post('edit', 'Wibs\Msc\Pages\DashboardMscController@edit')->name('msc_edit_data_siswa');
+			Route::post('store', 'Wibs\Msc\Pages\DashboardMscController@store')->name('msc_store_data_siswa');
 
 			Route::group(['prefix' => 'student-monitoring'], function (){
 				Route::get('/', 'Wibs\Msc\Pages\StudentMonitoringController@index')->name('msc_student_monitoring');

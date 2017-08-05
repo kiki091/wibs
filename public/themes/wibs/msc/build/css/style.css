@@ -14331,13 +14331,13 @@ span.right {
     }
 }
 .tile_count .tile_stats_count .count {
-    font-size: 22px;
-    line-height: 30px;
+    font-size: 16px;
+    line-height: 22px;
     font-weight: 600
 }
 @media (min-width: 768px) {
     .tile_count .tile_stats_count .count {
-        font-size: 22px
+        font-size: 16px
     }
 }
 @media (min-width: 992px) and (max-width: 1100px) {
@@ -17168,7 +17168,7 @@ h2 {
 
 
 .main__content__form__layer {
-    background: #f7f7f7;
+    background: #ffffff;
     box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
     margin: 10px 1% 20px 1%;
     position: relative;
@@ -17292,7 +17292,7 @@ input, textarea, select {
     width: inherit;
     height: inherit;
     position: relative;
-    background: url(/themes/ebtke/cms/svg/ico-upload.svg) 65% 65% no-repeat;
+    background: url(/themes/wibs/msc/svg/ico-upload.svg) 65% 65% no-repeat;
     cursor: pointer;
     transition: all .2s;
 }
@@ -17300,7 +17300,7 @@ input, textarea, select {
 .upload__tip {
     text-align: left;
     margin: 0 10px;
-    width: 300px;
+    width: auto;
     position: absolute;
     font-size: 9px;
     display: -ms-flexbox;

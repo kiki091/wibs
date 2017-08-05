@@ -31,6 +31,11 @@ class Siswa extends Authenticatable
         return $this->belongsTo('App\Models\Msc\Kelas', 'kelas_id', 'id');
     }
 
+    public function wali_siswa()
+    {
+        return $this->belongsTo('App\Models\Msc\WaliSiswa', 'id', 'siswa_id');
+    }
+
     public function role_siswa()
     {
         return $this->belongsTo('App\Models\Msc\RoleSiswa', 'id', 'siswa_id')->with('privilage_siswa');
