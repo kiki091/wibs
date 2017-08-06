@@ -17,7 +17,7 @@ class MscBaseController extends Controller
 	public function __construct()
 	{
 
-        if (Auth::check() == null) {
+        if (Auth::guard('siswa')->check() == null) {
            return redirect()->route('msc_login');
         }
 	}

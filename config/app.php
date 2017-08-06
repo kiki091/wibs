@@ -177,8 +177,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\MscServiceProvider::class,
+        App\Providers\DataHelperServiceProvider::class,
         App\Providers\MscDataHelperServiceProvider::class,
         App\Providers\RouteMscLocationServiceProvider::class,
+        App\Providers\RouteUsersLocationServiceProvider::class,
 
         Laracasts\Utilities\JavaScript\JavaScriptServiceProvider::class,
         Lord\Laroute\LarouteServiceProvider::class,
@@ -234,6 +236,8 @@ return [
 
         'MscHelper'=> App\Custom\Msc\Facades\MscHelper::class,
         'RouteMscLocation'=> App\Custom\Msc\Facades\RouteMscLocation::class,
+        'RouteUsersLocation'=> App\Custom\Auth\Facades\RouteUsersLocation::class,
+        'DataHelper'=> App\Custom\Auth\Facades\DataHelper::class,
         'MscDataHelper'=> App\Custom\Msc\Facades\MscDataHelper::class,
         'JavaScript'=> Laracasts\Utilities\JavaScript\JavaScriptFacade::class,
 

@@ -6,7 +6,9 @@ use App\Models\BaseModel;
 
 class ScoreDescription extends BaseModel
 {
+    protected $connection = 'msc';
 	protected $table = 'score_description';
+    protected $guard = 'siswa';
     public $timestamps = false;
 
     protected $fillable = [
@@ -14,7 +16,7 @@ class ScoreDescription extends BaseModel
         'description'
     ];
 
-    protected $guarded = [];
+    protected $guarded = ['siswa'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo

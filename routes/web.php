@@ -12,3 +12,8 @@
 */
 
 include __DIR__.'/msc/route.php';
+include __DIR__.'/auth/route.php';
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

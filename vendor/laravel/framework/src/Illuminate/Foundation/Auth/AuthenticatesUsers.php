@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 trait AuthenticatesUsers
 {
-    use RedirectsUsers;
+    use RedirectsUsers, ThrottlesLogins;
 
     /**
      * Show the application's login form.
@@ -155,9 +155,7 @@ trait AuthenticatesUsers
     {
         $this->guard()->logout();
 
-        $request->session()->flush();
-
-        $request->session()->regenerate();
+        $request->session()->invalidate();
 
         return redirect('/');
     }

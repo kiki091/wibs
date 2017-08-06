@@ -6,7 +6,9 @@ use App\Models\BaseModel;
 
 class Tingkatan extends BaseModel
 {
+    protected $connection = 'msc';
 	protected $table = 'tingkatan';
+    protected $guard = 'siswa';
     public $timestamps = false;
 
     protected $fillable = [
@@ -14,7 +16,7 @@ class Tingkatan extends BaseModel
         'slug'
     ];
 
-    protected $guarded = [];
+    protected $guarded = ['siswa'];
 
     /***************** Scope *****************/
 

@@ -6,14 +6,16 @@ use App\Models\BaseModel;
 
 class Program extends BaseModel
 {
+    protected $connection = 'msc';
 	protected $table = 'program';
     public $timestamps = false;
+    protected $guard = 'siswa';
 
     protected $fillable = [
         'name'
     ];
 
-    protected $guarded = [];
+    protected $guarded = ['siswa'];
 
     /**
      * @param $query

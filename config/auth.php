@@ -14,8 +14,8 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
-        'passwords' => 'users',
+        'guard' => 'siswa',
+        'passwords' => 'siswa',
     ],
 
     /*
@@ -36,7 +36,12 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'siswa' => [
+            'driver' => 'session',
+            'provider' => 'siswa',
+        ],
+
+        'users' => [
             'driver' => 'session',
             'provider' => 'users',
         ],
@@ -65,9 +70,14 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'siswa' => [
             'driver' => 'eloquent',
             'model' => App\Models\Msc\Siswa::class,
+        ],
+
+        'users' => [
+            'driver' => 'eloquent',
+            'model' =>  App\Models\Auth\Users::class,
         ],
 
         // 'users' => [
@@ -92,6 +102,12 @@ return [
     */
 
     'passwords' => [
+        'siswa' => [
+            'provider' => 'siswa',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',

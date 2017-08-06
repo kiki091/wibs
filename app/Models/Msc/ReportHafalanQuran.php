@@ -6,8 +6,10 @@ use App\Models\BaseModel;
 
 class ReportHafalanQuran extends BaseModel
 {
+    protected $connection = 'msc';
 	protected $table = 'report_hafalan_quran';
     public $timestamps = false;
+    protected $guard = 'siswa';
 
     protected $fillable = [
         'disiplin',
@@ -19,7 +21,7 @@ class ReportHafalanQuran extends BaseModel
         'report_form'
     ];
 
-    protected $guarded = [];
+    protected $guarded = ['siswa'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo

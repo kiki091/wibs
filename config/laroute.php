@@ -5,7 +5,7 @@ return [
     /*
      * The destination path for the javascript file.
      */
-    'path' => 'public/themes/wibs/msc/build/js',
+    'path' => 'public/js',
 
     /*
      * The destination filename for the javascript file.

@@ -6,14 +6,16 @@ use App\Models\BaseModel;
 
 class WaliSiswa extends BaseModel
 {
+    protected $connection = 'msc';
 	protected $table = 'wali_siswa';
+    protected $guard = 'siswa';
     public $timestamps = false;
 
     protected $fillable = [
         'nama_lengkap'
     ];
 
-    protected $guarded = [];
+    protected $guarded = ['siswa'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo

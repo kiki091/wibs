@@ -6,8 +6,10 @@ use App\Models\BaseModel;
 
 class Kelas extends BaseModel
 {
+    protected $connection = 'msc';
 	protected $table = 'kelas';
     public $timestamps = false;
+    protected $guard = 'siswa';
 
     protected $fillable = [
         'created_at',
@@ -15,7 +17,7 @@ class Kelas extends BaseModel
         'created_by'
     ];
 
-    protected $guarded = [];
+    protected $guarded = ['siswa'];
 
     /**
      * @param $query

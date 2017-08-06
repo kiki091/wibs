@@ -34,7 +34,7 @@ class Siswa extends BaseImplementation implements SiswaInterface
      */
     public function setMscAuthSession($params)
     {
-        $siswaInfo = Auth::user();
+        $siswaInfo = Auth::guard('siswa')->user();
 
         if (empty($siswaInfo)) {
            return false;

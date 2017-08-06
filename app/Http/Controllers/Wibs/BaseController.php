@@ -12,12 +12,12 @@ use JavaScript;
 class BaseController extends Controller
 {
 
-	const URL_BLADE_SITE = 'wibs.msc.pages';
+	const URL_BLADE_AUTH = 'wibs.auth.pages';
 
 	public function __construct()
 	{
-
-		$this->_init();
-        $this->setJavascriptVariable();
+		if (Auth::guard('users')->check() == null) {
+           return redirect()->route('users_login');
+        }
 	}
 }

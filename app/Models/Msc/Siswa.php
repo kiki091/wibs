@@ -2,12 +2,15 @@
 
 namespace App\Models\Msc;
 
-use App\Models\BaseModel;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Siswa extends Authenticatable
 {
+    protected $connection = 'msc';
 	protected $table = 'siswa';
+    
+    protected $guard = 'siswa';
     public $timestamps = false;
 
     protected $fillable = [
@@ -16,7 +19,7 @@ class Siswa extends Authenticatable
         'nama_panggilan'
     ];
 
-    protected $guarded = [];
+    protected $guarded = ['siswa'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo

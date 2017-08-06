@@ -7,7 +7,7 @@ use App\Repositories\Implementation\BaseImplementation;
 use App\Models\Msc\ReportKesehatan as StudentMonitoringModel;
 use App\Services\Transformation\Msc\StudentMonitoring as StudentMonitoringTransformation;
 use Cache;
-use LaravelLocalization;
+
 use Session;
 use DB;
 use Auth;

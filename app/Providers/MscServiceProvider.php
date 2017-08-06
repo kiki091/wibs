@@ -2,25 +2,29 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
+
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class MscServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
+     * The policy mappings for the application.
      *
-     * @var bool
+     * @var array
      */
-    protected $defer = false;
+    protected $policies = [
+        'App\Model' => 'App\Policies\ModelPolicy',
+    ];
 
     /**
-     * Bootstrap any application services.
+     * Register any authentication / authorization services.
      *
      * @return void
      */
     public function boot()
     {
-        //
+        $this->registerPolicies();
     }
 
     /**

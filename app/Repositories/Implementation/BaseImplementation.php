@@ -2,7 +2,6 @@
 
 namespace App\Repositories\Implementation;
 
-use LaravelLocalization;
 use RouteMenuLocation;
 use Request;
 use Session;

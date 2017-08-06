@@ -9,7 +9,9 @@ use Illuminate\Database\Eloquent\Model;
  */
 class RoleSiswa extends Model
 {
+    protected $connection = 'msc';
     protected $table = 'role_siswa';
+    protected $guard = 'siswa';
 
     public $timestamps = true;
 
@@ -18,7 +20,7 @@ class RoleSiswa extends Model
         'created_by'
     ];
 
-    protected $guarded = [];
+    protected $guarded = ['siswa'];
 
     public function privilage_siswa()
     {

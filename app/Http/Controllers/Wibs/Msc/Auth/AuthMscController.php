@@ -6,10 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use App\Http\Controllers\Wibs\Msc\MscBaseController;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use App\Services\Bridge\Msc\Auth\Siswa as SiswaMscServices;
 use App\Custom\Msc\MscDataHelper;
-use App\Custom\RouteMenuLocation;
 use App\Services\Api\Response as ResponseService;
 use Session;
 use Auth;
@@ -19,12 +19,14 @@ use Response;
 
 class AuthMscController extends MscBaseController
 {
-	use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+	use AuthenticatesAndRegistersUsers;
 
     protected $validationMessage = '';
     protected $validationChangePasswordForm = '';
     protected $response;
     protected $userMsc;
+
+    protected $guard = 'siswa';
 
     public function __construct(SiswaMscServices $userMsc, ResponseService $response)
     {
@@ -44,8 +46,7 @@ class AuthMscController extends MscBaseController
 
         return abort(404);
     }
-
-    /**
+/**
      * @param Request $request
      */
     public function authenticate(Request $request)
@@ -57,27 +58,15 @@ class AuthMscController extends MscBaseController
                 ->withErrors($this->validationMessage);
         }
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('nis', 'password');
         $credentials['is_active'] = true;
 
-        //TODO: Check Throttles
-        $throttles = $this->isUsingThrottlesLoginsTrait();
-
-        if ($throttles && $this->hasTooManyLoginAttempts($request)) {
-
-            return $this->sendLockoutResponse($request);
-        }
-
-        if (Auth::attempt($credentials)) {
+        if (Auth::guard('siswa')->attempt($credentials)) {
             //TODO: set session first
             if ($this->userMsc->setMscAuthSession()) {
                 //TODO : redirect to dashboard
                return $this->manageRedirectAfterLogin();
             }
-        }
-
-        if ($throttles) {
-            $this->incrementLoginAttempts($request);
         }
 
         return redirect(route('msc_login'))
@@ -94,19 +83,7 @@ class AuthMscController extends MscBaseController
      */
     public function loginUsername()
     {
-        return property_exists($this, 'username') ? $this->username : 'email';
-    }
-
-    /**
-     * Determine if the class is using the ThrottlesLogins trait.
-     *
-     * @return bool
-     */
-    protected function isUsingThrottlesLoginsTrait()
-    {
-        return in_array(
-            ThrottlesLogins::class, class_uses_recursive(static::class)
-        );
+        return property_exists($this, 'username') ? $this->username : 'nis';
     }
 
     /**
@@ -179,7 +156,7 @@ class AuthMscController extends MscBaseController
     private function getValidationRules()
     {
         return $rules = array(
-            'email'         => 'required|email',
+            'nis'         => 'required',
             'password'      => 'required',
         );
     }
@@ -203,7 +180,7 @@ class AuthMscController extends MscBaseController
      */
     public function logout()
     {
-        Auth::logout();
+        Auth::guard('siswa')->logout();
         Session::flush();
 
         return redirect(route('msc_login'));

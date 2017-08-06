@@ -31,6 +31,7 @@ class DashboardMscController extends MscBaseController
             'app_domain' => env('MSC_DOMAIN_PREFIX').env('APP_DOMAIN'),
             'token' => csrf_token(),
         ]);
+        $this->middleware('siswa');
 	}
 
 	public function index(Request $request) 

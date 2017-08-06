@@ -6,14 +6,16 @@ use App\Models\BaseModel;
 
 class SubProgram extends BaseModel
 {
+    protected $connection = 'msc';
 	protected $table = 'sub_program';
+    protected $guard = 'siswa';
     public $timestamps = false;
 
     protected $fillable = [
         'name'
     ];
 
-    protected $guarded = [];
+    protected $guarded = ['siswa'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\belongsTo

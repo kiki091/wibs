@@ -25,8 +25,8 @@
                             <p>Please enter your username and password to login</p>
 
                         		<div class="form-group">
-                          			<input type="text" class="form-control" placeholder="Email" value="{{ old('email') }}" name="email" id="email" />
-                                <span class="form--error--message--left" id="form--error--message--email"></span>
+                          			<input type="text" class="form-control" placeholder="NIS" value="{{ old('nis') }}" name="nis" id="nis" />
+                                <span class="form--error--message--left" id="form--error--message--nis"></span>
                         		</div>
                         				
                         		<div class="form-group">

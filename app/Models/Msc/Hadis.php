@@ -6,8 +6,10 @@ use App\Models\BaseModel;
 
 class Hadis extends BaseModel
 {
+    protected $connection = 'msc';
 	protected $table = 'hadis';
     public $timestamps = false;
+    protected $guard = 'siswa';
 
     protected $fillable = [
         'awal_hadis',
@@ -15,7 +17,7 @@ class Hadis extends BaseModel
         'imam_ahlul_hadis'
     ];
 
-    protected $guarded = [];
+    protected $guarded = ['siswa'];
 
     /**
      * @param $query
