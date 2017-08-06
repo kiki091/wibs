@@ -8,6 +8,7 @@ class ReportKesehatan extends BaseModel
 {
     protected $connection = 'msc';
 	protected $table = 'report_kesehatan';
+    
     public $timestamps = false;
     protected $guard = 'siswa';
 

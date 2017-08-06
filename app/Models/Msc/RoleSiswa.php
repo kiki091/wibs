@@ -11,6 +11,7 @@ class RoleSiswa extends Model
 {
     protected $connection = 'msc';
     protected $table = 'role_siswa';
+    
     protected $guard = 'siswa';
 
     public $timestamps = true;

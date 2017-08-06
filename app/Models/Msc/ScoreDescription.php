@@ -8,6 +8,7 @@ class ScoreDescription extends BaseModel
 {
     protected $connection = 'msc';
 	protected $table = 'score_description';
+    
     protected $guard = 'siswa';
     public $timestamps = false;
 

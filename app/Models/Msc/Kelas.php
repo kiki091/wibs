@@ -8,6 +8,7 @@ class Kelas extends BaseModel
 {
     protected $connection = 'msc';
 	protected $table = 'kelas';
+    
     public $timestamps = false;
     protected $guard = 'siswa';
 

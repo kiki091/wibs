@@ -8,6 +8,7 @@ class SubProgram extends BaseModel
 {
     protected $connection = 'msc';
 	protected $table = 'sub_program';
+    
     protected $guard = 'siswa';
     public $timestamps = false;
 

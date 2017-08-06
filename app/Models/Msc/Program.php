@@ -8,6 +8,7 @@ class Program extends BaseModel
 {
     protected $connection = 'msc';
 	protected $table = 'program';
+    
     public $timestamps = false;
     protected $guard = 'siswa';
 

@@ -8,6 +8,7 @@ class Hadis extends BaseModel
 {
     protected $connection = 'msc';
 	protected $table = 'hadis';
+    
     public $timestamps = false;
     protected $guard = 'siswa';
 

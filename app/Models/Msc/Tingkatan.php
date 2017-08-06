@@ -8,6 +8,7 @@ class Tingkatan extends BaseModel
 {
     protected $connection = 'msc';
 	protected $table = 'tingkatan';
+    
     protected $guard = 'siswa';
     public $timestamps = false;
 

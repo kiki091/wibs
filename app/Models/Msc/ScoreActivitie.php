@@ -8,6 +8,7 @@ class ScoreActivitie extends BaseModel
 {
     protected $connection = 'msc';
 	protected $table = 'score_activitie';
+    
     protected $guard = 'siswa';
     public $timestamps = false;
 

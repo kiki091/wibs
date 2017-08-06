@@ -8,6 +8,7 @@ class ReportHafalanQuran extends BaseModel
 {
     protected $connection = 'msc';
 	protected $table = 'report_hafalan_quran';
+    
     public $timestamps = false;
     protected $guard = 'siswa';
 

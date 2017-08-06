@@ -8,6 +8,7 @@ class ScoreScale extends BaseModel
 {
     protected $connection = 'msc';
 	protected $table = 'score_scale';
+    
     protected $guard = 'siswa';
     public $timestamps = false;
 
