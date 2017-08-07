@@ -30,6 +30,17 @@ Route::group(['middleware' => ['web']], function ()
 
 				Route::get('/', 'Wibs\Auth\DashboardController@index')->name('users_dashboard');
 
+				// CMS MANAGEMENT ROUTE
+
+				Route::group(['prefix' => 'santri'], function () {
+
+					Route::get('/', 'Wibs\Auth\Pages\SantriController@index')->name('cms_santri');
+					Route::get('data', 'Wibs\Auth\Pages\SantriController@getData')->name('cms_get_data_santri');
+					Route::post('store', 'Wibs\Auth\Pages\SantriController@store')->name('cms_store_data_santri');
+					Route::post('edit', 'Wibs\Auth\Pages\SantriController@edit')->name('cms_edit_data_santri');
+					Route::post('change-status', 'Wibs\Auth\Pages\SantriController@change-status')->name('cms_change_status_data_santri');
+				});
+
 				// ACCOUNT MANAGEMENT ROUTE
 
 				Route::group(['prefix' => 'ams'], function () {

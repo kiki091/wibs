@@ -41,6 +41,9 @@ class AuthServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\Contracts\Auth\SubMenuNavigation', 'App\Repositories\Implementation\Auth\SubMenuNavigation');
         $this->app->bind('App\Repositories\Contracts\Auth\Privilage', 'App\Repositories\Implementation\Auth\Privilage');
         $this->app->bind('App\Repositories\Contracts\Auth\System', 'App\Repositories\Implementation\Auth\System');
+
+
+        $this->app->bind('App\Repositories\Contracts\Auth\Pages\Santri', 'App\Repositories\Implementation\Auth\Pages\Santri');
     }
 
     /**
@@ -57,6 +60,9 @@ class AuthServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\Auth\SubMenuNavigation',
             'App\Repositories\Contracts\Auth\Privilage',
             'App\Repositories\Contracts\Auth\System',
+
+            
+            'App\Repositories\Contracts\Auth\Pages\Santri',
         );
     }
 }

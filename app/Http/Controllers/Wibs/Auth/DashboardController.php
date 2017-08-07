@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Wibs\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Wibs\BaseController;
 
+use RouteUsersLocation;
 use Carbon\Carbon;
 use JavaScript;
 use Auth;
@@ -24,6 +25,7 @@ class DashboardController extends BaseController
             'href_url' => URL::current(),
             'app_domain' => env('AUTH_DOMAIN_PREFIX'),
             'token' => csrf_token(),
+            'systemLocation' => RouteUsersLocation::setUsersLocation(),
         ]);
     }
 

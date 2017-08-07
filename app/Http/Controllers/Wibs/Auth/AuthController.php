@@ -27,6 +27,10 @@ class AuthController extends BaseController
 
     public function __construct(UserServices $users, ResponseService $response)
     {
+        if (Auth::guard('users')->check() == null) {
+           return redirect()->route('users_login');
+        }
+        
         $this->users = $users;
         $this->response = $response;
     }
