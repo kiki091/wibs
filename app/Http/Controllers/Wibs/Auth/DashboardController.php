@@ -18,12 +18,10 @@ class DashboardController extends BaseController
 {
     public function __construct()
     {
-
-        $this->middleware('users');
         
         JavaScript::put([
             'href_url' => URL::current(),
-            'app_domain' => env('AUTH_DOMAIN_PREFIX'),
+            'app_domain' => env('AUTH_DOMAIN_PREFIX').env('APP_DOMAIN'),
             'token' => csrf_token(),
             'systemLocation' => RouteUsersLocation::setUsersLocation(),
         ]);

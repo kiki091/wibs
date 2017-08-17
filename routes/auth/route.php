@@ -41,6 +41,15 @@ Route::group(['middleware' => ['web']], function ()
 					Route::post('change-status', 'Wibs\Auth\Pages\SantriController@change-status')->name('cms_change_status_data_santri');
 				});
 
+				Route::group(['prefix' => 'wali-santri'], function () {
+
+					Route::get('/', 'Wibs\Auth\Pages\WaliSiswaController@index')->name('cms_wali_santri');
+					Route::get('data', 'Wibs\Auth\Pages\WaliSiswaController@getData')->name('cms_get_data_wali_santri');
+					Route::post('store', 'Wibs\Auth\Pages\WaliSiswaController@store')->name('cms_store_data_wali_santri');
+					Route::post('edit', 'Wibs\Auth\Pages\WaliSiswaController@edit')->name('cms_edit_data_wali_santri');
+					Route::post('change-status', 'Wibs\Auth\Pages\WaliSiswaController@change-status')->name('cms_change_status_data_wali_santri');
+				});
+
 				// ACCOUNT MANAGEMENT ROUTE
 
 				Route::group(['prefix' => 'ams'], function () {

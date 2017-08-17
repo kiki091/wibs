@@ -2,18 +2,18 @@
 
 namespace App\Services\Bridge\Auth\Pages;
 
-use App\Repositories\Contracts\Auth\Pages\Santri as SantriInterface;
+use App\Repositories\Contracts\Auth\Pages\WaliSiswa as WaliSiswaInterface;
 
-class Santri {
+class WaliSiswa {
 
     /**
      * @var santriInterface
      */
-    protected $santri;
+    protected $waliSiswa;
 
-    public function __construct(SantriInterface $santri)
+    public function __construct(WaliSiswaInterface $waliSiswa)
     {
-        $this->santri = $santri;
+        $this->waliSiswa = $waliSiswa;
     }
     
     /**
@@ -22,7 +22,7 @@ class Santri {
      */
     public function getData($params = array())
     {
-        return $this->santri->getData($params);
+        return $this->waliSiswa->getData($params);
     }
 
     /**
@@ -31,7 +31,7 @@ class Santri {
      */
     public function changeStatus($params)
     {
-        return $this->santri->changeStatus($params);
+        return $this->waliSiswa->changeStatus($params);
     }
 
     /**
@@ -40,7 +40,7 @@ class Santri {
      */
     public function store($params = array())
     {
-        return $this->santri->store($params);
+        return $this->waliSiswa->store($params);
     }
 
     /**
@@ -49,7 +49,7 @@ class Santri {
      */
     public function edit($params = array())
     {
-        return $this->santri->edit($params);
+        return $this->waliSiswa->edit($params);
     }
 
 } 

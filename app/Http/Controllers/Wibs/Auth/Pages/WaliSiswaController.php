@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Wibs\Auth\Pages;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Wibs\BaseController;
 use App\Services\Bridge\Auth\Pages\Santri as SantriServices;
+use App\Services\Bridge\Auth\Pages\WaliSiswa as WaliSiswaServices;
 use App\Services\Api\Response as ResponseService;
 use App\Custom\DataHelper;
 
@@ -13,15 +14,17 @@ use Session;
 use Validator;
 use ValidatesRequests;
 
-class SantriController extends BaseController
+class WaliSiswaController extends BaseController
 {
     protected $santri;
+    protected $waliSiswa;
     protected $response;
     protected $validationMessage = '';
 
-    public function __construct(SantriServices $santri, ResponseService $response)
+    public function __construct(SantriServices $santri, WaliSiswaServices $waliSiswa, ResponseService $response)
     {
         $this->santri = $santri;
+        $this->waliSiswa = $waliSiswa;
         $this->response = $response;
     }
 
@@ -32,7 +35,7 @@ class SantriController extends BaseController
 
     public function index(Request $request)
     {
-        $blade = self::URL_BLADE_AUTH. '.santri.main';
+        $blade = self::URL_BLADE_AUTH. '.wali-siswa.main';
         
         if(view()->exists($blade)) {
         
@@ -51,6 +54,7 @@ class SantriController extends BaseController
     public function getData(Request $request)
     {
         $data['santri'] = $this->santri->getData();
+        $data['wali_siswa'] = $this->waliSiswa->getData();
         return $this->response->setResponse(trans('message.cms_success_get_data'), true, $data);
     }
 
@@ -70,7 +74,7 @@ class SantriController extends BaseController
 
         } else {
             //TODO: case pass
-            return $this->santri->store($request->except(['_token']));
+            return $this->waliSiswa->store($request->except(['_token']));
         }
     }
 
@@ -81,7 +85,7 @@ class SantriController extends BaseController
 
     public function changeStatus(Request $request)
     {
-        return $this->santri->changeStatus($request->except(['_token']));
+        return $this->waliSiswa->changeStatus($request->except(['_token']));
     }
 
     /**
@@ -91,7 +95,7 @@ class SantriController extends BaseController
 
     public function edit(Request $request)
     {
-        return $this->santri->edit($request->except(['_token']));
+        return $this->waliSiswa->edit($request->except(['_token']));
     }
 
     /**
@@ -101,37 +105,23 @@ class SantriController extends BaseController
     private function validationStore($request = array())
     {
         $rules = [
-            'nis'                   => 'required',
-            'nama_lengkap'          => 'required',
-            'nama_panggilan'        => 'required',
-            'jenis_kelamin'         => 'required',
-            'tempat_lahir'          => 'required',
-            'agama'                 => 'required',
-            'kewarganegaraan'       => 'required',
-            'status_orang_tua'      => 'required',
-            'alamat'                => 'required',
-            'no_telpon'             => 'required',
-            'status_tinggal'        => 'required',
-            'pendidikan_sebelumnya' => 'required',
-            'lulusan_dari'          => 'required',
-            'alamat_sekolah'        => 'required',
-            'tanggal_nomer_sttb'    => 'required',
-            'lama_belajar'          => 'required',
-            'kelas_id'              => 'required',
-            'tingkatan_id'          => 'required',
-            'status_siswa'          => 'required',
-            'foto'                  => 'required',
-            'email'                 => 'required|email|max:30',
-            'password'              => 'required',
-            'confirm_password'      => 'required|same:password|min:6|max:20',
+            'nama_lengkap_ayah'         => 'required',
+            'nama_lengkap_ibu'          => 'required',
+            'tempat_lahir'              => 'required',
+            'tanggal_lahir'             => 'required',
+            'agama'                     => 'required',
+            'kewarganegaraan'           => 'required',
+            'pendidikan'                => 'required',
+            'pekerjaan'                 => 'required',
+            'penghasilan_bulanan'       => 'required',
+            'alamat_kantor'             => 'required',
+            'telpon_kantor'             => 'required',
+            'alamat_rumah'              => 'required',
+            'no_telepon'                => 'required',
+            'email'                     => 'required|email|max:30',
+            'status'                    => 'required',
+            'siswa_id'                  => 'required',
         ];
-
-        if ($this->isEditMode($request->input())) 
-        {
-            if (is_null($request->file('foto'))) {
-                unset($rules['foto']);
-            }
-        }
 
 
         return $rules;

@@ -9,7 +9,7 @@ class SiswaPindahan extends BaseModel
     protected $connection = 'msc';
 	protected $table = 'siswa_pindahan';
     
-    public $timestamps = false;
+    public $timestamps = true;
     protected $guard = 'siswa';
 
     protected $fillable = [

@@ -35,3 +35,5 @@
 <script src="{{ asset('themes/wibs/auth/pages/user-account.js') }}"></script>
 
 <!-- Javascript CONTENT MANAGEMENT SYSTEM -->
+<script src="{{ asset('themes/wibs/auth/pages/santri.js') }}"></script>
+<script src="{{ asset('themes/wibs/auth/pages/wali-siswa.js') }}"></script>

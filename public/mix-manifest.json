@@ -2,5 +2,8 @@
   "/mix.js": "/mix.js",
   "/themes/wibs/msc/build/css/style.css": "/themes/wibs/msc/build/css/style.css",
   "/themes/wibs/msc/build/js/plugins.js": "/themes/wibs/msc/build/js/plugins.js",
-  "/themes/wibs/msc/build/js/core.js": "/themes/wibs/msc/build/js/core.js"
+  "/themes/wibs/msc/build/js/core.js": "/themes/wibs/msc/build/js/core.js",
+  "/themes/wibs/auth/build/css/style.css": "/themes/wibs/auth/build/css/style.css",
+  "/themes/wibs/auth/build/js/plugins.js": "/themes/wibs/auth/build/js/plugins.js",
+  "/themes/wibs/auth/build/js/core.js": "/themes/wibs/auth/build/js/core.js"
 }

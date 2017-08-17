@@ -108,12 +108,12 @@ if(!function_exists('mysqlDateTimeFormat'))
 	function mysqlDateTimeFormat($date = '', $strtotime = false)
 	{
 		if (empty($date)) {
-			return date('Y-m-d H:i:s');
+			return date('Y-m-d');
 		} else {
 			if ($strtotime) {
-				return date('Y-m-d H:i:s', $date);
+				return date('Y-m-d', $date);
 			} else {
-				return date('Y-m-d H:i:s', strtotime($date));
+				return date('Y-m-d', strtotime($date));
 			}
 		}
 	}

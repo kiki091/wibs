@@ -46,3 +46,13 @@ function santri()
         init_menu_santri()
     });
 }
+
+// JAVASCRIPT CMS WALI SANTRI
+
+function wali_santri()
+{
+    $('.right_col').load(laroute.route('cms_wali_santri', []), function()
+    {
+        init_menu_wali_santri()
+    });
+}

@@ -18,7 +18,7 @@
                                                             
 -->
       		<div class="login_wrapper">
-          		<div class="animate form login_form">
+          		<div class="animate form login_form" style="background: #f4f4f4">
               		<section class="login_content">
                   		<form role="form" method="POST" action="{{ route('users_authenticate') }}">
                     		<h1>WIBS MANAGEMENT</h1>

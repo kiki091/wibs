@@ -11,7 +11,7 @@ class Siswa extends Authenticatable
 	protected $table = 'siswa';
     
     protected $guard = 'siswa';
-    public $timestamps = false;
+    public $timestamps = true;
 
     protected $fillable = [
         'nis',

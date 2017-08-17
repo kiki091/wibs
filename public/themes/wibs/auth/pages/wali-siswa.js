@@ -9,7 +9,7 @@
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-function crud_cms_santri() {
+function crud_cms_wali_sswa() {
     var token = Vue.http.headers.common['X-CSRF-TOKEN'] = $("#_token").attr("value");
 
     var controller = new Vue({
@@ -18,45 +18,24 @@ function crud_cms_santri() {
 
             models: {
                 id:'',
-                nis: '',
-                nama_lengkap: '',
-                nama_panggilan: '',
-                jenis_kelamin: '',
+                siswa_id: '',
+                nama_lengkap_ayah: '',
+                nama_lengkap_ibu: '',
                 tempat_lahir: '',
                 tanggal_lahir: '',
                 agama: '',
-                anak_ke: '',
-                jumlah_saudara_kandung: '',
-                jumlah_saudara_tiri: '',
-                status_orang_tua: '',
-                jenis_bahasa: '',
-                alamat: '',
-                no_telpon: '',
-                status_tinggal: '',
-                asrama_kost: '',
-                jarak_rumah: '',
-                golongan_darah: '',
-                derita_penyakit: '',
-                kelainan_jasmani: '',
-                tinggi_badan: '',
-                berat_badan: '',
-                pendidikan_sebelumnya: '',
-                lulusan_dari: '',
-                alamat_sekolah: '',
-                tanggal_nomer_sttb: '',
-                lama_belajar: '',
-                kelas_id: '',
-                tingkatan_id    : '',
-                status_siswa: '',
-                description: '',
+                kewarganegaraan: '',
+                pendidikan: '',
+                pekerjaan: '',
+                penghasilan_bulanan: '',
+                alamat_kantor: '',
+                telpon_kantor: '',
+                alamat_rumah: '',
+                no_telepon: '',
                 email: '',
-                asal_sekolah: '',
-                alamat_sekolah_lama: '',
-                alasan_pindah: '',
+                status: '',
             },
-            foto: '',
-            image: '',
-            form_add_title: "Santri Management System",
+            form_add_title: "Wali Santri Management",
             id: '',
             edit: false,
             responseData: {},
@@ -64,34 +43,9 @@ function crud_cms_santri() {
 
         methods: {
 
-            onImageChange: function(element, e) {
-                var files = e.target.files || e.dataTransfer.files
-
-                if (!files.length)
-                    return;
-
-                this.models[element] = files[0]
-                this.createImage(files[0], element);
-            },
-
-            createImage: function(file, setterTo) {
-                var image = new Image();
-                var reader = new FileReader();
-                var vm = this;
-
-                reader.onload = function (e) {
-                    vm[setterTo] = e.target.result;
-                };
-                reader.readAsDataURL(file);
-            },
-
-            removeImage: function (variable) {
-                this[variable] = ''
-            },
-
             fetchData: function() {
 
-                var domain  = laroute.url(wibs.systemLocation +'/santri/data', []);
+                var domain  = laroute.url(wibs.systemLocation +'/wali-santri/data', []);
                 
                 this.$http.get(domain).then(function (response) {
                     response = response.data
@@ -114,7 +68,7 @@ function crud_cms_santri() {
                     form.append(key, payload[key])
                 }
 
-                var domain  = laroute.url(wibs.systemLocation +'/santri/chenge-status', []);
+                var domain  = laroute.url(wibs.systemLocation +'/wali-santri/chenge-status', []);
 
                 this.$http.post(domain, form).then(function(response) {
                     response = response.data
@@ -172,8 +126,8 @@ function crud_cms_santri() {
 
                 };
 
-                $("#form__cms__santri").ajaxForm(optForm);
-                $("#form__cms__santri").submit();
+                $("#form__cms__wali__santri").ajaxForm(optForm);
+                $("#form__cms__wali__santri").submit();
             },
 
             editData: function(id) {
@@ -189,7 +143,7 @@ function crud_cms_santri() {
                     form.append(key, payload[key])
                 }
 
-                var domain  = laroute.url(wibs.systemLocation +'/santri/edit', []);
+                var domain  = laroute.url(wibs.systemLocation +'/wali-santri/edit', []);
                 this.$http.post(domain, form).then(function(response) {
 
                     response = response.data
@@ -208,47 +162,25 @@ function crud_cms_santri() {
             resetForm: function() {
 
                 this.models.id = ''
-                this.models.nis = ''
-                this.models.nama_lengkap = ''
-                this.models.nama_panggilan = ''
-                this.models.jenis_kelamin = ''
+                this.models.siswa_id = ''
+                this.models.nama_lengkap_ayah = ''
+                this.models.nama_lengkap_ibu = ''
                 this.models.tempat_lahir = ''
                 this.models.tanggal_lahir = ''
                 this.models.agama = ''
-                this.models.anak_ke = ''
-                this.models.jumlah_saudara_kandung = ''
-                this.models.jumlah_saudara_tiri = ''
-                this.models.status_orang_tua = ''
-                this.models.jenis_bahasa = ''
-                this.models.alamat = ''
-                this.models.no_telpon = ''
-                this.models.status_tinggal = ''
-                this.models.asrama_kost = ''
-                this.models.jarak_rumah = ''
-                this.models.golongan_darah = ''
-                this.models.derita_penyakit = ''
-                this.models.kelainan_jasmani = ''
-                this.models.tinggi_badan = ''
-                this.models.berat_badan = ''
-                this.models.pendidikan_sebelumnya = ''
-                this.models.lulusan_dari = ''
-                this.models.alamat_sekolah = ''
-                this.models.tanggal_nomer_sttb = ''
-                this.models.lama_belajar = ''
-                this.models.kelas_id = ''
-                this.models.tingkatan_id     = ''
-                this.models.status_siswa = ''
-                this.models.description = ''
+                this.models.kewarganegaraan = ''
+                this.models.pendidikan = ''
+                this.models.pekerjaan = ''
+                this.models.penghasilan_bulanan = ''
+                this.models.alamat_kantor = ''
+                this.models.telpon_kantor = ''
+                this.models.alamat_rumah = ''
+                this.models.no_telepon = ''
                 this.models.email = ''
-                
-                this.models.asal_sekolah = ''
-                this.models.alamat_sekolah_lama = ''
-                this.models.alasan_pindah = ''
+                this.models.status = ''
 
-                this.foto = '',
-
-                this.form_add_title = "Santri Management System"
-                document.getElementById("form__cms__santri");
+                this.form_add_title = "Wali Santri Management"
+                document.getElementById("form__cms__wali__santri");
 
                 this.clearErrorMessage()
                 this.edit = false

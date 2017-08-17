@@ -397,3 +397,13 @@ function init_menu_santri()
     buttonClickClose();
     replaceToCkEditor();
 }
+
+function init_menu_wali_santri()
+{
+    mainGeneral();
+    wizardSlide();
+    crud_cms_wali_sswa();
+    buttonClickOpen();
+    buttonClickClose();
+    replaceToCkEditor();
+}

@@ -2,7 +2,7 @@
 @section('content')
 
     <!-- page content -->
-    <div class="bg__gray">
+    <div class="bg__white">
 		<div class="page-title">
 			<div class="title_left">
 		        <h3>DASHBOARD </h3>

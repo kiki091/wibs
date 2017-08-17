@@ -7,6 +7,9 @@ html , body{
  .bg__gray {
     background: #eee;
  }
+ .bg__white {
+    background: #fff;
+ }
 
  .matgin__top {
     margin-top: 10px;
@@ -155,7 +158,8 @@ html , body{
     padding: 0 0 4px 0
 }
 .left_col {
-    background: #eeeeee
+    background: #ffffff;
+    border-right: 1px #17cadc solid;
 }
 .nav-sm .container.body .col-md-3.left_col {
     min-height: 100%;
@@ -251,7 +255,7 @@ html , body{
 }
 .menu_section h3 {
     padding-left: 15px;
-    color: #7387a1;
+    color: #17cadc;
     text-transform: uppercase;
     letter-spacing: .5px;
     font-weight: bold;
@@ -334,7 +338,7 @@ html , body{
 }
 .nav_menu {
     float: left;
-    background: #EDEDED;
+    background: #ffffff;
     border-bottom: 1px solid #D9DEE4;
     margin-bottom: 10px;
     width: 100%;
@@ -359,7 +363,7 @@ html , body{
     position: fixed
 }
 body .container.body .right_col {
-    background: #F7F7F7
+    background: #f9f9f9
 }
 .nav-md .container.body .right_col {
     padding: 10px 0px 0;
@@ -368,11 +372,11 @@ body .container.body .right_col {
 .nav_title {
     width: 230px;
     float: left;
-    background: #ededed;
+    background: #ffffff;
     border-radius: 0;
     height: 155px;
-    border-right: 1px solid #D9DEE4;
-    border-bottom: 1px solid #D9DEE4;
+    border-right: 1px solid #17cadc;
+    border-bottom: 1px solid #17cadc;
 }
 @media (max-width: 991px) {
     .nav-md .container.body .right_col,
@@ -498,7 +502,7 @@ body .container.body .right_col {
 .top_nav .nav .open>a,
 .top_nav .nav .open>a:focus,
 .top_nav .nav .open>a:hover {
-    background: #D9DEE4
+    background: #ffffff
 }
 body {
     color: #73879C;
@@ -516,9 +520,10 @@ body {
 }
 .page-title {
     width: 100%;
-    height: 75px;
+    height: 87px;
     padding: 10px 10px 0;
     display: inline-table;
+    border-bottom: 1px #17cadc solid;
 }
 .page-title .title_left {
     width: 100%;
@@ -781,7 +786,7 @@ a:focus {
 }
 .nav.side-menu>li>a,
 .nav.child_menu>li>a {
-    color: #8a879c;
+    color: #2dabb9;
     font-weight: 500
 }
 .nav.child_menu li li:hover,
@@ -812,7 +817,7 @@ a:focus {
 }
 .nav.side-menu>li.active>a {
     
-    background: linear-gradient(#eeeeee, #eeeeee), #eeeeee;
+    background: linear-gradient(#ffffff, #cafff5), #d3fff7;
     box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0
 }
 .navbar-brand,
@@ -3411,7 +3416,7 @@ ul.project_files li a i {
     font-size: 35px
 }
 .login {
-    background: #F7F7F7
+    background: #2496a9
 }
 .login .fa-paw {
     font-size: 26px
@@ -3423,14 +3428,16 @@ a.hiddenanchor {
     right: 0px;
     margin: 0px auto;
     margin-top: 5%;
-    max-width: 400px;
+    max-width: 500px;
     position: relative
 }
 .registration_form,
 .login_form {
     position: absolute;
     top: 0px;
-    width: 100%
+    width: 100%;
+    background-color: rgba(238, 238, 238, 0.73);
+    padding: 50px;
 }
 .registration_form {
     z-index: 21;
@@ -4282,8 +4289,8 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 }
 
 .main__content__layer {
-    background: #f7f7f7;
-    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+    background: #ffffff;
+    box-shadow: 2px 2px 8px 2px rgba(0, 0, 0, 0.1);
     margin: 15px 1% 15px 1%;
 }
 
@@ -4334,7 +4341,7 @@ h2 {
     display: flex;
     -ms-flex-align: center;
     align-items: center;
-    background-color: #5a738e;
+    background-color: #2dabb9;
     color: #ffffff;
     font-family: "brandon_bold";
     font-size: 11px;
@@ -4357,7 +4364,7 @@ h2 {
 
 .news__list .news__list__wrapper {
     border-bottom: 1px solid #e9ebee;
-    background: #f7f7f7;
+    background: #ffffff;
     position: relative !important;
     top: 0px !important;
 }
@@ -4477,7 +4484,7 @@ h2 {
 
 .content__edit__hover:hover:after {
     content: "";
-    background: url(/themes/ebtke/cms/svg/ico-pencil.svg) no-repeat;
+    background: url(/themes/wibs/auth/svg/ico-pencil.svg) no-repeat;
     position: absolute;
     width: 13px;
     height: 12px;
@@ -4508,7 +4515,7 @@ h2 {
 }
 
 .switch .switch-input:checked ~ .switch-label {
-    background: #5a738e;
+    background: #2dabb9;
     box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.15), inset 0 0 3px rgba(0, 0, 0, 0.2);
 }
 .switch .switch-label, .switch .switch-handle {
@@ -4575,7 +4582,7 @@ h2 {
 
 
 .main__content__form__layer {
-    background: #f7f7f7;
+    background: #ffffff;
     box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
     margin: 10px 1% 20px 1%;
     position: relative;
@@ -4699,7 +4706,7 @@ input, textarea, select {
     width: inherit;
     height: inherit;
     position: relative;
-    background: url(/themes/ebtke/cms/svg/ico-upload.svg) 65% 65% no-repeat;
+    background: url(/themes/wibs/auth/svg/ico-upload.svg) 65% 65% no-repeat;
     cursor: pointer;
     transition: all .2s;
 }
@@ -4881,7 +4888,7 @@ input, textarea, select {
 
 /* END BUTTON WIZARD */
 .btn__form, .btn__wizard__next, .btn__wizard__prev {
-  background: #5a738e;
+  background: #2dabb9;
   border: 1px solid transparent;
   padding: 0 17px;
   height: 25px;
