@@ -9,6 +9,7 @@ $(document).ready(function(){
     checkAllLanguage();
     masonry();
     masonryAdminNavigation();
+    selectorDropdownHeader();
 });
 /* =============================== MASONRY ================================*/
 function masonry(delay)
@@ -66,7 +67,17 @@ function masonryAdminNavigation(delays){
   /*--------------------------*/
 }
 /* ================================== END =====================================*/
+function selectorDropdownHeader(){
+  $('#selector-dropdown').on('click', function(){
+    console.log("masuk")
+    $(this).toggleClass('open');
+  });
 
+  $('#selector-dropdown').focusout(function() {
+    // all dropdowns
+    $('.dropdown__select__list').removeClass('open');
+  });
+}
 function uploadFile(){
     $(document).on('change', '.upload__file__input', function () {
         var fileName = $(this).val().replace('C:\\fakepath\\', '');
@@ -100,15 +111,6 @@ $(document).on('click', '.img__preview__big__close', function(){
 });
 
 function datePicker(){
-    /* DATE TIME PICKER SOTR*/
-    /*$('.datepicker').datepicker({
-        language: 'en',
-        dateFormat: 'dd MM yyyy',
-        navTitles: {days: 'MM <i>yyyy</i>'},
-        autoClose: true,
-        toggleSelected: false,
-        minDate: new Date
-    }).focus();*/
     $(document).on('click',".datepick", function(){
         $(this).datepicker({
             language: 'en',
@@ -116,7 +118,7 @@ function datePicker(){
             navTitles: {days: 'MM <i>yyyy</i>'},
             autoClose: true,
             toggleSelected: false,
-            minDate: new Date
+            
         }).focus();
     });
     $(document).on('click', '.date-icon', function(){
@@ -126,7 +128,7 @@ function datePicker(){
             navTitles: {days: 'MM <i>yyyy</i>'},
             autoClose: true,
             toggleSelected: false,
-            minDate: new Date
+            
         }).focus();
     });
     /* DATE PICKER DISABLE BEFORE TODAY*/
@@ -137,7 +139,7 @@ function datePicker(){
             navTitles: {days: 'MM <i>yyyy</i>'},
             autoClose: true,
             toggleSelected: false,
-            minDate: new Date
+            
         }).focus();
     });
     $(document).on('click', '.date-disabled-icon', function(){
@@ -147,7 +149,7 @@ function datePicker(){
             navTitles: {days: 'MM <i>yyyy</i>'},
             autoClose: true,
             toggleSelected: false,
-            minDate: new Date
+            
         }).focus();
     });
 
@@ -165,8 +167,7 @@ function timePicker(){
     $('.timepick').clockpicker({
         placement: 'bottom',
         align: 'left',
-        autoclose: true,
-        'default': 'now'
+        autoclose: true
     });
 
     /* HIDE DATEPICKER WHEN CONTAINER SCORLLING */
@@ -183,7 +184,6 @@ function datetimePicker() {
         jQuery(this).datetimepicker({
             format:'d/m/Y H:i',
             lang:'en',
-            minDate: new Date,
             allowTimes:[
                 '8:30', '9:00', '9:30', '10:00', '10:30','11:00', '11:30', '12:00', '12:30', 
                 '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30'
@@ -195,26 +195,6 @@ function datetimePicker() {
             }
         });
     });
-
-    // $(document).on('click', '#date-icon-start', function(){
-
-    //     var data = $(this).siblings('#input-icon-start').find('#date_start')
-    //     console.log(data)
-    //     jQuery(data).datetimepicker({
-    //         format:'d/m/Y H:i',
-    //         lang:'en',
-    //         minDate: new Date,
-    //         allowTimes:[
-    //             '8:30', '9:00', '9:30', '10:00', '10:30','11:00', '11:30', '12:00', '12:30', 
-    //             '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30'
-    //         ],
-    //         onShow:function(ct){
-    //             this.setOptions({
-    //                 maxDate:jQuery('.datetimepicker.datetime.end').val()?jQuery('.datetimepicker.datetime.end').val():false
-    //             });
-    //         }
-    //     });
-    // });
 
     var logic = function( currentDateTime ){    
         var fromStartTime = jQuery('.datetimepicker.datetime.start').val()?jQuery('.datetimepicker.datetime.start').val():false
@@ -252,7 +232,6 @@ function datetimePicker() {
         jQuery(this).datetimepicker({
             format:'d/m/Y H:i',
             lang:'en',
-            minDate: new Date,
             allowTimes:[
                 '8:30', '9:00', '9:30', '10:00', '10:30','11:00', '11:30', '12:00', '12:30', 
                 '13:00', '13:30', '14:00', '14:30', '15:00', '15:30', '16:00', '16:30', '17:00', '17:30'

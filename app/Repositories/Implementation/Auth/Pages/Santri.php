@@ -8,6 +8,7 @@ use App\Models\Msc\Siswa as SantriModel;
 use App\Models\Msc\SiswaPindahan as SantriPindahanModel;
 use App\Services\Transformation\Auth\Pages\Santri as SantriTransformation;
 
+use RouteUsersLocation;
 use Carbon\Carbon;
 use DataHelper;
 use Cache;
@@ -35,6 +36,7 @@ class Santri extends BaseImplementation implements SantriInterface
         $this->santriPindahan = $santriPindahan;
         $this->santriTransformation = $santriTransformation;
         $this->uniqueIdImagePrefix = uniqid(self::PREFIX_IMAGE_NAME);
+        $this->routeAuthSystemLocation = RouteUsersLocation::setUsersLocation();
     }
 
     /** 
@@ -47,11 +49,17 @@ class Santri extends BaseImplementation implements SantriInterface
     {
         $params = [
             'current_location_slug' => $this->currentLocation,
+            "search_by_nis" => isset($data['nis'])? $data['nis'] : '',
         ];
+        if(!empty($params['search_by_nis']) && isset($params['search_by_nis'])) {
+            $dataSantri = $this->santri($params, 'desc', 'array', true);
+            return $this->santriTransformation->getSingleForEditSantriTransform($dataSantri);
+        } else {
+            $dataSantri = $this->santri($params, 'desc', 'array', false);
+            return $this->santriTransformation->getDataSantriTransform($dataSantri);
+        }
 
-        $dataSantri = $this->santri($params, 'desc', 'array', false);
-
-        return $this->santriTransformation->getDataSantriTransform($dataSantri);
+        
     }
 
     /** 
@@ -186,7 +194,7 @@ class Santri extends BaseImplementation implements SantriInterface
             $store->nama_panggilan              = isset($data['nama_panggilan']) ? $data['nama_panggilan'] : '';
             $store->jenis_kelamin               = isset($data['jenis_kelamin']) ? $data['jenis_kelamin'] : '';
             $store->tempat_lahir                = isset($data['tempat_lahir']) ? $data['tempat_lahir'] : '';
-            $store->tanggal_lahir               = isset($data['tanggal_lahir']) ? $data['tanggal_lahir'] : '';
+            $store->tanggal_lahir               = isset($data['tanggal_lahir']) ? \Carbon\Carbon::parse($data['tanggal_lahir'])->toDateString() : '';
             $store->agama                       = isset($data['agama']) ? $data['agama'] : '';
             $store->kewarganegaraan             = isset($data['kewarganegaraan']) ? $data['kewarganegaraan'] : '';
             $store->anak_ke                     = isset($data['anak_ke']) ? $data['anak_ke'] : '';
@@ -313,11 +321,9 @@ class Santri extends BaseImplementation implements SantriInterface
     {
         $santri = $this->santri->with(['tingkatan','kelas','wali_siswa']);
 
-        if(isset($params['current_location_slug']) && $params['current_location_slug']) {
-            $santri->whereHas('tingkatan', function($q) use($params){
-                $q->slug($params['current_location_slug']);
-            });
-        }
+        $santri->whereHas('tingkatan', function($q) use($params){
+            $q->slug($this->routeAuthSystemLocation);
+        });
 
         if(isset($params['id'])) {
             $santri->santriId($params['id']);
@@ -335,8 +341,9 @@ class Santri extends BaseImplementation implements SantriInterface
             $santri->email($params['email']);
         }
 
-        if(isset($params['nis'])) {
-            $santri->nis($params['nis']);
+        if(isset($params['search_by_nis'])) {
+            $obj = $params["search_by_nis"];
+            $santri->where('nis', 'like', "%$obj%");
         }
 
         if(!$santri->count())

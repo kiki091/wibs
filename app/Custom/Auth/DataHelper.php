@@ -111,7 +111,6 @@ class DataHelper {
     public static function userSystemLocation()
     {
         $userInfo = Session::get('user_info');
-        $userInfo['default_system_location'] = self::DEFAULT_SYSTEM_LOCATION;
 
         if (isset($userInfo['system_location'])) {
 

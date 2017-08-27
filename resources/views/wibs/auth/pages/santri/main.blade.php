@@ -40,6 +40,11 @@
 												@{{ santri.nama_lengkap }}
 											</a>
 										</div>
+										<div class="news__desc">
+											<p class="news__cat">
+												<b> Nis : </b>@{{ santri.nis }}
+											</p>
+										</div>
 									</div>
 								</div>
 								<div class="news__list__detail__right">

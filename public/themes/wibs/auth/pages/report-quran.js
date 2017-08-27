@@ -9,7 +9,7 @@
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-function crud_cms_wali_sswa() {
+function crud_cms_report_quran() {
     var token = Vue.http.headers.common['X-CSRF-TOKEN'] = $("#_token").attr("value");
 
     var controller = new Vue({
@@ -19,23 +19,15 @@ function crud_cms_wali_sswa() {
             models: {
                 id:'',
                 siswa_id: '',
-                nama_lengkap_ayah: '',
-                nama_lengkap_ibu: '',
-                tempat_lahir: '',
-                tanggal_lahir: '',
-                agama: '',
-                kewarganegaraan: '',
-                pendidikan: '',
-                pekerjaan: '',
-                penghasilan_bulanan: '',
-                alamat_kantor: '',
-                telpon_kantor: '',
-                alamat_rumah: '',
-                no_telepon: '',
-                email: '',
-                status: '',
+                disiplin: '',
+                total_hafalan: '',
+                nilai_hafalan: '',
+                nilai_tajwid: '',
+                nilai_mahraj: '',
+                description: '',
+                report_from: '',
             },
-            form_add_title: "Wali Santri Management",
+            form_add_title: "Report Tahfidz Qur'an",
             id: '',
             edit: false,
             responseData: {},
@@ -46,7 +38,7 @@ function crud_cms_wali_sswa() {
 
             fetchData: function() {
 
-                var domain  = laroute.url(wibs.systemLocation +'/wali-santri/data', []);
+                var domain  = laroute.url(wibs.systemLocation +'/report/quran/data', []);
                 
                 this.$http.get(domain).then(function (response) {
                     response = response.data
@@ -66,33 +58,6 @@ function crud_cms_wali_sswa() {
                     response = response.data
                     this.responseDataSantri = response.data.nis
                 });
-            },
-
-            changeStatus: function(id) {
-                var payload = []
-                payload['id'] = id
-                payload['_token'] = token
-
-                var form = new FormData();
-
-                for (var key in payload) {
-                    form.append(key, payload[key])
-                }
-
-                var domain  = laroute.url(wibs.systemLocation +'/wali-santri/chenge-status', []);
-
-                this.$http.post(domain, form).then(function(response) {
-                    response = response.data
-                    if (response.status == false) {
-                        this.fetchData()
-                        pushNotif(response.status,response.message);
-                    }
-                    else{
-
-                        this.fetchData()
-                        pushNotif(response.status,response.message);
-                    }
-                })
             },
 
             storeData: function(event) {
@@ -137,8 +102,8 @@ function crud_cms_wali_sswa() {
 
                 };
 
-                $("#form__cms__wali__santri").ajaxForm(optForm);
-                $("#form__cms__wali__santri").submit();
+                $("#form__cms__report_quran").ajaxForm(optForm);
+                $("#form__cms__report_quran").submit();
             },
 
             editData: function(id) {
@@ -154,14 +119,14 @@ function crud_cms_wali_sswa() {
                     form.append(key, payload[key])
                 }
 
-                var domain  = laroute.url(wibs.systemLocation +'/wali-santri/edit', []);
+                var domain  = laroute.url(wibs.systemLocation +'/report/quran/edit', []);
                 this.$http.post(domain, form).then(function(response) {
 
                     response = response.data
                     if (response.status) {
                         this.models = response.data.santri;
 
-                        this.form_add_title = "Edit Data Santri"
+                        this.form_add_title = "Edit Report Tahfidz Qur'an"
                         $('.btn__add').click()
 
                     } else {
@@ -174,24 +139,16 @@ function crud_cms_wali_sswa() {
 
                 this.models.id = ''
                 this.models.siswa_id = ''
-                this.models.nama_lengkap_ayah = ''
-                this.models.nama_lengkap_ibu = ''
-                this.models.tempat_lahir = ''
-                this.models.tanggal_lahir = ''
-                this.models.agama = ''
-                this.models.kewarganegaraan = ''
-                this.models.pendidikan = ''
-                this.models.pekerjaan = ''
-                this.models.penghasilan_bulanan = ''
-                this.models.alamat_kantor = ''
-                this.models.telpon_kantor = ''
-                this.models.alamat_rumah = ''
-                this.models.no_telepon = ''
-                this.models.email = ''
-                this.models.status = ''
+                this.models.disiplin = ''
+                this.models.total_hafalan = ''
+                this.models.nilai_hafalan = ''
+                this.models.nilai_tajwid = ''
+                this.models.nilai_mahraj = ''
+                this.models.description = ''
+                this.models.report_from = ''
 
-                this.form_add_title = "Wali Santri Management"
-                document.getElementById("form__cms__wali__santri");
+                this.form_add_title = "Report Tahfidz Qur'an"
+                document.getElementById("form__cms__report_quran");
 
                 this.clearErrorMessage()
                 this.edit = false

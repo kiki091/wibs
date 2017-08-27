@@ -66,6 +66,7 @@ mix.styles([
     'public/js/bower_components/sweetalert/dist/sweetalert.css',
     'public/js/bower_components/icheck-bootstrap/icheck-bootstrap.min.css',
     'public/js/bower_components/custom-scrollbar/jquery.mCustomScrollbar.min.css',
+    'public/js/bower_components/air-datepicker-master/dist/css/datepicker.css',
     'public/js/bower_components/bootstrap-clockpicker/bootstrap-clockpicker.css',
 ], 'public/themes/wibs/auth/build/css/style.css');
 
@@ -81,6 +82,7 @@ mix.scripts([
     'public/js/bower_components/morris.js/morris.min.js',
     'public/js/bower_components/bootstrap-progressbar/bootstrap-progressbar.js',
     'public/js/bower_components/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js',
+    'public/js/bower_components/air-datepicker-master/dist/js/datepicker.js',
     'public/js/bower_components/bootstrap-clockpicker/bootstrap-clockpicker.js',
     'public/js/bower_components/masonry/dist/masonry.pkgd.js',
 ], 'public/themes/wibs/auth/build/js/plugins.js');

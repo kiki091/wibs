@@ -114,7 +114,8 @@ function crud_cms_santri() {
                     form.append(key, payload[key])
                 }
 
-                var domain  = laroute.url(wibs.systemLocation +'/santri/chenge-status', []);
+                var domain  = laroute.route('cms_change_status_data_santri', []);
+                //var domain  = laroute.url(wibs.systemLocation +'/santri/change-status', []);
 
                 this.$http.post(domain, form).then(function(response) {
                     response = response.data

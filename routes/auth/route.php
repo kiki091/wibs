@@ -38,18 +38,27 @@ Route::group(['middleware' => ['web']], function ()
 					Route::get('data', 'Wibs\Auth\Pages\SantriController@getData')->name('cms_get_data_santri');
 					Route::post('store', 'Wibs\Auth\Pages\SantriController@store')->name('cms_store_data_santri');
 					Route::post('edit', 'Wibs\Auth\Pages\SantriController@edit')->name('cms_edit_data_santri');
-					Route::post('change-status', 'Wibs\Auth\Pages\SantriController@change-status')->name('cms_change_status_data_santri');
+					Route::post('change-status', 'Wibs\Auth\Pages\SantriController@changeStatus')->name('cms_change_status_data_santri');
 				});
 
 				Route::group(['prefix' => 'wali-santri'], function () {
 
 					Route::get('/', 'Wibs\Auth\Pages\WaliSiswaController@index')->name('cms_wali_santri');
 					Route::get('data', 'Wibs\Auth\Pages\WaliSiswaController@getData')->name('cms_get_data_wali_santri');
+					Route::get('search-data', 'Wibs\Auth\Pages\WaliSiswaController@searchData')->name('cms_get_search_data_santri');
 					Route::post('store', 'Wibs\Auth\Pages\WaliSiswaController@store')->name('cms_store_data_wali_santri');
 					Route::post('edit', 'Wibs\Auth\Pages\WaliSiswaController@edit')->name('cms_edit_data_wali_santri');
 					Route::post('change-status', 'Wibs\Auth\Pages\WaliSiswaController@change-status')->name('cms_change_status_data_wali_santri');
 				});
 
+				Route::group(['prefix' => 'report'], function () {
+					
+					Route::group(['prefix' => 'quran'], function () {
+						Route::get('/', 'Wibs\Auth\Pages\ReportQuranController@index')->name('cms_report_quran');
+						Route::get('data', 'Wibs\Auth\Pages\ReportQuranController@getData')->name('cms_report_quran_data');
+						Route::post('store', 'Wibs\Auth\Pages\ReportQuranController@store')->name('cms_report_quran_store_data');
+					});
+				});
 				// ACCOUNT MANAGEMENT ROUTE
 
 				Route::group(['prefix' => 'ams'], function () {

@@ -7,6 +7,7 @@ use App\Repositories\Implementation\BaseImplementation;
 use App\Models\Msc\WaliSiswa as WaliSiswaModel;
 use App\Services\Transformation\Auth\Pages\WaliSiswa as WaliSiswaTransformation;
 
+use RouteUsersLocation;
 use Carbon\Carbon;
 use DataHelper;
 use Cache;
@@ -24,14 +25,13 @@ class WaliSiswa extends BaseImplementation implements WaliSiswaInterface
     protected $lastInsertId;
     protected $uniqueIdImagePrefix = '';
     
-    const PREFIX_IMAGE_NAME = 'wibs__profile__images';
 
     function __construct(WaliSiswaModel $waliSiswa, WaliSiswaTransformation $waliSiswaTransformation)
     {
 
         $this->waliSiswa = $waliSiswa;
         $this->waliSiswaTransformation = $waliSiswaTransformation;
-        $this->uniqueIdImagePrefix = uniqid(self::PREFIX_IMAGE_NAME);
+        $this->routeAuthSystemLocation = RouteUsersLocation::setUsersLocation();
     }
 
     /** 
@@ -152,7 +152,6 @@ class WaliSiswa extends BaseImplementation implements WaliSiswaInterface
 
             } else {
                 $store->siswa_id                = isset($data['siswa_id']) ? $data['siswa_id'] : '';
-                $store->is_active               = true;
                 $store->created_at              = $this->mysqlDateTimeFormat();
                 $store->created_by              = DataHelper::userId();
             }
@@ -160,7 +159,7 @@ class WaliSiswa extends BaseImplementation implements WaliSiswaInterface
             $store->nama_lengkap_ayah           = isset($data['nama_lengkap_ayah']) ? $data['nama_lengkap_ayah'] : '';
             $store->nama_lengkap_ibu            = isset($data['nama_lengkap_ibu']) ? $data['nama_lengkap_ibu'] : '';
             $store->tempat_lahir                = isset($data['tempat_lahir']) ? $data['tempat_lahir'] : '';
-            $store->tanggal_lahir               = isset($data['tanggal_lahir']) ? $data['tanggal_lahir'] : '';
+            $store->tanggal_lahir               = isset($data['tanggal_lahir']) ? \Carbon\Carbon::parse($data['tanggal_lahir'])->toDateString() : '';
             $store->agama                       = isset($data['agama']) ? $data['agama'] : '';
             $store->kewarganegaraan             = isset($data['kewarganegaraan']) ? $data['kewarganegaraan'] : '';
             $store->pendidikan                     = isset($data['pendidikan']) ? $data['pendidikan'] : '';
@@ -197,11 +196,9 @@ class WaliSiswa extends BaseImplementation implements WaliSiswaInterface
     {
         $waliSiswa = $this->waliSiswa->with(['siswa']);
 
-        if(isset($params['current_location_slug']) && $params['current_location_slug']) {
-            $waliSiswa->whereHas('siswa.tingkatan', function($q) use($params){
-                $q->slug($params['current_location_slug']);
-            });
-        }
+        $waliSiswa->whereHas('siswa.tingkatan', function($q) use($params){
+            $q->slug($this->routeAuthSystemLocation);
+        });
 
         if(isset($params['id'])) {
             $waliSiswa->id($params['id']);

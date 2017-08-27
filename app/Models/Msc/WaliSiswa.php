@@ -23,7 +23,7 @@ class WaliSiswa extends BaseModel
      */
     public function siswa()
     {
-        return $this->belongsTo('App\Models\Msc\Siswa', 'id', 'siswa_id');
+        return $this->belongsTo('App\Models\Msc\Siswa', 'siswa_id', 'id');
     }
 
     /***************** Scope *****************/

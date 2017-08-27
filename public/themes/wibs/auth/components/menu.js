@@ -56,3 +56,13 @@ function wali_santri()
         init_menu_wali_santri()
     });
 }
+
+// JAVASCRIPT CMS WALI SANTRI
+
+function report_tahfidz()
+{
+    $('.right_col').load(laroute.route('cms_report_quran', []), function()
+    {
+        init_menu_report_quran()
+    });
+}

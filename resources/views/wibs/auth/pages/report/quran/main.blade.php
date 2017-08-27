@@ -2,14 +2,14 @@
 	<div class="bg__white">
 		<div class="page-title">
 			<div class="title_left">
-		        <h3>DATA WALI SANTRI </h3>
-		        <p>ACCOUNT MANAGEMENT SYSTEM</p>
+		        <h3>DATA TAHFIDZ QUR'AN </h3>
+		        <p>CONTENT MANAGEMENT SYSTEM</p>
 		    </div>
 		</div>
 	</div>
     <div class="col-md-12 col-sm-12 col-xs-12">
     	<!-- Include form -->
-    	@include('wibs.auth.pages.wali-santri.partials.form')
+    	@include('wibs.auth.pages.report.quran.partials.form')
     	<!-- / End include form -->
 		<div class="main__content__layer">
 			<div class="content__top flex-between">
@@ -20,23 +20,21 @@
 					<a href="#" class="btn__add" id="toggle-form">Add Data</a>
 		       	</div>
 		    </div>
-		    
 		    <div class="content__bottom">
 		    	<ul class="news__list sortable" id="sort" v-sort>
-		    		<li class="news__list__wrapper sort-item" v-for="wali_santri in responseData.wali_santri" :data-id="wali_santri.id">
+		    		<li class="news__list__wrapper sort-item" v-for="report_quran in responseData.report_quran" :data-id="report_quran.id">
 		    			<div class="news__list__detail">
 							<div class="news__list__detail__middle-right">
 								<div class="news__list__detail__middle">
 									<div class="news__list__desc">
 										<div class="news__name">
-											<a href="javascript:void(0);" class="title__name content__edit__hover" title="Edit Data">
-												<b> Nis :</b><i> @{{ wali_santri.nis_siswa }}</i>, <b>Nama Santri : </b><i>@{{ wali_santri.nama_siswa }}</i>
+											<a href="#edit-data" class="title__name content__edit__hover" title="Edit Data" @click="editData(report_quran.id)">
+												<b>Nama Lengkap : </b> @{{ report_quran.nama_siswa }}
 											</a>
 										</div>
 										<div class="news__desc">
 											<p class="news__cat">
-												<b> Nama Ayah : </b>@{{ wali_santri.nama_lengkap_ayah }},
-												<b> Nama Ibu : </b>@{{ wali_santri.nama_lengkap_ibu }}
+												<b>Nis : </b> @{{ report_quran.nis_siswa }} 
 											</p>
 										</div>
 									</div>

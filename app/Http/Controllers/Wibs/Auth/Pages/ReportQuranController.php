@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Wibs\Auth\Pages;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Wibs\BaseController;
 use App\Services\Bridge\Auth\Pages\Santri as SantriServices;
-use App\Services\Bridge\Auth\Pages\WaliSiswa as WaliSiswaServices;
+use App\Services\Bridge\Auth\Pages\ReportQuran as ReportQuranServices;
 use App\Services\Api\Response as ResponseService;
 use App\Custom\DataHelper;
 
@@ -14,17 +14,17 @@ use Session;
 use Validator;
 use ValidatesRequests;
 
-class WaliSiswaController extends BaseController
+class ReportQuranController extends BaseController
 {
     protected $santri;
-    protected $waliSiswa;
+    protected $reportQuran;
     protected $response;
     protected $validationMessage = '';
 
-    public function __construct(SantriServices $santri, WaliSiswaServices $waliSiswa, ResponseService $response)
+    public function __construct(SantriServices $santri, ReportQuranServices $reportQuran, ResponseService $response)
     {
         $this->santri = $santri;
-        $this->waliSiswa = $waliSiswa;
+        $this->reportQuran = $reportQuran;
         $this->response = $response;
     }
 
@@ -35,7 +35,7 @@ class WaliSiswaController extends BaseController
 
     public function index(Request $request)
     {
-        $blade = self::URL_BLADE_AUTH. '.wali-santri.main';
+        $blade = self::URL_BLADE_AUTH. '.report.quran.main';
         
         if(view()->exists($blade)) {
         
@@ -54,7 +54,7 @@ class WaliSiswaController extends BaseController
     public function getData(Request $request)
     {
         $data['santri'] = $this->santri->getData();
-        $data['wali_santri'] = $this->waliSiswa->getData();
+        $data['report_quran'] = $this->reportQuran->getData();
         return $this->response->setResponse(trans('message.cms_success_get_data'), true, $data);
     }
 
@@ -89,18 +89,8 @@ class WaliSiswaController extends BaseController
 
         } else {
             //TODO: case pass
-            return $this->waliSiswa->store($request->except(['_token']));
+            return $this->reportQuran->store($request->except(['_token']));
         }
-    }
-
-    /**
-     * Change Status Of User Account
-     * @return string
-     */
-
-    public function changeStatus(Request $request)
-    {
-        return $this->waliSiswa->changeStatus($request->except(['_token']));
     }
 
     /**
@@ -110,7 +100,7 @@ class WaliSiswaController extends BaseController
 
     public function edit(Request $request)
     {
-        return $this->waliSiswa->edit($request->except(['_token']));
+        return $this->reportQuran->edit($request->except(['_token']));
     }
 
     /**
@@ -120,22 +110,13 @@ class WaliSiswaController extends BaseController
     private function validationStore($request = array())
     {
         $rules = [
-            'nama_lengkap_ayah'         => 'required',
-            'nama_lengkap_ibu'          => 'required',
-            'tempat_lahir'              => 'required',
-            'tanggal_lahir'             => 'required',
-            'agama'                     => 'required',
-            'kewarganegaraan'           => 'required',
-            'pendidikan'                => 'required',
-            'pekerjaan'                 => 'required',
-            'penghasilan_bulanan'       => 'required',
-            'alamat_kantor'             => 'required',
-            'telpon_kantor'             => 'required',
-            'alamat_rumah'              => 'required',
-            'no_telepon'                => 'required',
-            'email'                     => 'required|email|max:30',
-            'status'                    => 'required',
-            'siswa_id'                  => 'required',
+            'disiplin'         => 'required|max:1',
+            'total_hafalan'    => 'required|numeric',
+            'nilai_hafalan'    => 'required|numeric',
+            'nilai_tajwid'     => 'required|numeric',
+            'nilai_mahraj'     => 'required|numeric',
+            'description'      => 'required|max:200',
+            'siswa_id'         => 'required',
         ];
 
 

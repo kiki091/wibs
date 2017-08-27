@@ -206,21 +206,21 @@ DROP TABLE IF EXISTS `report_hafalan_quran`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `report_hafalan_quran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `disiplin` varchar(30) NOT NULL,
+  `disiplin` varchar(2) NOT NULL,
   `total_hafalan` int(2) NOT NULL,
   `nilai_hafalan` int(3) NOT NULL,
   `nilai_tajwid` int(3) NOT NULL,
   `nilai_mahraj` int(3) NOT NULL,
   `description` text,
-  `siswa_id` int(10) NOT NULL,
   `report_from` date NOT NULL,
+  `siswa_id` int(10) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_report_tahfiz_1_idx` (`siswa_id`),
   CONSTRAINT `fk_report_tahfiz_1` FOREIGN KEY (`siswa_id`) REFERENCES `siswa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,7 +229,7 @@ CREATE TABLE `report_hafalan_quran` (
 
 LOCK TABLES `report_hafalan_quran` WRITE;
 /*!40000 ALTER TABLE `report_hafalan_quran` DISABLE KEYS */;
-INSERT INTO `report_hafalan_quran` VALUES (1,'A',12,85,86,72,NULL,1,'2017-07-01',NULL,NULL,NULL);
+INSERT INTO `report_hafalan_quran` VALUES (1,'A',12,85,86,72,NULL,'2017-07-01',1,NULL,NULL,NULL),(2,'A',7,78,69,77,'Tingkatkan kembali','2017-08-27',2,'2017-08-27 15:04:52',NULL,1);
 /*!40000 ALTER TABLE `report_hafalan_quran` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -406,6 +406,7 @@ CREATE TABLE `siswa` (
   `nama_panggilan` varchar(30) DEFAULT NULL,
   `jenis_kelamin` tinyint(1) NOT NULL COMMENT '1 : Laki-laki\n2 : Perempuan',
   `tempat_lahir` varchar(50) NOT NULL,
+  `tanggal_lahir` varchar(50) DEFAULT NULL,
   `agama` tinyint(1) NOT NULL COMMENT '1 : Islam\n2 : Kristen Katolik\n3 : Kristen Protestan\n4 : Hindu\n5 : Budha\n6 : Lainnya',
   `kewarganegaraan` tinyint(1) NOT NULL COMMENT '1 : WNI\n2 : WNA',
   `anak_ke` tinyint(1) DEFAULT NULL,
@@ -419,8 +420,8 @@ CREATE TABLE `siswa` (
   `asrama_kost` text,
   `jarak_rumah` varchar(40) DEFAULT NULL,
   `golongan_darah` varchar(2) DEFAULT NULL,
-  `derita_penyakit` varchar(100) DEFAULT NULL,
-  `kelainan_jasmani` varchar(100) DEFAULT NULL,
+  `derita_penyakit` text,
+  `kelainan_jasmani` text,
   `tinggi_badan` int(3) DEFAULT NULL COMMENT 'Satuan = CM',
   `berat_badan` int(3) DEFAULT NULL COMMENT 'Satuan = KG',
   `pendidikan_sebelumnya` varchar(80) NOT NULL,
@@ -446,7 +447,7 @@ CREATE TABLE `siswa` (
   KEY `fk_siswa_1_idx` (`kelas_id`),
   CONSTRAINT `fk_siswa_1` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_siswa_tingkatan` FOREIGN KEY (`tingkatan_id`) REFERENCES `tingkatan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -455,7 +456,7 @@ CREATE TABLE `siswa` (
 
 LOCK TABLES `siswa` WRITE;
 /*!40000 ALTER TABLE `siswa` DISABLE KEYS */;
-INSERT INTO `siswa` VALUES (1,'123456','Kiki Kurniawan','Kiki',1,'Jakarta',1,1,2,2,NULL,NULL,NULL,'Depok','081287679290',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,'12345',NULL,6,2,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.',NULL,'kikikurniawan091@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','ojxIr0cQJoGhAy22fBNWdTtJoVDTEgNmsKKPaezd9H4Trgvo11ETyCqNBHYP',NULL,NULL,NULL),(2,'123455','Febrina','Febri',2,'Bogor',1,1,4,5,NULL,NULL,NULL,'Depok','08963432952',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,'12344',NULL,5,1,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.',NULL,'febrinaniken093@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy',NULL,NULL,NULL,NULL);
+INSERT INTO `siswa` VALUES (1,'55554444444','Kiki Kurniawan','Kiki',1,'Jakarta',NULL,1,1,2,2,NULL,NULL,NULL,'Depok','0812876792909',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,'12345',NULL,6,2,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.','wibs__profile__images5985e04210955_220x220.jpg','kikikurniawan091edit@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','',NULL,'2017-08-27 10:51:10',NULL),(2,'55555555555','Febrina','Febri',2,'Bogor',NULL,1,1,4,5,NULL,NULL,NULL,'Depok','08963432952',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,'12344',NULL,5,1,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.',NULL,'febrinaniken093@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy',NULL,NULL,NULL,NULL),(3,'55553333333','RTURTU','RTURTU',1,'ASFASF','',1,1,1,2,0,1,'1','ALAMAT','62356235',1,'ALAMAT ASRAMA KOST (OPTIONAL)','5','A','','',155,67,'smp','LULUSAN DARI','ALAMAT SEKOLAH ASAL','2323525235',3,4,2,1,2,'KETERANGAN','wibs__profile__images59948cd2a9745_220x220.jpg','kiki@gmail.com','$2y$10$lkDkX3Umgwe9cHcHFj1Xi.GH/rdCOAwXevCq8ndWGyM5Ylcqu.YLK',NULL,'2017-08-16 18:20:02','2017-08-16 18:20:02',1);
 /*!40000 ALTER TABLE `siswa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -469,7 +470,7 @@ DROP TABLE IF EXISTS `siswa_pindahan`;
 CREATE TABLE `siswa_pindahan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `asal_sekolah` varchar(100) DEFAULT NULL,
-  `alamat_sekolah` text,
+  `alamat_sekolah_lama` text,
   `alasan_pindah` varchar(200) DEFAULT NULL,
   `status_berpindah` int(1) DEFAULT NULL COMMENT 'true or false',
   `tanggal_masuk` date NOT NULL,
@@ -480,7 +481,7 @@ CREATE TABLE `siswa_pindahan` (
   PRIMARY KEY (`id`),
   KEY `fk_siswa_pindahan_idx` (`siswa_id`),
   CONSTRAINT `fk_siswa_pindahan` FOREIGN KEY (`siswa_id`) REFERENCES `siswa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -489,6 +490,7 @@ CREATE TABLE `siswa_pindahan` (
 
 LOCK TABLES `siswa_pindahan` WRITE;
 /*!40000 ALTER TABLE `siswa_pindahan` DISABLE KEYS */;
+INSERT INTO `siswa_pindahan` VALUES (1,'ASAL SEKOLAH','ALAMAT SEKOLAH','ALASAN PINDAH',1,'2017-08-16',3,'2017-08-16 18:20:02','2017-08-16 18:20:02',1);
 /*!40000 ALTER TABLE `siswa_pindahan` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -564,27 +566,26 @@ CREATE TABLE `wali_siswa` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_lengkap_ayah` varchar(80) NOT NULL,
   `nama_lengkap_ibu` varchar(80) NOT NULL,
-  `tempat_lahir` varchar(100) NOT NULL,
-  `tanggal_lahir` date NOT NULL,
-  `agama` tinyint(1) NOT NULL,
-  `kewarganegaraan` tinyint(1) NOT NULL,
-  `pendidikan` tinyint(1) NOT NULL,
-  `pekerjaan` tinyint(1) NOT NULL,
+  `tempat_lahir` varchar(100) DEFAULT NULL,
+  `tanggal_lahir` date DEFAULT NULL,
+  `agama` tinyint(1) DEFAULT NULL,
+  `kewarganegaraan` tinyint(1) DEFAULT NULL,
+  `pendidikan` tinyint(1) DEFAULT NULL,
+  `pekerjaan` tinyint(1) DEFAULT NULL,
   `penghasilan_bulanan` varchar(15) DEFAULT NULL,
   `alamat_kantor` text,
   `telpon_kantor` varchar(15) DEFAULT NULL,
   `alamat_rumah` text,
-  `no_telepon` varchar(15) NOT NULL,
-  `email` varchar(55) NOT NULL,
-  `status` tinyint(1) NOT NULL COMMENT '1 : Masih Hidup\n2 : Sudah Meninggal',
-  `siswa_id` int(10) NOT NULL,
+  `no_telepon` varchar(15) DEFAULT NULL,
+  `email` varchar(55) DEFAULT NULL,
+  `status` tinyint(1) DEFAULT NULL COMMENT '1 : Masih Hidup\n2 : Sudah Meninggal',
+  `siswa_id` int(10) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   `created_by` int(5) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_wali_siswa_idx` (`siswa_id`),
-  CONSTRAINT `fk_wali_siswa` FOREIGN KEY (`siswa_id`) REFERENCES `siswa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `fk_wali_siswa_idx` (`siswa_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -593,6 +594,7 @@ CREATE TABLE `wali_siswa` (
 
 LOCK TABLES `wali_siswa` WRITE;
 /*!40000 ALTER TABLE `wali_siswa` DISABLE KEYS */;
+INSERT INTO `wali_siswa` VALUES (1,'Ibnu','Rosita',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1,NULL,NULL,NULL),(2,'Mohamad Ali','Jamilah','Depok','1957-12-12',1,1,2,2,'3000000','ALAMAT KANTOR','76876687','ALAMAT RUMAH','8757558','kiki@gmail.com',1,2,'2017-08-27 08:04:42',NULL,1);
 /*!40000 ALTER TABLE `wali_siswa` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -605,4 +607,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-01  0:17:54
+-- Dump completed on 2017-08-27 22:06:31

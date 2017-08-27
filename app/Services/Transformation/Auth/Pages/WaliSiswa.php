@@ -42,6 +42,7 @@ class WaliSiswa
 
             return [
                 'id'                => isset($data['id']) ? $data['id'] : '',
+                'nis_siswa'         =>isset($data['siswa']['nis']) ? $data['siswa']['nis'] : '',
                 'nama_siswa'        => isset($data['siswa']['nama_lengkap']) ? $data['siswa']['nama_lengkap'] : '',
                 'nama_lengkap_ayah' => isset($data['nama_lengkap_ayah']) ? $data['nama_lengkap_ayah'] : '',
                 'nama_lengkap_ibu'  => isset($data['nama_lengkap_ibu']) ? $data['nama_lengkap_ibu'] : '',

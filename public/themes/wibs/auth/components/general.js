@@ -407,3 +407,13 @@ function init_menu_wali_santri()
     buttonClickClose();
     replaceToCkEditor();
 }
+
+function init_menu_report_quran()
+{
+    mainGeneral();
+    wizardSlide();
+    crud_cms_report_quran();
+    buttonClickOpen();
+    buttonClickClose();
+    replaceToCkEditor();
+}

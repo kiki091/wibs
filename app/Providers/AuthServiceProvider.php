@@ -44,6 +44,8 @@ class AuthServiceProvider extends ServiceProvider
 
 
         $this->app->bind('App\Repositories\Contracts\Auth\Pages\Santri', 'App\Repositories\Implementation\Auth\Pages\Santri');
+        $this->app->bind('App\Repositories\Contracts\Auth\Pages\WaliSiswa', 'App\Repositories\Implementation\Auth\Pages\WaliSiswa');
+        $this->app->bind('App\Repositories\Contracts\Auth\Pages\ReportQuran', 'App\Repositories\Implementation\Auth\Pages\ReportQuran');
     }
 
     /**
@@ -63,6 +65,8 @@ class AuthServiceProvider extends ServiceProvider
 
             
             'App\Repositories\Contracts\Auth\Pages\Santri',
+            'App\Repositories\Contracts\Auth\Pages\WaliSiswa',
+            'App\Repositories\Contracts\Auth\Pages\ReportQuran',
         );
     }
 }

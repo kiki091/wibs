@@ -12,60 +12,8 @@
     	<!-- sidebar menu -->
     	<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
       		<div class="menu_section">
-            <?php 
-              $userInfo = DataHelper::userInfo();
-            ?>
-
-            @if($userInfo['user_location']['name'] == 'admin')
-            <h3>Account</h3>
-            <ul class="nav side-menu">
-                <li>
-                    <a>
-                        <i class="fa fa-navicon"></i>
-                        Navigation <span class="fa fa-chevron-down"></span>
-                    </a>
-
-                    <ul class="nav child_menu">
-                        <li>
-                            <a href="#menu-group" onclick="menuGroup()">
-                                Menu Group
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#menu-navigation" onclick="menuNavigation()">
-                                Menu Navigation
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#sub-menu-navigation" onclick="menuSubNavigation()">
-                                Sub Navigation
-                            </a>
-                        </li>
-                    </ul>
-                </li> 
-
-                <li>
-                    <a>
-                        <i class="fa fa-shield"></i>
-                        User Management <span class="fa fa-chevron-down"></span>
-                    </a>
-
-                    <ul class="nav child_menu">
-                        <li>
-                            <a href="#menu-privilage" onclick="menuUserAccount()">
-                                User Account
-                            </a>
-                        </li>
-                    </ul>
-                </li> 
-            </ul>
-            @endif
-
-            
         		<h3>General Information</h3>
-
         		<ul class="nav side-menu">
-                
             @foreach(DataHelper::userMenu() as $key=> $user_menu)
                 @foreach($user_menu as $key_icon=> $menu)
           			<li>
