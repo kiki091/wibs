@@ -57,12 +57,32 @@ function wali_santri()
     });
 }
 
-// JAVASCRIPT CMS WALI SANTRI
+// JAVASCRIPT CMS report tahfidz
 
 function report_tahfidz()
 {
     $('.right_col').load(laroute.route('cms_report_quran', []), function()
     {
         init_menu_report_quran()
+    });
+}
+
+// JAVASCRIPT CMS report kesehatan
+
+function report_kesehatan()
+{
+    $('.right_col').load(laroute.route('cms_report_kesehatan', []), function()
+    {
+        init_menu_report_kesehatan()
+    });
+}
+
+// JAVASCRIPT CMS report kesehatan
+
+function report_hadis()
+{
+    $('.right_col').load(laroute.route('cms_report_hadis', []), function()
+    {
+        init_menu_report_hadis()
     });
 }

@@ -36,6 +36,7 @@ Route::group(['middleware' => ['web']], function ()
 
 					Route::get('/', 'Wibs\Auth\Pages\SantriController@index')->name('cms_santri');
 					Route::get('data', 'Wibs\Auth\Pages\SantriController@getData')->name('cms_get_data_santri');
+					Route::get('search-data', 'Wibs\Auth\Pages\SantriController@searchData')->name('cms_get_search_data_santri');
 					Route::post('store', 'Wibs\Auth\Pages\SantriController@store')->name('cms_store_data_santri');
 					Route::post('edit', 'Wibs\Auth\Pages\SantriController@edit')->name('cms_edit_data_santri');
 					Route::post('change-status', 'Wibs\Auth\Pages\SantriController@changeStatus')->name('cms_change_status_data_santri');
@@ -57,6 +58,18 @@ Route::group(['middleware' => ['web']], function ()
 						Route::get('/', 'Wibs\Auth\Pages\ReportQuranController@index')->name('cms_report_quran');
 						Route::get('data', 'Wibs\Auth\Pages\ReportQuranController@getData')->name('cms_report_quran_data');
 						Route::post('store', 'Wibs\Auth\Pages\ReportQuranController@store')->name('cms_report_quran_store_data');
+					});
+
+					Route::group(['prefix' => 'kesehatan'], function () {
+						Route::get('/', 'Wibs\Auth\Pages\ReportKesehatanController@index')->name('cms_report_kesehatan');
+						Route::get('data', 'Wibs\Auth\Pages\ReportKesehatanController@getData')->name('cms_report_kesehatan_data');
+						Route::post('store', 'Wibs\Auth\Pages\ReportKesehatanController@store')->name('cms_report_kesehatan_store_data');
+					});
+
+					Route::group(['prefix' => 'hadis'], function () {
+						Route::get('/', 'Wibs\Auth\Pages\ReportHadisController@index')->name('cms_report_hadis');
+						Route::get('data', 'Wibs\Auth\Pages\ReportHadisController@getData')->name('cms_report_hadis_data');
+						Route::post('store', 'Wibs\Auth\Pages\ReportHadisController@store')->name('cms_report_hadis_store_data');
 					});
 				});
 				// ACCOUNT MANAGEMENT ROUTE

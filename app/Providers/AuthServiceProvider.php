@@ -43,9 +43,12 @@ class AuthServiceProvider extends ServiceProvider
         $this->app->bind('App\Repositories\Contracts\Auth\System', 'App\Repositories\Implementation\Auth\System');
 
 
+        $this->app->bind('App\Repositories\Contracts\Auth\Pages\Kitab', 'App\Repositories\Implementation\Auth\Pages\Kitab');
         $this->app->bind('App\Repositories\Contracts\Auth\Pages\Santri', 'App\Repositories\Implementation\Auth\Pages\Santri');
         $this->app->bind('App\Repositories\Contracts\Auth\Pages\WaliSiswa', 'App\Repositories\Implementation\Auth\Pages\WaliSiswa');
         $this->app->bind('App\Repositories\Contracts\Auth\Pages\ReportQuran', 'App\Repositories\Implementation\Auth\Pages\ReportQuran');
+        $this->app->bind('App\Repositories\Contracts\Auth\Pages\ReportKesehatan', 'App\Repositories\Implementation\Auth\Pages\ReportKesehatan');
+        $this->app->bind('App\Repositories\Contracts\Auth\Pages\ReportHadis', 'App\Repositories\Implementation\Auth\Pages\ReportHadis');
     }
 
     /**
@@ -64,9 +67,12 @@ class AuthServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\Auth\System',
 
             
+            'App\Repositories\Contracts\Auth\Pages\Kitab',
             'App\Repositories\Contracts\Auth\Pages\Santri',
             'App\Repositories\Contracts\Auth\Pages\WaliSiswa',
             'App\Repositories\Contracts\Auth\Pages\ReportQuran',
+            'App\Repositories\Contracts\Auth\Pages\ReportKesehatan',
+            'App\Repositories\Contracts\Auth\Pages\ReportHadis',
         );
     }
 }

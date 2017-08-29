@@ -9,7 +9,7 @@
 				<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
 					<div class="profile_img">
 						<div id="crop-avatar">
-							<img class="img-responsive avatar-view" :src="models_siswa.avatar_url" :title="models_siswa.nama_lengkap">
+							<img class="img-responsive avatar-view" :src="models_siswa.foto_url" :title="models_siswa.nama_lengkap">
 						</div>
 					</div>
 					<h3>@{{ models_siswa.nama_lengkap }}</h3>

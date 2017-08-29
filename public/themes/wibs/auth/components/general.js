@@ -417,3 +417,23 @@ function init_menu_report_quran()
     buttonClickClose();
     replaceToCkEditor();
 }
+
+function init_menu_report_kesehatan()
+{
+    mainGeneral();
+    wizardSlide();
+    crud_cms_report_kesehatan();
+    buttonClickOpen();
+    buttonClickClose();
+    replaceToCkEditor();
+}
+
+function init_menu_report_hadis()
+{
+    mainGeneral();
+    wizardSlide();
+    crud_cms_report_hadis();
+    buttonClickOpen();
+    buttonClickClose();
+    replaceToCkEditor();
+}

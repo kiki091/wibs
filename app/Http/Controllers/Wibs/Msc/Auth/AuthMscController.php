@@ -30,9 +30,6 @@ class AuthMscController extends MscBaseController
 
     public function __construct(SiswaMscServices $userMsc, ResponseService $response)
     {
-        if (Auth::guard('siswa')->check() == null) {
-           return redirect()->route('msc_login');
-        }
 
         $this->userMsc = $userMsc;
         $this->response = $response;
