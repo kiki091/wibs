@@ -4,6 +4,7 @@ $(document).ready(function(){
     wizardSlide();
     vue();
     progresBar();
+    selectorDropdownHeader();
 });
 
 /* BUTTON SHOW CARD PHOTO UPLOADER */
@@ -25,7 +26,17 @@ $(document).on('click', '.img__preview__big__close', function(){
         $('body').removeClass('popup__upload__preview__container');
     }, 200);
 });
+function selectorDropdownHeader(){
+  $('#selector-dropdown').on('click', function(){
+    
+    $(this).toggleClass('open');
+  });
 
+  $('#selector-dropdown').focusout(function() {
+    // all dropdowns
+    $('.dropdown__select__list').removeClass('open');
+  });
+}
 function progresBar() {
 
 }
