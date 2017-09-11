@@ -409,25 +409,16 @@ CREATE TABLE `siswa` (
   `jenis_kelamin` tinyint(1) NOT NULL COMMENT '1 : Laki-laki\n2 : Perempuan',
   `tempat_lahir` varchar(50) NOT NULL,
   `tanggal_lahir` varchar(50) DEFAULT NULL,
-  `agama` tinyint(1) NOT NULL COMMENT '1 : Islam\n2 : Kristen Katolik\n3 : Kristen Protestan\n4 : Hindu\n5 : Budha\n6 : Lainnya',
   `kewarganegaraan` tinyint(1) NOT NULL COMMENT '1 : WNI\n2 : WNA',
   `anak_ke` tinyint(1) DEFAULT NULL,
   `jumlah_saudara_kandung` tinyint(2) DEFAULT NULL,
-  `jumlah_saudara_tiri` tinyint(2) DEFAULT NULL,
   `status_orang_tua` tinyint(1) DEFAULT NULL COMMENT '1 : Yatim\n2 : Yatim Piatu',
-  `jenis_bahasa` varchar(40) DEFAULT NULL,
   `alamat` text NOT NULL,
   `no_telpon` varchar(15) NOT NULL,
   `status_tinggal` tinyint(1) NOT NULL COMMENT '1 : Tinggal dengan orang tua\n2 : Tinggal dengan saudara/i',
-  `asrama_kost` text,
-  `jarak_rumah` varchar(40) DEFAULT NULL,
   `golongan_darah` varchar(2) DEFAULT NULL,
-  `derita_penyakit` text,
-  `kelainan_jasmani` text,
   `tinggi_badan` int(3) DEFAULT NULL COMMENT 'Satuan = CM',
   `berat_badan` int(3) DEFAULT NULL COMMENT 'Satuan = KG',
-  `pendidikan_sebelumnya` varchar(80) NOT NULL,
-  `lulusan_dari` varchar(100) DEFAULT NULL,
   `alamat_sekolah` text,
   `tanggal_nomer_sttb` text NOT NULL,
   `lama_belajar` int(2) DEFAULT NULL COMMENT 'Satuan = Tahun',
@@ -449,7 +440,7 @@ CREATE TABLE `siswa` (
   KEY `fk_siswa_1_idx` (`kelas_id`),
   CONSTRAINT `fk_siswa_1` FOREIGN KEY (`kelas_id`) REFERENCES `kelas` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_siswa_tingkatan` FOREIGN KEY (`tingkatan_id`) REFERENCES `tingkatan` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -458,7 +449,7 @@ CREATE TABLE `siswa` (
 
 LOCK TABLES `siswa` WRITE;
 /*!40000 ALTER TABLE `siswa` DISABLE KEYS */;
-INSERT INTO `siswa` VALUES (1,'55554444444','Kiki Kurniawan','Kiki',1,'Jakarta',NULL,1,1,2,2,NULL,NULL,NULL,'Depok','0812876792909',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,'12345',NULL,6,2,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.','wibs__profile__images5985e04210955_220x220.jpg','kikikurniawan091edit@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','nR1sA9EQltrSA2kRiqTxM84ib0UrQeG5rSzRItMTI2HzEvYfHDfThC3488sg',NULL,'2017-08-27 10:51:10',NULL),(2,'55555555555','Febrina','Febri',2,'Bogor',NULL,1,1,4,5,NULL,NULL,NULL,'Depok','08963432952',1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1',NULL,NULL,'12344',NULL,5,1,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.',NULL,'febrinaniken093@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy',NULL,NULL,NULL,NULL),(3,'55553333333','RTURTU','RTURTU',1,'ASFASF','',1,1,1,2,0,1,'1','ALAMAT','62356235',1,'ALAMAT ASRAMA KOST (OPTIONAL)','5','A','','',155,67,'smp','LULUSAN DARI','ALAMAT SEKOLAH ASAL','2323525235',3,4,2,1,2,'KETERANGAN','wibs__profile__images59948cd2a9745_220x220.jpg','kiki@gmail.com','$2y$10$lkDkX3Umgwe9cHcHFj1Xi.GH/rdCOAwXevCq8ndWGyM5Ylcqu.YLK',NULL,'2017-08-16 18:20:02','2017-08-16 18:20:02',1);
+INSERT INTO `siswa` VALUES (1,'55554444444','Kiki Kurniawan','Kiki',1,'Jakarta',NULL,1,2,2,NULL,'Depok','0812876792909',1,NULL,NULL,NULL,NULL,'12345',NULL,6,2,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.','wibs__profile__images5985e04210955_220x220.jpg','kikikurniawan091edit@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','nR1sA9EQltrSA2kRiqTxM84ib0UrQeG5rSzRItMTI2HzEvYfHDfThC3488sg',NULL,'2017-08-27 10:51:10',NULL),(2,'55555555555','Febrina','Febri',2,'Bogor',NULL,1,4,5,NULL,'Depok','08963432952',1,NULL,NULL,NULL,NULL,'12344',NULL,5,1,1,1,'Motifasi saya bersekolah di al-wafi islamic boarding school adalah ingin mempelajari agama lebih mendalam, saya memohon kepada Allah agar saya dapat mengambil ilmu yang bermanfaat untuk saya dan keluarga.',NULL,'febrinaniken093@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy',NULL,NULL,NULL,NULL),(3,'55553333333','RTURTU','RTURTU',1,'ASFASF','',1,1,2,1,'ALAMAT','62356235',1,'A',155,67,'ALAMAT SEKOLAH ASAL','2323525235',3,4,2,1,2,'KETERANGAN','wibs__profile__images59948cd2a9745_220x220.jpg','kiki@gmail.com','$2y$10$lkDkX3Umgwe9cHcHFj1Xi.GH/rdCOAwXevCq8ndWGyM5Ylcqu.YLK',NULL,'2017-08-16 18:20:02','2017-08-16 18:20:02',1),(4,'3333444666','Test Revisi','Test Revisi',1,'Depok','1992-03-06',1,1,2,1,'Jl. Jati Rt.004/Rw.003 No.2 Sawangan Baru','436734643643',1,'A',155,50,'Jl. Jati Rt.004/Rw.003 No.2 Sawangan Baru','464363467347854845',NULL,2,1,1,1,'KETERANGAN','wibs__profile__images59b6bc699f31b_220x220.jpg','user@gmail.com','$2y$10$EWEYJDTRVs914c91kmTTTOxZUDoHdZLKqQ1be457FjBX/TA6AYWSW',NULL,'2017-09-11 16:40:09','2017-09-11 16:40:09',1);
 /*!40000 ALTER TABLE `siswa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -613,4 +604,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-11 23:22:39
+-- Dump completed on 2017-09-11 23:41:02
