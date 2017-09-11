@@ -308,7 +308,6 @@ function mainGeneral(){
 function init_student_monitoring()
 {
     mainGeneral();
-    wizardSlide();
     crud_student_monitoring();
     buttonClickOpen();
     buttonClickClose();
@@ -318,8 +317,16 @@ function init_student_monitoring()
 function init__report__tahfidz()
 {
     mainGeneral();
-    wizardSlide();
     crud_report__tahfidz();
+    buttonClickOpen();
+    buttonClickClose();
+    replaceToCkEditor();
+}
+
+function init__report_hadis()
+{
+    mainGeneral();
+    crud_report_hadis();
     buttonClickOpen();
     buttonClickClose();
     replaceToCkEditor();

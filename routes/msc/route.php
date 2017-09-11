@@ -37,6 +37,11 @@ Route::group(['middleware' => ['web']], function ()
 				Route::get('/', 'Wibs\Msc\Pages\QuranRecitationReportController@index')->name('msc_quran_recitation');
 				Route::get('data', 'Wibs\Msc\Pages\QuranRecitationReportController@getData')->name('msc_quran_recitation_get_data');
 			});
+
+			Route::group(['prefix' => 'report-hadis'], function (){
+				Route::get('/', 'Wibs\Msc\Pages\ReportHadisController@index')->name('msc_report_hadis');
+				Route::get('data', 'Wibs\Msc\Pages\ReportHadisController@getData')->name('msc_report_hadis_get_data');
+			});
 		});
 		
 	});

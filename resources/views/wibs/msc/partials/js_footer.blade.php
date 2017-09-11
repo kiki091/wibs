@@ -31,4 +31,5 @@
 <script src="{{ asset('themes/wibs/msc/pages/siswa.js') }}"></script>
 <script src="{{ asset('themes/wibs/msc/pages/student-monitoring.js') }}"></script>
 <script src="{{ asset('themes/wibs/msc/pages/quran-recitation.js') }}"></script>
+<script src="{{ asset('themes/wibs/msc/pages/report-hadis.js') }}"></script>
 
