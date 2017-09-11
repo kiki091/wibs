@@ -24,27 +24,18 @@ function crud_cms_santri() {
                 jenis_kelamin: '',
                 tempat_lahir: '',
                 tanggal_lahir: '',
-                agama: '',
                 anak_ke: '',
                 jumlah_saudara_kandung: '',
-                jumlah_saudara_tiri: '',
                 status_orang_tua: '',
-                jenis_bahasa: '',
                 alamat: '',
                 no_telpon: '',
                 status_tinggal: '',
-                asrama_kost: '',
                 jarak_rumah: '',
                 golongan_darah: '',
-                derita_penyakit: '',
-                kelainan_jasmani: '',
                 tinggi_badan: '',
                 berat_badan: '',
-                pendidikan_sebelumnya: '',
-                lulusan_dari: '',
                 alamat_sekolah: '',
                 tanggal_nomer_sttb: '',
-                lama_belajar: '',
                 kelas_id: '',
                 tingkatan_id    : '',
                 status_siswa: '',
@@ -215,24 +206,16 @@ function crud_cms_santri() {
                 this.models.jenis_kelamin = ''
                 this.models.tempat_lahir = ''
                 this.models.tanggal_lahir = ''
-                this.models.agama = ''
                 this.models.anak_ke = ''
                 this.models.jumlah_saudara_kandung = ''
-                this.models.jumlah_saudara_tiri = ''
                 this.models.status_orang_tua = ''
-                this.models.jenis_bahasa = ''
                 this.models.alamat = ''
                 this.models.no_telpon = ''
                 this.models.status_tinggal = ''
-                this.models.asrama_kost = ''
-                this.models.jarak_rumah = ''
                 this.models.golongan_darah = ''
-                this.models.derita_penyakit = ''
                 this.models.kelainan_jasmani = ''
                 this.models.tinggi_badan = ''
                 this.models.berat_badan = ''
-                this.models.pendidikan_sebelumnya = ''
-                this.models.lulusan_dari = ''
                 this.models.alamat_sekolah = ''
                 this.models.tanggal_nomer_sttb = ''
                 this.models.lama_belajar = ''

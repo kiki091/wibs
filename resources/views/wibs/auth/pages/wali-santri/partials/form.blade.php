@@ -53,60 +53,82 @@
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>TEMPAT LAHIR</label>
-									<input v-model="models.tempat_lahir" name="tempat_lahir" type="text" id="tempat_lahir" class="new__form__input__field" placeholder="Isikan tempat kelahiran">
+									<label>TEMPAT LAHIR AYAH</label>
+									<input v-model="models.tempat_lahir_ayah" name="tempat_lahir_ayah" type="text" id="tempat_lahir_ayah" class="new__form__input__field" placeholder="Isikan tempat kelahiran ayah">
 
-									<div class="form--error--message--left" id="form--error--message--tempat_lahir"></div>
+									<div class="form--error--message--left" id="form--error--message--tempat_lahir_ayah"></div>
 								</div>
 							</div>
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>TANGGAL LAHIR</label>
+									<label>TEMPAT LAHIR IBU</label>
+									<input v-model="models.tempat_lahir_ibu" name="tempat_lahir_ibu" type="text" id="tempat_lahir_ibu" class="new__form__input__field" placeholder="Isikan tempat kelahiran ibu">
+
+									<div class="form--error--message--left" id="form--error--message--tempat_lahir_ibu"></div>
+								</div>
+							</div>
+
+							<div class="create__form__row">
+								<div class="new__form__field">
+									<label>TANGGAL LAHIR AYAH</label>
 									<div class="content__input__wrapper__form">
 										<div class="input-icon">
-											<input v-model="models.tanggal_lahir" name="tanggal_lahir" type="text" class="form-control datepick" placeholder="Isikan tanggal lahir">
+											<input v-model="models.tanggal_lahir_ayah" name="tanggal_lahir_ayah" type="text" class="form-control datepick" placeholder="Isikan tanggal lahir ayah">
 											<div class="icon__wrapper__form date-icon">
 		                                        <i class="ico-date"></i>
 		                                    </div>
 										</div>
 									</div>
 
-									<div class="form--error--message--left" id="form--error--message--tanggal_lahir"></div>
+									<div class="form--error--message--left" id="form--error--message--tanggal_lahir_ayah"></div>
 								</div>
 							</div>
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>AGAMA</label>
-									<select name="agama" v-model="models.agama">
-										<option value="1">ISLAM</option>
-										<option value="2">KRISTEN KATOLIK</option>
-										<option value="3">KRISTEN PROTESTAN</option>
-										<option value="4">HINDU</option>
-										<option value="5">BUDHA</option>
-									</select>
+									<label>TANGGAL LAHIR IBU</label>
+									<div class="content__input__wrapper__form">
+										<div class="input-icon">
+											<input v-model="models.tanggal_lahir_ibu" name="tanggal_lahir_ibu" type="text" class="form-control datepick" placeholder="Isikan tanggal lahir ibu">
+											<div class="icon__wrapper__form date-icon">
+		                                        <i class="ico-date"></i>
+		                                    </div>
+										</div>
+									</div>
 
-									<div class="form--error--message--left" id="form--error--message--agama"></div>
+									<div class="form--error--message--left" id="form--error--message--tanggal_lahir_ibu"></div>
 								</div>
 							</div>
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>KEWARGANEGARAAN</label>
-									<select name="kewarganegaraan" v-model="models.kewarganegaraan">
+									<label>KEWARGANEGARAAN AYAH</label>
+									<select name="kewarganegaraan_ayah" v-model="models.kewarganegaraan_ayah">
 										<option value="1">WNI</option>
 										<option value="2">WNA</option>
 									</select>
 
-									<div class="form--error--message--left" id="form--error--message--kewarganegaraan"></div>
+									<div class="form--error--message--left" id="form--error--message--kewarganegaraan_ayah"></div>
 								</div>
 							</div>
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>PENDIDIKAN</label>
-									<select name="pendidikan" v-model="models.pendidikan">
+									<label>KEWARGANEGARAAN IBU</label>
+									<select name="kewarganegaraan_ibu" v-model="models.kewarganegaraan_ibu">
+										<option value="1">WNI</option>
+										<option value="2">WNA</option>
+									</select>
+
+									<div class="form--error--message--left" id="form--error--message--kewarganegaraan_ibu"></div>
+								</div>
+							</div>
+
+							<div class="create__form__row">
+								<div class="new__form__field">
+									<label>PENDIDIKAN AYAH</label>
+									<select name="pendidikan_ayah" v-model="models.pendidikan_ayah">
 										<option value="1">SD</option>
 										<option value="2">SMP</option>
 										<option value="3">SMA</option>
@@ -116,86 +138,111 @@
 										<option value="7">S3</option>
 									</select>
 
-									<div class="form--error--message--left" id="form--error--message--pendidikan"></div>
+									<div class="form--error--message--left" id="form--error--message--pendidikan_ayah"></div>
 								</div>
 							</div>
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>PEKERJAAN</label>
-									<select name="pekerjaan" v-model="models.pekerjaan">
+									<label>PENDIDIKAN IBU</label>
+									<select name="pendidikan_ibu" v-model="models.pendidikan_ibu">
+										<option value="1">SD</option>
+										<option value="2">SMP</option>
+										<option value="3">SMA</option>
+										<option value="4">D3</option>
+										<option value="5">S1</option>
+										<option value="6">S2</option>
+										<option value="7">S3</option>
+									</select>
+
+									<div class="form--error--message--left" id="form--error--message--pendidikan_ibu"></div>
+								</div>
+							</div>
+
+							<div class="create__form__row">
+								<div class="new__form__field">
+									<label>PEKERJAAN AYAH</label>
+									<select name="pekerjaan_ayah" v-model="models.pekerjaan_ayah">
 										<option value="1">PNS</option>
 										<option value="2">SWASTA</option>
 										<option value="3">WIRA USAHA</option>
 									</select>
 
-									<div class="form--error--message--left" id="form--error--message--pekerjaan"></div>
+									<div class="form--error--message--left" id="form--error--message--pekerjaan_ayah"></div>
 								</div>
 							</div>
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>PENGHASILAN SEBULAN</label>
-									<input name="penghasilan_bulanan" v-model="models.penghasilan_bulanan" type="text" class="new__form__input__field" placeholder="Isikan penghasilan bulanan">
+									<label>PEKERJAAN IBU</label>
+									<select name="pekerjaan_ibu" v-model="models.pekerjaan_ibu">
+										<option value="1">PNS</option>
+										<option value="2">SWASTA</option>
+										<option value="3">WIRA USAHA</option>
+										<option value="4">IBU RUMAH TANGGA</option>
+									</select>
 
-									<div class="form--error--message--left" id="form--error--message--penghasilan_bulanan"></div>
+									<div class="form--error--message--left" id="form--error--message--pekerjaan_ibu"></div>
 								</div>
 							</div>
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>ALAMAT KANTOR</label>
-									<textarea name="alamat_kantor" v-model="models.alamat_kantor" style="width: 500px;"></textarea>
+									<label>PENGHASILAN SEBULAN AYAH</label>
+									<input name="penghasilan_bulanan_ayah" v-model="models.penghasilan_bulanan_ayah" type="text" class="new__form__input__field" placeholder="Isikan penghasilan bulanan">
 
-									<div class="form--error--message--left" id="form--error--message--alamat_kantor"></div>
+									<div class="form--error--message--left" id="form--error--message--penghasilan_bulanan_ayah"></div>
+								</div>
+							</div>
+
+							<div class="create__form__row" v-if="models.pekerjaan_ibu != '4'">
+								<div class="new__form__field">
+									<label>PENGHASILAN SEBULAN IBU</label>
+									<input name="penghasilan_bulanan_ibu" v-model="models.penghasilan_bulanan_ibu" type="text" class="new__form__input__field" placeholder="Isikan penghasilan bulanan">
+
+									<div class="form--error--message--left" id="form--error--message--penghasilan_bulanan_ibu"></div>
 								</div>
 							</div>
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>NOMER TELPON KANTOR</label>
-									<input name="telpon_kantor" v-model="models.telpon_kantor" type="text" class="new__form__input__field" placeholder="Isikan telpon kantor">
+									<label>EMAIL AYAH</label>
+									<input name="email_ayah" v-model="models.email_ayah" type="text" class="new__form__input__field" placeholder="Isikan email ayah">
 
-									<div class="form--error--message--left" id="form--error--message--telpon_kantor"></div>
+									<div class="form--error--message--left" id="form--error--message--email_ayah"></div>
 								</div>
 							</div>
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>ALAMAT RUMAH</label>
-									<textarea name="alamat_rumah" v-model="models.alamat_rumah" style="width: 500px;"></textarea>
+									<label>EMAIL IBU</label>
+									<input name="email_ibu" v-model="models.email_ibu" type="text" class="new__form__input__field" placeholder="Isikan email ibu">
 
-									<div class="form--error--message--left" id="form--error--message--alamat_rumah"></div>
+									<div class="form--error--message--left" id="form--error--message--email_ibu"></div>
 								</div>
 							</div>
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>NOMER TELPON</label>
-									<input name="no_telepon" v-model="models.no_telepon" type="text" class="new__form__input__field" placeholder="Isikan nomer telpon">
-
-									<div class="form--error--message--left" id="form--error--message--no_telepon"></div>
-								</div>
-							</div>
-
-							<div class="create__form__row">
-								<div class="new__form__field">
-									<label>EMAIL</label>
-									<input name="email" v-model="models.email" type="text" class="new__form__input__field" placeholder="Isikan email">
-
-									<div class="form--error--message--left" id="form--error--message--email"></div>
-								</div>
-							</div>
-
-							<div class="create__form__row">
-								<div class="new__form__field">
-									<label>STATUS</label>
-									<select name="status" v-model="models.status">
+									<label>STATUS AYAH</label>
+									<select name="status_ayah" v-model="models.status_ayah">
 										<option value="1">HIDUP</option>
 										<option value="2">MENINGGAL</option>
 									</select>
 
-									<div class="form--error--message--left" id="form--error--message--status"></div>
+									<div class="form--error--message--left" id="form--error--message--status_ayah"></div>
+								</div>
+							</div>
+
+							<div class="create__form__row">
+								<div class="new__form__field">
+									<label>STATUS IBU</label>
+									<select name="status_ibu" v-model="models.status_ibu">
+										<option value="1">HIDUP</option>
+										<option value="2">MENINGGAL</option>
+									</select>
+
+									<div class="form--error--message--left" id="form--error--message--status_ibu"></div>
 								</div>
 							</div>
 

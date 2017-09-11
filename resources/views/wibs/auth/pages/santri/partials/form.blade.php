@@ -138,34 +138,10 @@
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>AGAMA</label>
-									<select name="agama" v-model="models.agama">
-										<option value="1">ISLAM</option>
-										<option value="2">KRISTEN KATOLIK</option>
-										<option value="3">KRISTEN PROTESTAN</option>
-										<option value="4">HINDU</option>
-										<option value="5">BUDHA</option>
-									</select>
-
-									<div class="form--error--message--left" id="form--error--message--agama"></div>
-								</div>
-							</div>
-
-							<div class="create__form__row">
-								<div class="new__form__field">
 									<label>JUMLAH SAUDARA KANDUNG</label>
 									<input v-model="models.jumlah_saudara_kandung" name="jumlah_saudara_kandung" type="text" id="jumlah_saudara_kandung" class="new__form__input__field" placeholder="Isikan jumlah saudara kandung">
 
 									<div class="form--error--message--left" id="form--error--message--jumlah_saudara_kandung"></div>
-								</div>
-							</div>
-
-							<div class="create__form__row">
-								<div class="new__form__field">
-									<label>JUMLAH SAUDARA TIRI</label>
-									<input v-model="models.jumlah_saudara_tiri" name="jumlah_saudara_tiri" type="text" id="jumlah_saudara_tiri" class="new__form__input__field" placeholder="Isikan jumlah saudara tiri">
-
-									<div class="form--error--message--left" id="form--error--message--jumlah_saudara_tiri"></div>
 								</div>
 							</div>
 
@@ -220,19 +196,6 @@
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>JENIS BAHASA</label>
-									<select name="jenis_bahasa" v-model="models.jenis_bahasa">
-										<option value="1">BAHASA INDONESIA</option>
-										<option value="2">BAHASA ENGLISH</option>
-										<option value="3">BAHASA ARAB</option>
-									</select>
-
-									<div class="form--error--message--left" id="form--error--message--jenis_bahasa"></div>
-								</div>
-							</div>
-
-							<div class="create__form__row">
-								<div class="new__form__field">
 									<label>ALAMAT</label>
 									<textarea name="alamat" v-model="models.alamat" style="width: 500px"></textarea>
 
@@ -263,24 +226,6 @@
 
 							<div class="create__form__row">
 								<div class="new__form__field">
-									<label>ALAMAT ASRAMA KOST (OPTIONAL)</label>
-									<textarea name="asrama_kost" v-model="models.asrama_kost" style="width: 500px"></textarea>
-
-									<div class="form--error--message--left" id="form--error--message--asrama_kost"></div>
-								</div>
-							</div>
-
-							<div class="create__form__row">
-								<div class="new__form__field">
-									<label>JARAK RUMAH (OPTIONAL)</label>
-									<input v-model="models.jarak_rumah" name="jarak_rumah" type="text" id="jarak_rumah" class="new__form__input__field" placeholder="Isikan jarak rumah">
-
-									<div class="form--error--message--left" id="form--error--message--jarak_rumah"></div>
-								</div>
-							</div>
-
-							<div class="create__form__row">
-								<div class="new__form__field">
 									<label>GOLONGAN DARAH (OPTIONAL)</label>
 									<input v-model="models.golongan_darah" name="golongan_darah" type="text" id="golongan_darah" class="new__form__input__field" placeholder="Isikan golongan darah">
 
@@ -305,54 +250,12 @@
 									<div class="form--error--message--left" id="form--error--message--berat_badan"></div>
 								</div>
 							</div>
-
-							<div class="create__form__row">
-								<div class="new__form__field">
-									<label>DERITA PENYAKIT (OPTIONAL)</label>
-									<textarea name="derita_penyakit" v-model="models.derita_penyakit" style="width: 500px"></textarea>
-
-									<div class="form--error--message--left" id="form--error--message--derita_penyakit"></div>
-								</div>
-							</div>
-
-							<div class="create__form__row">
-								<div class="new__form__field">
-									<label>KELAINAN JASMANI (OPTIONAL)</label>
-									<textarea name="kelainan_jasmani" v-model="models.kelainan_jasmani" style="width: 500px"></textarea>
-
-									<div class="form--error--message--left" id="form--error--message--kelainan_jasmani"></div>
-								</div>
-							</div>
 						</div>
 
 						<div class="create__form__row">
 							<span class="form__group__title">Detail Information<a href="javascript:void(0);" class="style__accordion" data-accordion="form-accordion-2"><i>@include('wibs.auth.svg-logo.ico-expand-arrow')</i></a></span>
 						</div>
 						<div id="form-accordion-2">
-							
-
-							<div class="create__form__row">
-								<div class="new__form__field">
-									<label>PENDIDIKAN SEBELUMNYA</label>
-
-									<select name="pendidikan_sebelumnya" v-model="models.pendidikan_sebelumnya">
-										<option value="smp">SEKOLAH MENENGAH PERTAMA</option>
-										<option value="smu">SEKOLAH MENENGAH UMUM</option>
-										<option value="smk">SEKOLAH MENENGAH KEJURUAN</option>
-									</select>
-
-									<div class="form--error--message--left" id="form--error--message--pendidikan_sebelumnya"></div>
-								</div>
-							</div>
-
-							<div class="create__form__row">
-								<div class="new__form__field">
-									<label>LULUSAN DARI</label>
-									<input v-model="models.lulusan_dari" name="lulusan_dari" type="text" id="lulusan_dari" class="new__form__input__field" placeholder="Isikan lulusan dari">
-
-									<div class="form--error--message--left" id="form--error--message--lulusan_dari"></div>
-								</div>
-							</div>
 
 							<div class="create__form__row">
 								<div class="new__form__field">
@@ -370,21 +273,6 @@
 									<input v-model="models.tanggal_nomer_sttb" name="tanggal_nomer_sttb" type="text" id="tanggal_nomer_sttb" class="new__form__input__field" placeholder="Isikan tanggal nomer sttb">
 
 									<div class="form--error--message--left" id="form--error--message--tanggal_nomer_sttb"></div>
-								</div>
-							</div>
-
-							<div class="create__form__row">
-								<div class="new__form__field">
-									<label>LAMA BELAJAR</label>
-
-									<select name="lama_belajar" v-model="models.lama_belajar">
-										<option value="1">1 TAHUN</option>
-										<option value="2">2 TAHUN</option>
-										<option value="3">3 TAHUN</option>
-										<option value="4">4 TAHUN</option>
-									</select>
-
-									<div class="form--error--message--left" id="form--error--message--lama_belajar"></div>
 								</div>
 							</div>
 

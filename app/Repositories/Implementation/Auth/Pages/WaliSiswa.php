@@ -158,20 +158,22 @@ class WaliSiswa extends BaseImplementation implements WaliSiswaInterface
 
             $store->nama_lengkap_ayah           = isset($data['nama_lengkap_ayah']) ? $data['nama_lengkap_ayah'] : '';
             $store->nama_lengkap_ibu            = isset($data['nama_lengkap_ibu']) ? $data['nama_lengkap_ibu'] : '';
-            $store->tempat_lahir                = isset($data['tempat_lahir']) ? $data['tempat_lahir'] : '';
-            $store->tanggal_lahir               = isset($data['tanggal_lahir']) ? \Carbon\Carbon::parse($data['tanggal_lahir'])->toDateString() : '';
-            $store->agama                       = isset($data['agama']) ? $data['agama'] : '';
-            $store->kewarganegaraan             = isset($data['kewarganegaraan']) ? $data['kewarganegaraan'] : '';
-            $store->pendidikan                     = isset($data['pendidikan']) ? $data['pendidikan'] : '';
-            $store->pekerjaan                   = isset($data['pekerjaan']) ? $data['pekerjaan'] : '';
-            $store->penghasilan_bulanan         = isset($data['penghasilan_bulanan']) ? $data['penghasilan_bulanan'] : '';
-            $store->alamat_kantor               = isset($data['alamat_kantor']) ? $data['alamat_kantor'] : '';
-            $store->telpon_kantor               = isset($data['telpon_kantor']) ? $data['telpon_kantor'] : '';
-            $store->alamat_rumah                = isset($data['alamat_rumah']) ? $data['alamat_rumah'] : '';
-            $store->no_telepon                  = isset($data['no_telepon']) ? $data['no_telepon'] : '';
-            $store->email                       = isset($data['email']) ? $data['email'] : '';
-            $store->status                      = isset($data['status']) ? $data['status'] : '';
-
+            $store->tempat_lahir_ayah           = isset($data['tempat_lahir_ayah']) ? $data['tempat_lahir_ayah'] : '';
+            $store->tempat_lahir_ibu            = isset($data['tempat_lahir_ibu']) ? $data['tempat_lahir_ibu'] : '';
+            $store->tanggal_lahir_ayah          = isset($data['tanggal_lahir_ayah']) ? \Carbon\Carbon::parse($data['tanggal_lahir_ayah'])->toDateString() : '';
+            $store->tanggal_lahir_ibu           = isset($data['tanggal_lahir_ibu']) ? \Carbon\Carbon::parse($data['tanggal_lahir_ibu'])->toDateString() : '';
+            $store->kewarganegaraan_ayah        = isset($data['kewarganegaraan_ayah']) ? $data['kewarganegaraan_ayah'] : '';
+            $store->kewarganegaraan_ibu         = isset($data['kewarganegaraan_ibu']) ? $data['kewarganegaraan_ibu'] : '';
+            $store->pendidikan_ayah             = isset($data['pendidikan_ayah']) ? $data['pendidikan_ayah'] : '';
+            $store->pendidikan_ibu              = isset($data['pendidikan_ibu']) ? $data['pendidikan_ibu'] : '';
+            $store->pekerjaan_ayah              = isset($data['pekerjaan_ayah']) ? $data['pekerjaan_ayah'] : '';
+            $store->pekerjaan_ibu               = isset($data['pekerjaan_ibu']) ? $data['pekerjaan_ibu'] : '';
+            $store->penghasilan_bulanan_ayah    = isset($data['penghasilan_bulanan_ayah']) ? $data['penghasilan_bulanan_ayah'] : '';
+            $store->penghasilan_bulanan_ibu     = isset($data['penghasilan_bulanan_ibu']) ? $data['penghasilan_bulanan_ibu'] : '';
+            $store->email_ayah                  = isset($data['email_ayah']) ? $data['email_ayah'] : '';
+            $store->email_ibu                   = isset($data['email_ibu']) ? $data['email_ibu'] : '';
+            $store->status_ayah                 = isset($data['status_ayah']) ? $data['status_ayah'] : '';
+            $store->status_ibu                  = isset($data['status_ibu']) ? $data['status_ibu'] : '';
 
             if($save = $store->save())
             {

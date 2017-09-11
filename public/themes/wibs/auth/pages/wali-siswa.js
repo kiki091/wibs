@@ -21,19 +21,22 @@ function crud_cms_wali_sswa() {
                 siswa_id: '',
                 nama_lengkap_ayah: '',
                 nama_lengkap_ibu: '',
-                tempat_lahir: '',
-                tanggal_lahir: '',
-                agama: '',
-                kewarganegaraan: '',
-                pendidikan: '',
-                pekerjaan: '',
-                penghasilan_bulanan: '',
-                alamat_kantor: '',
-                telpon_kantor: '',
-                alamat_rumah: '',
-                no_telepon: '',
-                email: '',
-                status: '',
+                tempat_lahir_ayah: '',
+                tempat_lahir_ibu: '',
+                tanggal_lahir_ayah: '',
+                tanggal_lahir_ibu: '',
+                kewarganegaraan_ayah: '',
+                kewarganegaraan_ibu: '',
+                pendidikan_ayah: '',
+                pendidikan_ibu: '',
+                pekerjaan_ayah: '',
+                pekerjaan_ibu: '',
+                penghasilan_bulanan_ayah: '',
+                penghasilan_bulanan_ibu: '',
+                email_ayah: '',
+                email_ibu: '',
+                status_ayah: '',
+                status_ibu: '',
             },
             form_add_title: "Wali Santri Management",
             id: '',
@@ -176,19 +179,22 @@ function crud_cms_wali_sswa() {
                 this.models.siswa_id = ''
                 this.models.nama_lengkap_ayah = ''
                 this.models.nama_lengkap_ibu = ''
-                this.models.tempat_lahir = ''
-                this.models.tanggal_lahir = ''
-                this.models.agama = ''
-                this.models.kewarganegaraan = ''
-                this.models.pendidikan = ''
-                this.models.pekerjaan = ''
-                this.models.penghasilan_bulanan = ''
-                this.models.alamat_kantor = ''
-                this.models.telpon_kantor = ''
-                this.models.alamat_rumah = ''
-                this.models.no_telepon = ''
-                this.models.email = ''
-                this.models.status = ''
+                this.models.tempat_lahir_ayah = ''
+                this.models.tempat_lahir_ibu = ''
+                this.models.tanggal_lahir_ayah = ''
+                this.models.tanggal_lahir_ibu = ''
+                this.models.kewarganegaraan_ayah = ''
+                this.models.kewarganegaraan_ibu = ''
+                this.models.pendidikan_ayah = ''
+                this.models.pendidikan_ibu = ''
+                this.models.pekerjaan_ayah = ''
+                this.models.pekerjaan_ibu = ''
+                this.models.penghasilan_bulanan_ayah = ''
+                this.models.penghasilan_bulanan_ibu = ''
+                this.models.email_ayah = ''
+                this.models.email_ibu = ''
+                this.models.status_ayah = ''
+                this.models.status_ibu = ''
 
                 this.form_add_title = "Wali Santri Management"
                 document.getElementById("form__cms__wali__santri");
