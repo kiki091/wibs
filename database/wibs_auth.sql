@@ -75,7 +75,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'Santri','santri','santri()',1,0,1,1,NULL,NULL),(21,'Wali Santri','wali-santri','wali_santri()',1,0,1,2,NULL,NULL),(22,'Report Quran','report-quran','report_quran()',1,1,1,3,NULL,NULL);
+INSERT INTO `menu` VALUES (1,'Santri','santri','santri()',1,0,1,1,NULL,NULL),(21,'Wali Santri','wali-santri','wali_santri()',1,0,1,2,NULL,NULL),(22,'Report Santri','report-santri','report_santri()',1,1,1,3,NULL,NULL);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -199,7 +199,7 @@ CREATE TABLE `sub_menu` (
 
 LOCK TABLES `sub_menu` WRITE;
 /*!40000 ALTER TABLE `sub_menu` DISABLE KEYS */;
-INSERT INTO `sub_menu` VALUES (9,'Report Santri','report-tahfidz','report_tahfidz()',22,1,NULL,NULL),(10,'Report Hadis','report-hadis','report_hadis()',22,1,NULL,NULL),(11,'Report Kesehatan','report-kesehatan','report_kesehatan()',22,1,NULL,NULL);
+INSERT INTO `sub_menu` VALUES (9,'Report Tahfidz','report-tahfidz','report_tahfidz()',22,1,NULL,NULL),(10,'Report Hadis','report-hadis','report_hadis()',22,1,NULL,NULL),(11,'Report Kesehatan','report-kesehatan','report_kesehatan()',22,1,NULL,NULL);
 /*!40000 ALTER TABLE `sub_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,7 +344,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','sheqbo@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','J60dUT3BdKE3kqFAuiNhcRyNrhk5HSdlpe0wKIZc3pezuCyI4VAbLfzxpMt5',1,2,'2017-05-04 09:58:53','2017-05-04 09:58:53');
+INSERT INTO `users` VALUES (1,'admin','sheqbo@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','9uHC44Bv9Bntnec6YXUn0dZNzdFP8JXAganTLjqmtrBIQ1T5VUopm9dlYKop',1,2,'2017-05-04 09:58:53','2017-05-04 09:58:53');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -357,4 +357,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-08-27 22:06:11
+-- Dump completed on 2017-09-11 23:34:55
