@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 use App\Http\Controllers\Wibs\BaseController;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
-use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Services\Bridge\Auth\Users as UserServices;
 use App\Custom\Auth\DataHelper;
 use App\Services\Api\Response as ResponseService;
@@ -18,7 +18,7 @@ use Response;
 
 class AuthController extends BaseController
 {
-	use AuthenticatesAndRegistersUsers;
+	use AuthenticatesUsers;
 
     protected $validationMessage = '';
     protected $validationChangePasswordForm = '';

@@ -6,7 +6,7 @@
 		<div class="page-title">
 			<div class="title_left">
 		        <h3>DASHBOARD </h3>
-		        <p>MSC MANAGEMENT SYSTEM</p>
+		        <p>{{ Request::segment(1) }} MANAGEMENT SYSTEM</p>
 		    </div>
 		</div>
 	</div>

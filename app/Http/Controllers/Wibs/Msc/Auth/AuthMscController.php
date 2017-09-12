@@ -19,7 +19,7 @@ use Response;
 
 class AuthMscController extends MscBaseController
 {
-	use AuthenticatesAndRegistersUsers;
+	use AuthenticatesUsers;
 
     protected $validationMessage = '';
     protected $validationChangePasswordForm = '';
