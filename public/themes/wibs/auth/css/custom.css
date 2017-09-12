@@ -3454,7 +3454,8 @@ ul.project_files li a i {
     font-size: 35px
 }
 .login {
-    background: #2496a9
+    background: #2496a9;
+    overflow: hidden;
 }
 .login .fa-paw {
     font-size: 26px
@@ -3465,7 +3466,7 @@ a.hiddenanchor {
 .login_wrapper {
     right: 0px;
     margin: 0px auto;
-    margin-top: 5%;
+    margin-top: 10%;
     max-width: 500px;
     position: relative
 }

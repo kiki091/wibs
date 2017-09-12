@@ -4,7 +4,7 @@
 		WIBS CONTENT MANAGEMENT
 	@endsection
 	@include('wibs.auth.partials.header')
-	<body class="login">
+	<body class="login" style="background-image: url('themes/wibs/auth/images/bg-login.jpg'); background-size: cover; ">
 
 		<div>
       		<a class="hiddenanchor" id="signup"></a>
@@ -18,7 +18,7 @@
                                                             
 -->
       		<div class="login_wrapper">
-          		<div class="animate form login_form" style="background: #f4f4f4">
+          		<div class="animate form login_form" style="background: rgba(244, 244, 244, 0.91)">
               		<section class="login_content">
                   		<form role="form" method="POST" action="{{ route('users_authenticate') }}">
                     		<h1>WIBS MANAGEMENT</h1>
