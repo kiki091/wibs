@@ -19,6 +19,7 @@ mix.styles([
     'public/themes/wibs/msc/css/nprogress.css',
     'public/themes/wibs/msc/css/animate.css',
     'public/themes/wibs/msc/css/custom.css',
+    'public/themes/wibs/msc/css/toggle-nav.css',
     'public/js/bower_components/pacejs/pace-theme-flash.css',
     'public/js/bower_components/iCheck/skins/flat/flat.css',
     'public/themes/wibs/msc/css/pop__up.css',
@@ -46,6 +47,7 @@ mix.scripts([
 	'public/themes/wibs/msc/js/bootstrap.min.js',
 	//'public/js/bower_components/pacejs/pace.js',
 	'public/themes/wibs/msc/js/custom.min.js',
+    'public/themes/wibs/msc/js/toggle-nav.js',
 	'public/themes/wibs/msc/js/nprogress.js',
 ], 'public/themes/wibs/msc/build/js/core.js');
 
