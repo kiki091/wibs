@@ -94,34 +94,6 @@ function crud_cms_santri() {
                 })
             },
 
-            changeStatus: function(id) {
-                var payload = []
-                payload['id'] = id
-                payload['_token'] = token
-
-                var form = new FormData();
-
-                for (var key in payload) {
-                    form.append(key, payload[key])
-                }
-
-                var domain  = laroute.route('cms_change_status_data_santri', []);
-                //var domain  = laroute.url(wibs.systemLocation +'/santri/change-status', []);
-
-                this.$http.post(domain, form).then(function(response) {
-                    response = response.data
-                    if (response.status == false) {
-                        this.fetchData()
-                        pushNotif(response.status,response.message);
-                    }
-                    else{
-
-                        this.fetchData()
-                        pushNotif(response.status,response.message);
-                    }
-                })
-            },
-
             storeData: function(event) {
 
                 var vm = this;
@@ -156,10 +128,7 @@ function crud_cms_santri() {
                         }
                     },
                     complete: function(response){
-                        setTimeout(function(){
-                            hideLoading()
-                        }, 3000);
-                        
+                        hideLoading()
                     }
 
                 };
@@ -181,18 +150,45 @@ function crud_cms_santri() {
                     form.append(key, payload[key])
                 }
 
-                var domain  = laroute.url(wibs.systemLocation +'/santri/edit', []);
+                var domain  = laroute.route('cms_edit_data_santri', []);
                 this.$http.post(domain, form).then(function(response) {
 
                     response = response.data
                     if (response.status) {
-                        this.models = response.data.santri;
-
+                        this.models = response.data;
+                        this.foto = response.data.foto_url
                         this.form_add_title = "Edit Data Santri"
-                        $('.btn__add').click()
+                        $('#toggle-form-content').slideDown('swing')
 
                     } else {
                         pushNotif(response.status,response.message)
+                    }
+                })
+            },
+
+            changeStatus: function(id) {
+                var payload = []
+                payload['id'] = id
+                payload['_token'] = token
+
+                var form = new FormData();
+
+                for (var key in payload) {
+                    form.append(key, payload[key])
+                }
+
+                var domain  = laroute.route('cms_change_status_data_santri', []);
+
+                this.$http.post(domain, form).then(function(response) {
+                    response = response.data
+                    if (response.status == false) {
+                        this.fetchData()
+                        pushNotif(response.status,response.message);
+                    }
+                    else{
+
+                        this.fetchData()
+                        pushNotif(response.status,response.message);
                     }
                 })
             },
@@ -220,7 +216,7 @@ function crud_cms_santri() {
                 this.models.tanggal_nomer_sttb = ''
                 this.models.lama_belajar = ''
                 this.models.kelas_id = ''
-                this.models.tingkatan_id     = ''
+                this.models.tingkatan_id = ''
                 this.models.status_siswa = ''
                 this.models.description = ''
                 this.models.email = ''

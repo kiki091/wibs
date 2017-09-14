@@ -21,7 +21,7 @@
 <meta property="og:description" content="Wibs" />
 <meta property="og:image" content="{{ asset(LOGO_IMAGES_DIRECTORY.'logo.png') }}" />
 <meta property="og:type"  content="article" />
-<title>@yield('pageheadtitle' , 'auth | Wibs')</title>
+<title>@yield('pageheadtitle' , 'AUTH | WIBS')</title>
 
 <meta id="_token" name="_token" value="{{ csrf_token() }}">
 

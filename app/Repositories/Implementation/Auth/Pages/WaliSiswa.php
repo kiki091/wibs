@@ -43,68 +43,12 @@ class WaliSiswa extends BaseImplementation implements WaliSiswaInterface
     public function getData($data)
     {
         $params = [
-            'current_location_slug' => $this->currentLocation,
+            'current_location_slug' => true,
         ];
 
         $dataWaliSiswa = $this->waliSiswa($params, 'desc', 'array', false);
 
         return $this->waliSiswaTransformation->getDataWaliSiswaTransform($dataWaliSiswa);
-    }
-
-    /** 
-     * edit data Wali Siswa
-     * @param $data
-     * @return array
-     */
-
-    public function edit($data)
-    {
-        $params = [
-            "id" => isset($data['id']) ? $data['id'] : '',
-        ];
-
-        $dataWaliSiswa = $this->waliSiswa($params, 'asc', 'array', true);
-
-        return $this->setResponse(trans('message.cms_success_get_data'), true, $this->waliSiswaTransformation->getSingleForEditWaliSiswaTransform($dataWaliSiswa));
-    }
-
-    /** 
-     * change status data waliSiswa
-     * @param $data
-     * @return array
-     */
-
-    public function changeStatus($data)
-    {
-        try {
-            if (!isset($data['id']) && empty($data['id']))
-                return $this->setResponse(trans('message.cms_required_id'), false);
-
-            DB::beginTransaction();
-
-            $oldData = $this->waliSiswa
-                ->id($data['id'])
-                ->first()->toArray();
-
-            $updatedData = [
-                'is_active' => $oldData['is_active'] ? false : true,
-            ];
-
-            $changeStatus = $this->waliSiswa
-                ->id($data['id'])
-                ->update($updatedData);
-
-            if($changeStatus) {
-                DB::commit();
-                return $this->setResponse(trans('message.cms_success_update_status_general'), true);
-            }
-
-            DB::rollBack();
-            return $this->setResponse(trans('message.cms_failed_update_status_general'), false);
-
-        } catch (\Exception $e) {
-            return $this->setResponse($e->getMessage(), false);
-        }
     }
 
     /** 
@@ -117,15 +61,15 @@ class WaliSiswa extends BaseImplementation implements WaliSiswaInterface
     {
         try {
 
-            DB::beginTransaction();
+            DB::connection('msc')->beginTransaction();
             
             if(!$this->storeData($data) == true)
             {
-                DB::rollBack();
+                DB::connection('msc')->rollBack();
                 return $this->setResponse($this->message, false);
             }
 
-            DB::commit();
+            DB::connection('msc')->commit();
             return $this->setResponse(trans('message.cms_success_store_data_general'), true);
 
         } catch (\Exception $e) {
@@ -188,6 +132,62 @@ class WaliSiswa extends BaseImplementation implements WaliSiswaInterface
         }
     }
 
+    /** 
+     * edit data Wali Siswa
+     * @param $data
+     * @return array
+     */
+
+    public function edit($data)
+    {
+        $params = [
+            "id" => isset($data['id']) ? $data['id'] : '',
+        ];
+
+        $dataWaliSiswa = $this->waliSiswa($params, 'asc', 'array', true);
+
+        return $this->setResponse(trans('message.cms_success_get_data'), true, $this->waliSiswaTransformation->getSingleForEditWaliSiswaTransform($dataWaliSiswa));
+    }
+
+    /** 
+     * change status data waliSiswa
+     * @param $data
+     * @return array
+     */
+
+    public function changeStatus($data)
+    {
+        try {
+            if (!isset($data['id']) && empty($data['id']))
+                return $this->setResponse(trans('message.cms_required_id'), false);
+
+            DB::connection('msc')->beginTransaction();
+
+            $oldData = $this->waliSiswa
+                ->id($data['id'])
+                ->first()->toArray();
+
+            $updatedData = [
+                'is_active' => $oldData['is_active'] ? false : true,
+            ];
+
+            $changeStatus = $this->waliSiswa
+                ->id($data['id'])
+                ->update($updatedData);
+
+            if($changeStatus) {
+                DB::connection('msc')->commit();
+                return $this->setResponse(trans('message.cms_success_update_status_general'), true);
+            }
+
+            DB::connection('msc')->rollBack();
+            return $this->setResponse(trans('message.cms_failed_update_status_general'), false);
+
+        } catch (\Exception $e) {
+            return $this->setResponse($e->getMessage(), false);
+        }
+    }
+
     /**
      * Get All waliSiswa
      * Warning: this function doesn't redis cache
@@ -198,16 +198,14 @@ class WaliSiswa extends BaseImplementation implements WaliSiswaInterface
     {
         $waliSiswa = $this->waliSiswa->with(['siswa']);
 
-        $waliSiswa->whereHas('siswa.tingkatan', function($q) use($params){
-            $q->slug($this->routeAuthSystemLocation);
-        });
+        if(isset($params['current_location_slug'])) {
+            $waliSiswa->whereHas('siswa.tingkatan', function($q) use($params){
+                $q->slug($this->routeAuthSystemLocation);
+            });
+        }   
 
         if(isset($params['id'])) {
             $waliSiswa->id($params['id']);
-        }
-
-        if(isset($params['is_active'])) {
-            $waliSiswa->isActive($params['is_active']);
         }
 
         if(isset($params['order'])) {

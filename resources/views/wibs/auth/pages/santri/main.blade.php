@@ -24,11 +24,6 @@
 		    	<ul class="news__list sortable" id="sort" v-sort>
 		    		<li class="news__list__wrapper sort-item" v-for="santri in responseData.santri" :data-id="santri.id">
 		    			<div class="news__list__detail">
-		    				<div class="drag__control">
-								<div class="handle">
-									@include('wibs.auth.svg-logo.ico-handle-drag')
-								</div>
-							</div>
 							<div class="news__list__detail__left">
 								<img :src=santri.foto_url>
 							</div>

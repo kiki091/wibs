@@ -29,7 +29,7 @@
 								<div class="news__list__detail__middle">
 									<div class="news__list__desc">
 										<div class="news__name">
-											<a href="javascript:void(0);" class="title__name content__edit__hover" title="Edit Data">
+											<a href="javascript:void(0);" class="title__name content__edit__hover" title="Edit Data" @click="editData(wali_santri.id)">
 												<b> Nis :</b><i> @{{ wali_santri.nis_siswa }}</i>, <b>Nama Santri : </b><i>@{{ wali_santri.nama_siswa }}</i>
 											</a>
 										</div>

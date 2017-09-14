@@ -20,6 +20,7 @@ mix.styles([
     'public/themes/wibs/msc/css/animate.css',
     'public/themes/wibs/msc/css/custom.css',
     'public/themes/wibs/msc/css/toggle-nav.css',
+    'public/themes/wibs/msc/css/w3.css',
     'public/js/bower_components/pacejs/pace-theme-flash.css',
     'public/js/bower_components/iCheck/skins/flat/flat.css',
     'public/themes/wibs/msc/css/pop__up.css',

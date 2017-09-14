@@ -305,10 +305,10 @@ function mainGeneral(){
     progresBar();
 }
 
-function init_student_monitoring()
+function init_report_health()
 {
     mainGeneral();
-    crud_student_monitoring();
+    crud_report_health();
     buttonClickOpen();
     buttonClickClose();
     replaceToCkEditor();

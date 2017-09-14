@@ -4,19 +4,19 @@ namespace App\Services\Transformation\Msc;
 
 use Carbon\Carbon;
 
-class StudentMonitoring
+class ReportHealth
 {
 	/**
      * Get Data Transformation
      * @param $data
      * @return array
      */
-    public function getStudentMonitoringTransform($data)
+    public function getReportHealthTransform($data)
     {
         if(!is_array($data) || empty($data))
             return array();
 
-        return $this->setStudentMonitoringTransform($data);
+        return $this->setReportHealthTransform($data);
     }
 
     /**
@@ -24,7 +24,7 @@ class StudentMonitoring
      * @param $data
      * @return array
      */
-    protected function setStudentMonitoringTransform($data)
+    protected function setReportHealthTransform($data)
     {
         $dataTransform = array_map(function($data) {
 

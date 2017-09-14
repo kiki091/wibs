@@ -35,14 +35,14 @@
 								<th>درجة التجويد<br>Tazweed</th>
 								<th>درجة المخرج<br>Makhraj</th>
 							</tr>
-							<tr v-for="(report_quran, index) in models.quran_recitation">
+							<tr v-for="(report_tahfidz, index) in models.report_tahfidz">
 								<th>@{{ index+1 }}</th>
-								<th>@{{ report_quran.report_from }}</th>
-								<th>@{{ report_quran.disiplin }}</th>
-								<th>@{{ report_quran.total_hafalan }} Juz</th>
-								<th>@{{ report_quran.nilai_hafalan }}</th>
-								<th>@{{ report_quran.nilai_tajwid }}</th>
-								<th>@{{ report_quran.nilai_mahraj }}</th>
+								<th>@{{ report_tahfidz.report_from }}</th>
+								<th>@{{ report_tahfidz.disiplin }}</th>
+								<th>@{{ report_tahfidz.total_hafalan }} Juz</th>
+								<th>@{{ report_tahfidz.nilai_hafalan }}</th>
+								<th>@{{ report_tahfidz.nilai_tajwid }}</th>
+								<th>@{{ report_tahfidz.nilai_mahraj }}</th>
 						</tbody>
 					</table>
 				</div>

@@ -71,33 +71,6 @@ function crud_cms_wali_sswa() {
                 });
             },
 
-            changeStatus: function(id) {
-                var payload = []
-                payload['id'] = id
-                payload['_token'] = token
-
-                var form = new FormData();
-
-                for (var key in payload) {
-                    form.append(key, payload[key])
-                }
-
-                var domain  = laroute.url(wibs.systemLocation +'/wali-santri/chenge-status', []);
-
-                this.$http.post(domain, form).then(function(response) {
-                    response = response.data
-                    if (response.status == false) {
-                        this.fetchData()
-                        pushNotif(response.status,response.message);
-                    }
-                    else{
-
-                        this.fetchData()
-                        pushNotif(response.status,response.message);
-                    }
-                })
-            },
-
             storeData: function(event) {
 
                 var vm = this;
@@ -157,12 +130,12 @@ function crud_cms_wali_sswa() {
                     form.append(key, payload[key])
                 }
 
-                var domain  = laroute.url(wibs.systemLocation +'/wali-santri/edit', []);
+                var domain  = laroute.route('cms_edit_data_wali_santri', []);
                 this.$http.post(domain, form).then(function(response) {
 
                     response = response.data
                     if (response.status) {
-                        this.models = response.data.santri;
+                        this.models = response.data;
 
                         this.form_add_title = "Edit Data Santri"
                         $('.btn__add').click()

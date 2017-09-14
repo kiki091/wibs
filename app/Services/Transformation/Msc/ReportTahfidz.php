@@ -4,19 +4,19 @@ namespace App\Services\Transformation\Msc;
 
 use Carbon\Carbon;
 
-class QuranRecitationReport
+class ReportTahfidz
 {
 	/**
      * Get Data Transformation
      * @param $data
      * @return array
      */
-    public function getQuranRecitationReportTransform($data)
+    public function getReportTahfidzTransform($data)
     {
         if(!is_array($data) || empty($data))
             return array();
 
-        return $this->setQuranRecitationReportTransform($data);
+        return $this->setReportTahfidzTransform($data);
     }
 
     /**
@@ -24,7 +24,7 @@ class QuranRecitationReport
      * @param $data
      * @return array
      */
-    protected function setQuranRecitationReportTransform($data)
+    protected function setReportTahfidzTransform($data)
     {
         $dataTransform = array_map(function($data) {
 

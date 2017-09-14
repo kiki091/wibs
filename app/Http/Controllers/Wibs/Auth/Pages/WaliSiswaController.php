@@ -141,7 +141,13 @@ class WaliSiswaController extends BaseController
             'siswa_id'                   => 'required',
         ];
 
-
+        if ($this->isEditMode($request->input()))
+        {
+            if (is_null($request->input('siswa_id'))) {
+                unset($rules['siswa_id']);
+            }
+        }
+        
         return $rules;
     }
 

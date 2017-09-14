@@ -5,25 +5,25 @@ namespace App\Http\Controllers\Wibs\Msc\Pages;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Wibs\Msc\MscBaseController;
 use App\Services\Bridge\Msc\Siswa as SiswaMscServices;
-use App\Services\Bridge\Msc\StudentMonitoring as StudentMonitoringServices;
+use App\Services\Bridge\Msc\ReportTahfidz as ReportTahfidzServices;
 use App\Services\Api\Response as ResponseService;
 
-class StudentMonitoringController extends MscBaseController
+class ReportTahfidzController extends MscBaseController
 {
 	protected $response;
 	protected $siswa;
-	protected $studentMonitoring;
+	protected $reportTahfidz;
 
-	public function __construct(SiswaMscServices $siswa,StudentMonitoringServices $studentMonitoring, ResponseService $response) {
+	public function __construct(SiswaMscServices $siswa,ReportTahfidzServices $reportTahfidz, ResponseService $response) {
 
 		$this->response = $response;
 		$this->siswa = $siswa;
-		$this->studentMonitoring = $studentMonitoring;
+		$this->reportTahfidz = $reportTahfidz;
 	}
 
 	public function index(Request $request) 
 	{
-		$blade = self::URL_BLADE_MSC_SITE. '.student-monitoring';
+		$blade = self::URL_BLADE_MSC_SITE. '.report-tahfidz';
 
         if(view()->exists($blade)) {
         
@@ -34,16 +34,11 @@ class StudentMonitoringController extends MscBaseController
         return abort(404);
 	}
 
-	/**
-	 * get data siswa
-	 * @return array()
-	 */
-
 	public function getData(Request $request) 
 	{
 		
         $data['siswa'] = $this->siswa->getData();
-        $data['student_monitoring'] = $this->studentMonitoring->getData();
+        $data['report_tahfidz'] = $this->reportTahfidz->getData();
         
         return $this->response->setResponse(trans('message.success_get_data'), true, $data);
 	}

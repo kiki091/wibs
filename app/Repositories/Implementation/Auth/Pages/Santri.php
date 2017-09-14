@@ -48,9 +48,10 @@ class Santri extends BaseImplementation implements SantriInterface
     public function getData($data)
     {
         $params = [
-            'current_location_slug' => $this->currentLocation,
+            'current_location_slug' => isset($data['current_location_slug'])? $data['current_location_slug'] : '',
             "search_by_nis" => isset($data['nis'])? $data['nis'] : '',
         ];
+
         if(!empty($params['search_by_nis']) && isset($params['search_by_nis'])) {
             $dataSantri = $this->santri($params, 'desc', 'array', true);
             return $this->santriTransformation->getSingleForEditSantriTransform($dataSantri);
@@ -59,63 +60,6 @@ class Santri extends BaseImplementation implements SantriInterface
             return $this->santriTransformation->getDataSantriTransform($dataSantri);
         }
 
-        
-    }
-
-    /** 
-     * edit data santri
-     * @param $data
-     * @return array
-     */
-
-    public function edit($data)
-    {
-        $params = [
-            "id" => isset($data['id']) ? $data['id'] : '',
-        ];
-
-        $dataSantri = $this->santri($params, 'asc', 'array', true);
-
-        return $this->setResponse(trans('message.cms_success_get_data'), true, $this->santriTransformation->getSingleForEditSantriTransform($dataSantri));
-    }
-
-    /** 
-     * change status data santri
-     * @param $data
-     * @return array
-     */
-
-    public function changeStatus($data)
-    {
-        try {
-            if (!isset($data['id']) && empty($data['id']))
-                return $this->setResponse(trans('message.cms_required_id'), false);
-
-            DB::beginTransaction();
-
-            $oldData = $this->santri
-                ->id($data['id'])
-                ->first()->toArray();
-
-            $updatedData = [
-                'is_active' => $oldData['is_active'] ? false : true,
-            ];
-
-            $changeStatus = $this->santri
-                ->id($data['id'])
-                ->update($updatedData);
-
-            if($changeStatus) {
-                DB::commit();
-                return $this->setResponse(trans('message.cms_success_update_status_general'), true);
-            }
-
-            DB::rollBack();
-            return $this->setResponse(trans('message.cms_failed_update_status_general'), false);
-
-        } catch (\Exception $e) {
-            return $this->setResponse($e->getMessage(), false);
-        }
     }
 
     /** 
@@ -128,11 +72,11 @@ class Santri extends BaseImplementation implements SantriInterface
     {
         try {
 
-            DB::beginTransaction();
+            DB::connection('msc')->beginTransaction();
             
             if(!$this->storeData($data) == true)
             {
-                DB::rollBack();
+                DB::connection('msc')->rollBack();
                 return $this->setResponse($this->message, false);
             }
 
@@ -140,18 +84,18 @@ class Santri extends BaseImplementation implements SantriInterface
 
                 if(!$this->storeDataPindahan($data) == true)
                 {
-                    DB::rollBack();
+                    DB::connection('msc')->rollBack();
                     return $this->setResponse($this->message, false);
                 }
             }
 
             //TODO: THUMBNAIL UPLOAD
             if ($this->uploadFoto($data) != true) {
-                DB::rollBack();
+                DB::connection('msc')->rollBack();
                 return $this->setResponse($this->message, false);
             }
 
-            DB::commit();
+            DB::connection('msc')->commit();
             return $this->setResponse(trans('message.cms_success_store_data_general'), true);
 
         } catch (\Exception $e) {
@@ -178,10 +122,13 @@ class Santri extends BaseImplementation implements SantriInterface
                     $store->foto                = $this->uniqueIdImagePrefix . '_' .$data['foto']->getClientOriginalName();
                 }
 
+                if (!empty($data['password']) && !empty($data['confirm_password'])) {
+
+                    $store->password                = isset($data['password']) ? Hash::make($data['confirm_password']) : '';
+                }
                 $store->updated_at              = $this->mysqlDateTimeFormat();
 
             } else {
-                $store->nis                     = isset($data['nis']) ? $data['nis'] : '';
                 $store->password                = isset($data['password']) ? Hash::make($data['confirm_password']) : '';
                 $store->foto                    = isset($data['foto']) ? $this->uniqueIdImagePrefix . '_' .$data['foto']->getClientOriginalName() : '';
                 $store->is_active               = true;
@@ -301,6 +248,62 @@ class Santri extends BaseImplementation implements SantriInterface
         }
     }
 
+    /** 
+     * edit data santri
+     * @param $data
+     * @return array
+     */
+
+    public function edit($data)
+    {
+        $params = [
+            "id" => isset($data['id']) ? $data['id'] : '',
+        ];
+
+        $dataSantri = $this->santri($params, 'desc', 'array', true);
+
+        return $this->setResponse(trans('message.cms_success_get_data'), true, $this->santriTransformation->getSingleForEditSantriTransform($dataSantri));
+    }
+
+    /** 
+     * change status data santri
+     * @param $data
+     * @return array
+     */
+
+    public function changeStatus($data)
+    {
+        try {
+            if (!isset($data['id']) && empty($data['id']))
+                return $this->setResponse(trans('message.cms_required_id'), false);
+
+            DB::connection('msc')->beginTransaction();
+
+            $oldData = $this->santri
+                ->id($data['id'])
+                ->first()->toArray();
+
+            $updatedData = [
+                'is_active' => $oldData['is_active'] ? false : true,
+            ];
+
+            $changeStatus = $this->santri
+                ->id($data['id'])
+                ->update($updatedData);
+
+            if($changeStatus) {
+                DB::connection('msc')->commit();
+                return $this->setResponse(trans('message.cms_success_update_status_general'), true);
+            }
+
+            DB::connection('msc')->rollBack();
+            return $this->setResponse(trans('message.cms_failed_update_status_general'), false);
+
+        } catch (\Exception $e) {
+            return $this->setResponse($e->getMessage(), false);
+        }
+    }
+
     /**
      * Get All santri
      * Warning: this function doesn't redis cache
@@ -311,12 +314,15 @@ class Santri extends BaseImplementation implements SantriInterface
     {
         $santri = $this->santri->with(['tingkatan','kelas','wali_siswa']);
 
-        $santri->whereHas('tingkatan', function($q) use($params){
-            $q->slug($this->routeAuthSystemLocation);
-        });
+        if(isset($params['current_location_slug'])) {
+            $santri->whereHas('tingkatan', function($q) use($params){
+                $q->slug($this->routeAuthSystemLocation);
+            });
+        }
 
         if(isset($params['id'])) {
-            $santri->santriId($params['id']);
+            
+            $santri->where('id', $params['id']);
         }
 
         if(isset($params['is_active'])) {

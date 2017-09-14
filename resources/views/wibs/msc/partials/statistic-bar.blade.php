@@ -3,15 +3,15 @@
   	<ul class="list-unstyled user_data">
       	<li>
         		<p>Anas Rizqullah</p>
-        		<div class="progress progress_sm">
-          	<div class="progress-bar bg-green" role="progressbar" :data-transitiongoal="80"></div>
-        		</div>
+        		<div class="w3-border">
+                <div class="w3-red" style="height:10px;width:70%"></div>
+            </div>
       	</li>
       	<li>
         		<p>Attariq Ariel Rachman</p>
-        		<div class="progress progress_sm">
-          	<div class="progress-bar bg-green" role="progressbar" :data-transitiongoal="70"></div>
-        		</div>
+        		<div class="w3-border">
+                <div class="w3-red" style="height:10px;width:50%"></div>
+            </div>
       	</li>
  	  </ul>
     <!-- end of skills -->

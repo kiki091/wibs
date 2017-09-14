@@ -1,5 +1,5 @@
 
-function crud_student_monitoring() {
+function crud_report__tahfidz() {
     var token = Vue.http.headers.common['X-CSRF-TOKEN'] = $("#_token").attr("value");
 
     var controller = new Vue({
@@ -8,14 +8,12 @@ function crud_student_monitoring() {
 
             models: {
                 id:'',
-                berat_badan: '',
-                tinggi_badan: '',
-                tensi_darah: '',
-                golongan_darah: '',
-                riwayat_sakit: '',
-                keadaan_siswa: '',
-                keadaan_siswa_other: '',
-                siswa_id: '',
+                disiplin: '',
+                total_hafalan: '',
+                nilai_hafalan: '',
+                nilai_tajwid: '',
+                nilai_mahraj: '',
+                description: '',
                 report_from: '',
             },
             models_siswa: {
@@ -35,8 +33,8 @@ function crud_student_monitoring() {
                 tingkatan: '',
             },
             avatar : '',
-            form_title: "STUDENT MONITORING",
-            form_sub_title: "Report Kesehatan",
+            form_title: "QUR'AN RECITATION REPORT",
+            form_sub_title: "Laporan Hafalan Qur'an",
             edit: false,
         },
 
@@ -44,7 +42,7 @@ function crud_student_monitoring() {
 
             fetchData: function() {
 
-                var domain  = laroute.route('msc_student_monitoring_get_data', []);
+                var domain  = laroute.route('msc_report_tahfidz_get_data', []);
                 
                 this.$http.get(domain).then(function (response) {
                     response = response.data

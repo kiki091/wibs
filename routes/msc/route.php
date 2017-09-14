@@ -28,14 +28,14 @@ Route::group(['middleware' => ['web']], function ()
 			Route::post('edit', 'Wibs\Msc\Pages\DashboardMscController@edit')->name('msc_edit_data_siswa');
 			Route::post('store', 'Wibs\Msc\Pages\DashboardMscController@store')->name('msc_store_data_siswa');
 
-			Route::group(['prefix' => 'student-monitoring'], function (){
-				Route::get('/', 'Wibs\Msc\Pages\StudentMonitoringController@index')->name('msc_student_monitoring');
-				Route::get('data', 'Wibs\Msc\Pages\StudentMonitoringController@getData')->name('msc_student_monitoring_get_data');
+			Route::group(['prefix' => 'report-health'], function (){
+				Route::get('/', 'Wibs\Msc\Pages\ReportHealthController@index')->name('msc_report_health');
+				Route::get('data', 'Wibs\Msc\Pages\ReportHealthController@getData')->name('msc_report_health_get_data');
 			});
 
-			Route::group(['prefix' => 'quran-recitation'], function (){
-				Route::get('/', 'Wibs\Msc\Pages\QuranRecitationReportController@index')->name('msc_quran_recitation');
-				Route::get('data', 'Wibs\Msc\Pages\QuranRecitationReportController@getData')->name('msc_quran_recitation_get_data');
+			Route::group(['prefix' => 'report-tahfidz'], function (){
+				Route::get('/', 'Wibs\Msc\Pages\ReportTahfidzController@index')->name('msc_report_tahfidz');
+				Route::get('data', 'Wibs\Msc\Pages\ReportTahfidzController@getData')->name('msc_report_tahfidz_get_data');
 			});
 
 			Route::group(['prefix' => 'report-hadis'], function (){

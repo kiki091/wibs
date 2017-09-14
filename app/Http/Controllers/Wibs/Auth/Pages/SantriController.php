@@ -50,7 +50,7 @@ class SantriController extends BaseController
 
     public function getData(Request $request)
     {
-        $data['santri'] = $this->santri->getData();
+        $data['santri'] = $this->santri->getData(['current_location_slug' => true]);
         return $this->response->setResponse(trans('message.cms_success_get_data'), true, $data);
     }
 
@@ -141,6 +141,14 @@ class SantriController extends BaseController
         {
             if (is_null($request->file('foto'))) {
                 unset($rules['foto']);
+            }
+
+            if (is_null($request->input('password'))) {
+                unset($rules['password']);
+            }
+
+            if (is_null($request->input('confirm_password'))) {
+                unset($rules['confirm_password']);
             }
         }
 

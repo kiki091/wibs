@@ -255,7 +255,7 @@ html , body{
 }
 .menu_section h3 {
     padding-left: 15px;
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.67);
     text-transform: uppercase;
     letter-spacing: .5px;
     font-weight: bold;
@@ -768,7 +768,7 @@ a:focus {
     padding-left: 36px
 }
 .nav-md ul.nav.child_menu li:before {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.67);
     bottom: auto;
     content: "";
     height: 8px;
@@ -790,7 +790,7 @@ a:focus {
 }
 .nav.side-menu>li>a,
 .nav.child_menu>li>a {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.67);
     font-weight: 500
 }
 .nav.child_menu li li:hover,
@@ -902,7 +902,7 @@ a:focus {
     font-size: 26px
 }
 .nav.child_menu>li>a {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.67);
     font-size: 12px;
     padding: 9px
 }
@@ -4943,7 +4943,7 @@ input, textarea, select {
   align-items: center; 
 }
 .btn__form:hover, .btn__wizard__next:hover, .btn__wizard__prev:hover {
-    background: #34aa49; 
+    background: #424242; 
 }
 
 .new__form__field .field__icon .field__icon__img {

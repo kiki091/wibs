@@ -79,10 +79,13 @@ class Santri
         $dataTransform['berat_badan']              = isset($data['berat_badan']) ? $data['berat_badan'] : '';
         $dataTransform['alamat_sekolah']           = isset($data['alamat_sekolah']) ? $data['alamat_sekolah'] : '';
         $dataTransform['tanggal_nomer_sttb']       = isset($data['tanggal_nomer_sttb']) ? $data['tanggal_nomer_sttb'] : '';
+        $dataTransform['tanggal_lahir']            = isset($data['tanggal_lahir']) ? $data['tanggal_lahir'] : '';
         $dataTransform['status_siswa']             = isset($data['status_siswa']) ? $data['status_siswa'] : '';
         $dataTransform['description']              = isset($data['description']) ? $data['description'] : '';
         $dataTransform['foto_url']                 = isset($data['foto']) ? asset(SISWA_IMAGES_DIRECTORY.rawurlencode($data['foto'])) : '';
         $dataTransform['email']                    = isset($data['email']) ? $data['email'] : '';
+        $dataTransform['tingkatan_id']             = isset($data['tingkatan']['id']) ? $data['tingkatan']['id'] : '';
+        $dataTransform['kelas_id']                 = isset($data['kelas']['id']) ? $data['kelas']['id'] : '';
 
         return $dataTransform;
     }

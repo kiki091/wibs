@@ -3,7 +3,7 @@
 namespace App\Repositories\Contracts\Msc;
 
 
-interface QuranRecitationReport
+interface ReportHealth
 {
 
     /**

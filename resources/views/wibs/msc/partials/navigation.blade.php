@@ -13,7 +13,7 @@
         </div>
 		<div class="col-md-2 col-sm-4 col-xs-12 tile_stats_count">
           	<span class="count_top"></span>
-            <a href="javascript:void(0)" onclick="menu_student_monitoring()">
+            <a href="javascript:void(0)" onclick="menu_report_health()">
               	<div class="count">كشف مراقبة الطلاب ومراعاتهم</div>
               	<div class="count">Students Monitoring</div>
             </a>
@@ -74,21 +74,25 @@
                   </a>
               </li>
               <li>
-                  <a href="javascript:void(0)" onclick="menu_student_monitoring()">
+                  <a href="javascript:void(0)" onclick="menu_report_health()">
                       <div class="count">كشف متابعة حفظ القرآن الكريم<br/>Report Kesehatan</div>
                   </a>
               </li>
           </ul>
       </li>
       
-      <li><a href="javascript:void(0)" onclick="menu__report__kesantrian()">
-        <div class="count">كشف شؤون الطلاب</div>
-                <div class="count">Report Kesantrian</div>
-      </a></li>
-      <li><a href="javascript:void(0)" onclick="menu__report__akademik()">
-        <div class="count">كشف الدرجات</div>
-                <div class="count">Report Academic</div>
-      </a></li>
+      <li>
+          <a href="javascript:void(0)" onclick="menu__report__kesantrian()">
+              <div class="count">كشف شؤون الطلاب</div>
+              <div class="count">Report Kesantrian</div>
+          </a>
+      </li>
+      <li style="right: 2%">
+          <a href="javascript:void(0)" onclick="menu__report__akademik()">
+              <div class="count">كشف الدرجات</div>
+              <div class="count">Report Academic</div>
+          </a>
+      </li>
     </ul>
   </nav>
 </header>

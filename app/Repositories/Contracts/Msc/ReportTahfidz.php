@@ -3,7 +3,7 @@
 namespace App\Repositories\Contracts\Msc;
 
 
-interface StudentMonitoring
+interface ReportTahfidz
 {
 
     /**

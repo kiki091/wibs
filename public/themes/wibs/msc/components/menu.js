@@ -1,10 +1,10 @@
 // JAVASCRIPT
 
-function menu_student_monitoring() {
+function menu_report_health() {
 
-	$('.right_col').load(laroute.route('msc_student_monitoring', []), function()
+	$('.right_col').load(laroute.route('msc_report_health', []), function()
     {
-    	init_student_monitoring()
+    	init_report_health()
     });
 }
 
@@ -12,7 +12,7 @@ function menu_student_monitoring() {
 
 function menu__report__tahfidz() {
 
-	$('.right_col').load(laroute.route('msc_quran_recitation', []), function()
+	$('.right_col').load(laroute.route('msc_report_tahfidz', []), function()
     {
     	init__report__tahfidz()
     });
