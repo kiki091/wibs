@@ -2,6 +2,10 @@
 
 namespace App\Services\Transformation\Auth;
 
+use Session;
+use Request;
+use RouteUsersLocation;
+
 class Users
 {
 	/**
@@ -55,7 +59,7 @@ class Users
         $dataTransform['email']                 = isset($data['email']) ? $data['email'] : '';
         $dataTransform['user_privilage']        = $this->setUserRole($data['role']);
         $dataTransform['user_menu']             = $this->setMenuUser($data['user_menu']);
-        $dataTransform['user_location']         = $this->setUserLocation($data['location']);
+        $dataTransform['user_location']         = $this->setUserLocation($data['user_location']);
         $dataTransform['system_location']       = $this->setSystemLocationUser($data['system_location']);
         
         return $dataTransform;
@@ -88,8 +92,11 @@ class Users
 
     protected function setMenuUser($data)
     {
+
         $dataTransform = array_map(function($data) {
             return [
+                'system_slug'   => isset($data['menu']['menu_group']['system_menu']['slug'])? $data['menu']['menu_group']['system_menu']['slug'] : '',
+                'system_name'   => isset($data['menu']['menu_group']['system_menu']['name'])? $data['menu']['menu_group']['system_menu']['name'] : '',
                 'menu_group'    => isset($data['menu']['menu_group']['title'])? $data['menu']['menu_group']['title'] : '',
                 'menu_group_icon'    => isset($data['menu']['menu_group']['icon'])? $data['menu']['menu_group']['icon'] : '',
                 'user_id'       => isset($data['user_id'])? $data['user_id'] : '',
@@ -103,14 +110,11 @@ class Users
             ];
         }, $data);
 
-
-
         $finalData = [];
         foreach ($dataTransform as $item) {
-            $finalData[$item['menu_group']][$item['menu_group_icon']][] = $item;
-
+                $finalData[$item['system_slug']][$item['system_name']][$item['menu_group']][$item['menu_group_icon']][] = $item;
         }
-        
+
         return $finalData;
     }
 
@@ -143,8 +147,13 @@ class Users
 
     protected function setUserLocation($data)
     {
-        $dataTransform['name'] = isset($data['name']) ? $data['name'] : '';
-        $dataTransform['slug'] = isset($data['slug']) ? $data['slug'] : '';
+        $dataTransform = array_map(function($data) {
+
+            return [
+                'name' => isset($data['location']['name']) ? $data['location']['name'] : '',
+                'slug' => isset($data['location']['slug']) ? $data['location']['slug'] : '',
+            ];
+        },$data);
 
         return $dataTransform;
     }

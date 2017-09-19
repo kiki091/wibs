@@ -12,23 +12,29 @@
     	<!-- sidebar menu -->
     	<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
       		<div class="menu_section">
-        		<h3>General Information</h3>
+
+            @foreach(DataHelper::userMenu() as $key_system=> $system_menu)
+            @if($key_system == RouteUsersLocation::setUsersLocation())
+            @foreach($system_menu as $system_key=> $user_system)
+        		<h3>{{$system_key}}</h3>
         		<ul class="nav side-menu">
-            @foreach(DataHelper::userMenu() as $key=> $user_menu)
+
+            
+            @foreach($user_system as $key=> $user_menu)
                 @foreach($user_menu as $key_icon=> $menu)
-          			<li>
-          				<a>
-          					<i class="fa {{ $key_icon }}"></i> 
-          					{{ $key }} <span class="fa fa-chevron-down"></span>
-          				</a>
-            			<ul class="nav child_menu">
+                <li>
+                  <a>
+                    <i class="fa {{ $key_icon }}"></i> 
+                    {{ $key }} <span class="fa fa-chevron-down"></span>
+                  </a>
+                  <ul class="nav child_menu">
                       @foreach($menu as $key_menu=> $menu_navigation)
                           @if($menu_navigation['have_sub_menu'] == '0')
-                  				<li>
-                  					<a href="#{{ $menu_navigation['slug'] }}" onclick="{{ $menu_navigation['url'] }}">
+                          <li>
+                            <a href="#{{ $menu_navigation['slug'] }}" onclick="{{ $menu_navigation['url'] }}">
                                 {{ $menu_navigation['title'] }}     
                             </a>
-                  				</li>
+                          </li>
                           @else
                           <li>
                               <a href="#{{ $menu_navigation['slug'] }}">
@@ -47,11 +53,14 @@
                           </li>
                           @endif
                       @endforeach
-            			</ul>
-          			</li>
+                  </ul>
+                </li>
                 @endforeach
             @endforeach
-        		</ul>
+            </ul>
+            @endforeach
+            @endif
+            @endforeach
 
       		</div>
 

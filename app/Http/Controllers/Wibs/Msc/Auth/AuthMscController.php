@@ -109,7 +109,7 @@ class AuthMscController extends MscBaseController
 
         if (isset($siswaInfo['nama_lengkap']) && !empty($siswaInfo['nama_lengkap'])) {
             
-            return redirect('/'.str_slug($siswaInfo['nama_lengkap']));
+            return redirect('/'.strtolower(str_slug($siswaInfo['nama_lengkap'])));
         }
 
         return redirect('/');

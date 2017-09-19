@@ -148,9 +148,9 @@ class ReportHadis extends BaseImplementation implements ReportHadisInterface
     {
         $reportHadis = $this->reportHadis->with(['siswa']);
 
-        $reportHadis->whereHas('siswa.tingkatan', function($q) use($params){
-            $q->slug($this->routeAuthSystemLocation);
-        });
+        // $reportHadis->whereHas('siswa.tingkatan', function($q) use($params){
+        //     $q->slug($this->routeAuthSystemLocation);
+        // });
 
         if(isset($params['id'])) {
             $reportHadis->id($params['id']);

@@ -1,5 +1,15 @@
 // JAVASCRIPT
 
+function menu_default() {
+
+    $('.right_col').load(laroute.route('msc_default', []), function()
+    {
+        init_default()
+    });
+}
+
+// JAVASCRIPT
+
 function menu_report_health() {
 
 	$('.right_col').load(laroute.route('msc_report_health', []), function()

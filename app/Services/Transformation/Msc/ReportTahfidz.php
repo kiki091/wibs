@@ -20,6 +20,19 @@ class ReportTahfidz
     }
 
     /**
+     * Get Data Transformation
+     * @param $data
+     * @return array
+     */
+    public function getAllDataTransform($data)
+    {
+        if(!is_array($data) || empty($data))
+            return array();
+
+        return $this->setAllDataTransform($data);
+    }
+
+    /**
      * Set Data Transformation
      * @param $data
      * @return array
@@ -36,6 +49,25 @@ class ReportTahfidz
                 'nilai_tajwid'  => isset($data['nilai_tajwid']) ? $data['nilai_tajwid'] : '',
                 'nilai_mahraj'  => isset($data['nilai_mahraj']) ? $data['nilai_mahraj'] : '',
                 'report_from'   => isset($data['report_from']) ? date('M Y', strtotime($data['report_from'])) : '',
+            ];
+        },$data);
+
+        return $dataTransform;
+    }
+
+    
+    /**
+     * Set Data Transformation
+     * @param $data
+     * @return array
+     */
+    protected function setAllDataTransform($data)
+    {
+        $dataTransform = array_map(function($data) {
+
+            return [
+                'nama_siswa'    => isset($data['siswa']['nama_lengkap']) ? $data['siswa']['nama_lengkap'] : '',
+                'nilai_hafalan' => isset($data['nilai_hafalan']) ? $data['nilai_hafalan'] : '',
             ];
         },$data);
 

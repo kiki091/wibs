@@ -305,6 +305,15 @@ function mainGeneral(){
     progresBar();
 }
 
+function init_default()
+{
+    mainGeneral();
+    crud_default();
+    buttonClickOpen();
+    buttonClickClose();
+    replaceToCkEditor();
+}
+
 function init_report_health()
 {
     mainGeneral();

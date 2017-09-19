@@ -148,9 +148,9 @@ class ReportQuran extends BaseImplementation implements ReportQuranInterface
     {
         $reportQuran = $this->reportQuran->with(['siswa']);
 
-        $reportQuran->whereHas('siswa.tingkatan', function($q) use($params){
-            $q->slug($this->routeAuthSystemLocation);
-        });
+        // $reportQuran->whereHas('siswa.tingkatan', function($q) use($params){
+        //     $q->slug($this->routeAuthSystemLocation);
+        // });
 
         if(isset($params['id'])) {
             $reportQuran->id($params['id']);

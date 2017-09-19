@@ -149,9 +149,9 @@ class ReportKesehatan extends BaseImplementation implements ReportKesehatanInter
     {
         $reportKesehatan = $this->reportKesehatan->with(['siswa']);
 
-        $reportKesehatan->whereHas('siswa.tingkatan', function($q) use($params){
-            $q->slug($this->routeAuthSystemLocation);
-        });
+        // $reportKesehatan->whereHas('siswa.tingkatan', function($q) use($params){
+        //     $q->slug($this->routeAuthSystemLocation);
+        // });
 
         if(isset($params['id'])) {
             $reportKesehatan->id($params['id']);

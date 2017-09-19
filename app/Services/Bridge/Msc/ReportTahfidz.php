@@ -25,4 +25,13 @@ class ReportTahfidz {
         return $this->reportTahfidz->getData($params);
     }
 
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function getAll($params = array())
+    {
+        return $this->reportTahfidz->getAll($params);
+    }
+
 } 

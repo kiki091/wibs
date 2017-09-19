@@ -6,19 +6,19 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
-				<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+				<div class="col-md-2 col-sm-2 col-xs-12 profile_left">
 					<div class="profile_img">
 						<div id="crop-avatar">
 							<img class="img-responsive avatar-view" :src="models_siswa.foto_url" :title="models_siswa.nama_lengkap">
 						</div>
 					</div>
-					<h3>@{{ models_siswa.nama_lengkap }}</h3>
+					<h3 class="title_name">@{{ models_siswa.nama_lengkap }}</h3>
 					<ul class="list-unstyled user_data">
 						<li>@{{ models_siswa.tingkatan }}</li>
 						<li>Kelas : @{{ models_siswa.kelas }}</li>
 					</ul>
 				</div>
-				<div class="col-md-6 col-sm-6 col-xs-12 profile_left">
+				<div class="col-md-7 col-sm-7 col-xs-12 profile_left">
 					<div class="profile_title">
 						<div class="col-md-6">
 							<h2>@{{ form_sub_title }}</h2>
@@ -35,14 +35,14 @@
 								<th>نوع الدم<br>Blood Type</th>
 								<th>خلفية المرض<br>Medical Record</th>
 							</tr>
-							<tr v-for="(report_student, index) in models.student_monitoring">
+							<tr v-for="(report_health, index) in models.report_health">
 								<th>@{{ index+1 }}</th>
-								<th>@{{ report_student.report_from }}</th>
-								<th>@{{ report_student.berat_badan }} Kg</th>
-								<th>@{{ report_student.tinggi_badan }} Cm</th>
-								<th>@{{ report_student.tensi_darah }}</th>
-								<th>@{{ report_student.golongan_darah }}</th>
-								<th>@{{ report_student.riwayat_sakit }}</th>
+								<th>@{{ report_health.report_from }}</th>
+								<th>@{{ report_health.berat_badan }} Kg</th>
+								<th>@{{ report_health.tinggi_badan }} Cm</th>
+								<th>@{{ report_health.tensi_darah }}</th>
+								<th>@{{ report_health.golongan_darah }}</th>
+								<th>@{{ report_health.riwayat_sakit }}</th>
 						</tbody>
 					</table>
 				</div>

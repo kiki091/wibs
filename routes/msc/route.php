@@ -42,6 +42,11 @@ Route::group(['middleware' => ['web']], function ()
 				Route::get('/', 'Wibs\Msc\Pages\ReportHadisController@index')->name('msc_report_hadis');
 				Route::get('data', 'Wibs\Msc\Pages\ReportHadisController@getData')->name('msc_report_hadis_get_data');
 			});
+
+			Route::group(['prefix' => 'default'], function (){
+				Route::get('/', 'Wibs\Msc\Pages\DefaultController@index')->name('msc_default');
+				Route::get('data', 'Wibs\Msc\Pages\DefaultController@getData')->name('msc_default_get_data');
+			});
 		});
 		
 	});

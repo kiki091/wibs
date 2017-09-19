@@ -53,6 +53,32 @@ class ReportHadis extends BaseImplementation implements ReportHadisInterface
     }
 
     /**
+     * Set MSC Auth Session
+     * Warning: this function doesn't redis cache
+     * @param $params
+     * @return array
+     */
+    public function getAll($params)
+    {
+        
+
+        $siswaId = MscDataHelper::siswaId();
+
+        if (empty($siswaId)) {
+           return response()->json(['message' => 'No Privilege', 'status' => false]);
+        }
+
+        $params = [
+            'order_by' => 'nilai_hafalan',
+            'limit_data'    => '3',
+        ];
+        
+        $reportHadisData = $this->reportHadis($params, 'desc', 'array', false);
+
+        return $this->reportHadisTransformation->getAllDataTransform($reportHadisData);
+    }
+
+    /**
      * Get All User
      * Warning: this function doesn't redis cache
      * @param array $params
@@ -80,6 +106,10 @@ class ReportHadis extends BaseImplementation implements ReportHadisInterface
         } else {
             
             $reportHadis->orderBy('report_from', $orderType);
+        }
+
+        if(isset($params['limit_data'])) {
+            $reportHadis->take($params['limit_data']);
         }
 
         if(!$reportHadis->count())

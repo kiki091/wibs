@@ -22,8 +22,16 @@
               		<section class="login_content">
                   		<form role="form" method="POST" id="msc_form_login" action="{{ route('msc_authenticate')  }}">
                         		<h1>Login Form</h1>
-                            <p>Please enter your username and password to login</p>
 
+
+                            @if (count($errors) > 0)
+                                  @foreach ($errors->all() as $error)
+                                      <p style="text-align: center; padding-bottom: 5px;" class="form--error--message">{{ $error }}</p>
+                                  @endforeach
+                            @else
+                                <p>Please enter your username and password to login</p>
+                            @endif
+                            
                         		<div class="form-group">
                           			<input type="text" class="form-control" placeholder="NIS" value="{{ old('nis') }}" name="nis" id="nis" />
                                 <span class="form--error--message--left" id="form--error--message--nis"></span>
@@ -33,12 +41,6 @@
                           			<input type="password" class="form-control" placeholder="Password" name="password" id="password" />
                                 <span class="form--error--message--left" id="form--error--message--password"></span>
                         		</div>
-
-                            @if (count($errors) > 0)
-                                  @foreach ($errors->all() as $error)
-                                      <p style="float: left; width: 50%" class="form--error--message--left">{{ $error }}</p>
-                                  @endforeach
-                            @endif
 
                             <div class="form-group">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">

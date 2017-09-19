@@ -68,20 +68,14 @@ class RouteMscLocation {
     {
         
         $userSlug = Request::segment(1);
-
-        $redisKey                   = MenuLocationRedis::MSC_USER_SLUG_COLLECTION;
-        $menuLocationCollection     = Cache::rememberForever($redisKey, function() {
-
-            return SiswaModels::where('is_active',true)->get()->toArray();
-
-        });
+        $menuLocationCollection =  SiswaModels::where('is_active',true)->get()->toArray();
         
         if(empty($menuLocationCollection))
             return null;
 
         foreach ($menuLocationCollection as $key => $value) {
            
-            if(str_slug($value['nama_lengkap']) == $userSlug) {
+            if(strtolower(str_slug($value['nama_lengkap'])) == $userSlug) {
                 $isExists = true;
                 break;
             }

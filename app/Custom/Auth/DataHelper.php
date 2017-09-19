@@ -97,8 +97,8 @@ class DataHelper {
     {
         $userInfo = Session::get('user_info');
 
-        if (isset($userInfo['user_location']['slug'])) {
-            return $userInfo['user_location']['slug'];
+        if (isset($userInfo['user_location'])) {
+            return $userInfo['user_location'];
         }
 
         return false;

@@ -23,6 +23,14 @@ var controller = new Vue({
             nama_ayah: '',
             nama_ibu: '',
         },
+        data_tahfidz : {
+            nama_siswa : '',
+            nilai_hafalan : '',
+        },
+        data_hadis : {
+            nama_siswa : '',
+            nilai_hafalan : '',
+        },
         foto : '',
         image : '',
         responseData : {},
@@ -66,6 +74,8 @@ var controller = new Vue({
                 response = response.data
                 if(response.status == true) {
                     this.responseData = response.data.siswa
+                    this.data_hadis = response.data.data_hadis
+                    this.data_tahfidz = response.data.data_tahfidz
                     this.foto = response.data.siswa.foto_url
                 } else {
                     pushNotif(response.status, response.message)

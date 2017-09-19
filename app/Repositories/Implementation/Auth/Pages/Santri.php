@@ -314,11 +314,11 @@ class Santri extends BaseImplementation implements SantriInterface
     {
         $santri = $this->santri->with(['tingkatan','kelas','wali_siswa']);
 
-        if(isset($params['current_location_slug'])) {
-            $santri->whereHas('tingkatan', function($q) use($params){
-                $q->slug($this->routeAuthSystemLocation);
-            });
-        }
+        // if(isset($params['current_location_slug'])) {
+        //     $santri->whereHas('tingkatan', function($q) use($params){
+        //         $q->slug($this->routeAuthSystemLocation);
+        //     });
+        // }
 
         if(isset($params['id'])) {
             

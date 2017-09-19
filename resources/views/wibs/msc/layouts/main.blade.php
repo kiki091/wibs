@@ -10,7 +10,7 @@
             <div class="main_container">
                 <!-- PAGE -->
                 @include('wibs.msc.partials.top-nav')
-                @include('wibs.msc.partials.navigation')
+                @include('wibs.msc.partials.menu')
                 <div class="right_col" role="main">
                     @yield('content')
                 </div>

@@ -40,7 +40,7 @@ CREATE TABLE `location` (
 
 LOCK TABLES `location` WRITE;
 /*!40000 ALTER TABLE `location` DISABLE KEYS */;
-INSERT INTO `location` VALUES (1,'CONTENT MANAGEMENT SYSTEM','CMS',1,NULL,NULL),(2,'ACCOUNT MANAGEMENT SYSTEM','AMS',1,NULL,NULL);
+INSERT INTO `location` VALUES (1,'SENIOR HIGH SCHOOL','sma',1,NULL,NULL),(2,'JUNIOR HIGH SCHOOL','smp',1,NULL,NULL);
 /*!40000 ALTER TABLE `location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -66,7 +66,7 @@ CREATE TABLE `menu` (
   UNIQUE KEY `slug_UNIQUE` (`slug`),
   UNIQUE KEY `url_UNIQUE` (`url`),
   KEY `fk_menu_1_idx` (`menu_group_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +75,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'Santri','santri','santri()',1,0,1,1,NULL,NULL),(21,'Wali Santri','wali-santri','wali_santri()',1,0,1,2,NULL,NULL),(22,'Report Santri','report-santri','report_santri()',1,1,1,3,NULL,NULL);
+INSERT INTO `menu` VALUES (1,'Santri','santri','santri()',1,0,1,1,NULL,NULL),(21,'Wali Santri','wali-santri','wali_santri()',1,0,1,2,NULL,NULL),(22,'Report Santri','report-santri','report_santri()',1,1,1,3,NULL,NULL),(23,'Pegawai','data-pegawai','data_pegawai()',2,0,1,4,NULL,NULL);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,14 +92,14 @@ CREATE TABLE `menu_group` (
   `icon` varchar(45) DEFAULT NULL,
   `order` int(2) DEFAULT NULL,
   `is_active` tinyint(1) DEFAULT NULL,
-  `system_id` int(3) DEFAULT NULL,
+  `system_id` int(5) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `title_UNIQUE` (`title`),
   KEY `fk_menu_group_1_idx` (`system_id`),
   CONSTRAINT `fk_menu_group_1` FOREIGN KEY (`system_id`) REFERENCES `system` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -108,7 +108,7 @@ CREATE TABLE `menu_group` (
 
 LOCK TABLES `menu_group` WRITE;
 /*!40000 ALTER TABLE `menu_group` DISABLE KEYS */;
-INSERT INTO `menu_group` VALUES (1,'MSC','fa-book',1,1,1,NULL,NULL);
+INSERT INTO `menu_group` VALUES (1,'MSC','fa-book',1,1,1,NULL,NULL),(2,'AMS','fa-user',2,1,2,NULL,NULL);
 /*!40000 ALTER TABLE `menu_group` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,7 +220,7 @@ CREATE TABLE `system` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   UNIQUE KEY `slug_UNIQUE` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -229,7 +229,7 @@ CREATE TABLE `system` (
 
 LOCK TABLES `system` WRITE;
 /*!40000 ALTER TABLE `system` DISABLE KEYS */;
-INSERT INTO `system` VALUES (1,'CONTENT MANAGEMENT SYSTEM','cms',1,NULL,NULL),(2,'ACCOUNT MANAGEMENT SYSTEM','ams',2,NULL,NULL),(3,'SENIOR HIGH SCHOOL','sma',3,NULL,NULL),(4,'JUNIOR HIGH SCHOOL','smp',4,NULL,NULL);
+INSERT INTO `system` VALUES (1,'CONTENT MANAGEMENT SYSTEM','cms',1,NULL,NULL),(2,'ACCOUNT MANAGEMENT SYSTEM','ams',2,NULL,NULL);
 /*!40000 ALTER TABLE `system` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,6 +282,7 @@ CREATE TABLE `user_location` (
 
 LOCK TABLES `user_location` WRITE;
 /*!40000 ALTER TABLE `user_location` DISABLE KEYS */;
+INSERT INTO `user_location` VALUES (1,1),(1,2);
 /*!40000 ALTER TABLE `user_location` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -301,7 +302,7 @@ CREATE TABLE `user_menu` (
   KEY `fk_user_menu_2_idx` (`menu_id`),
   CONSTRAINT `fk_user_menu_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_user_menu_2` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -310,7 +311,7 @@ CREATE TABLE `user_menu` (
 
 LOCK TABLES `user_menu` WRITE;
 /*!40000 ALTER TABLE `user_menu` DISABLE KEYS */;
-INSERT INTO `user_menu` VALUES (1,1,1),(57,1,21),(58,1,22);
+INSERT INTO `user_menu` VALUES (1,1,1),(57,1,21),(58,1,22),(59,1,23);
 /*!40000 ALTER TABLE `user_menu` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,7 +345,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','sheqbo@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','9uHC44Bv9Bntnec6YXUn0dZNzdFP8JXAganTLjqmtrBIQ1T5VUopm9dlYKop',1,2,'2017-05-04 09:58:53','2017-05-04 09:58:53');
+INSERT INTO `users` VALUES (1,'admin','sheqbo@gmail.com','$2y$10$jWqW0ETc23XTaaDtjktAw.XRvdet5BnBHauvmJLPBCWNfbyvI3YNy','z4DAxQv3zu4TFYpVbJsj3NE9Z1uDcaUgdc5ysd29IYxvK30W4v8TNz8JzOPa',1,2,'2017-05-04 09:58:53','2017-05-04 09:58:53');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -357,4 +358,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-11 23:34:55
+-- Dump completed on 2017-09-16 12:19:22

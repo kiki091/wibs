@@ -32,4 +32,5 @@
 <script src="{{ asset('themes/wibs/msc/pages/report-health.js') }}"></script>
 <script src="{{ asset('themes/wibs/msc/pages/report-tahfidz.js') }}"></script>
 <script src="{{ asset('themes/wibs/msc/pages/report-hadis.js') }}"></script>
+<script src="{{ asset('themes/wibs/msc/pages/default.js') }}"></script>
 

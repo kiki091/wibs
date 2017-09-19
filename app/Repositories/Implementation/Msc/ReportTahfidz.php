@@ -53,6 +53,32 @@ class ReportTahfidz extends BaseImplementation implements ReportTahfidzInterface
     }
 
     /**
+     * Set MSC Auth Session
+     * Warning: this function doesn't redis cache
+     * @param $params
+     * @return array
+     */
+    public function getAll($params)
+    {
+        
+
+        $siswaId = MscDataHelper::siswaId();
+
+        if (empty($siswaId)) {
+           return response()->json(['message' => 'No Privilege', 'status' => false]);
+        }
+
+        $params = [
+            'order_by' => 'nilai_hafalan',
+            'limit_data'    => '3',
+        ];
+        
+        $reportTahfidzData = $this->reportTahfidz($params, 'desc', 'array', false);
+
+        return $this->reportTahfidzTransformation->getAllDataTransform($reportTahfidzData);
+    }
+
+    /**
      * Get All User
      * Warning: this function doesn't redis cache
      * @param array $params
@@ -80,6 +106,10 @@ class ReportTahfidz extends BaseImplementation implements ReportTahfidzInterface
         } else {
             
             $reportTahfidz->orderBy('report_from', $orderType);
+        }
+
+        if(isset($params['limit_data'])) {
+            $reportTahfidz->take($params['limit_data']);
         }
 
         if(!$reportTahfidz->count())

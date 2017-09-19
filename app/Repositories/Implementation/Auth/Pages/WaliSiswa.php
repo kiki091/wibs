@@ -198,11 +198,11 @@ class WaliSiswa extends BaseImplementation implements WaliSiswaInterface
     {
         $waliSiswa = $this->waliSiswa->with(['siswa']);
 
-        if(isset($params['current_location_slug'])) {
-            $waliSiswa->whereHas('siswa.tingkatan', function($q) use($params){
-                $q->slug($this->routeAuthSystemLocation);
-            });
-        }   
+        // if(isset($params['current_location_slug'])) {
+        //     $waliSiswa->whereHas('siswa.tingkatan', function($q) use($params){
+        //         $q->slug($this->routeAuthSystemLocation);
+        //     });
+        // }   
 
         if(isset($params['id'])) {
             $waliSiswa->id($params['id']);

@@ -55,6 +55,11 @@ class Users extends Authenticatable
         return $this->hasMany('App\Models\Auth\SystemLocation', 'user_id', 'id')->with('system');
     }
 
+    public function user_location()
+    {
+        return $this->hasMany('App\Models\Auth\UserLocation', 'user_id', 'id')->with('location');
+    }
+
 
     /***************** Scope *****************/
 

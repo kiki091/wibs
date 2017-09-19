@@ -8,13 +8,13 @@
 				<div class="clearfix"></div>
 			</div>
 			<div class="x_content">
-				<div class="col-md-3 col-sm-3 col-xs-12 profile_left">
+				<div class="col-md-2 col-sm-2 col-xs-12 profile_left">
 					<div class="profile_img">
 						<div id="crop-avatar">
 							<img class="img-responsive avatar-view" :src="responseData.foto_url" :title="responseData.nama_lengkap">
 						</div>
 					</div>
-					<h3>@{{ responseData.nama_lengkap }}</h3>
+					<h3 class="title_name">@{{ responseData.nama_lengkap }}</h3>
 					<ul class="list-unstyled user_data">
 						<li>@{{ responseData.tingkatan }}</li>
 						<li>Kelas : @{{ responseData.kelas }}</li>
@@ -22,7 +22,7 @@
 					</ul>
 				</div>
 				
-				<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="col-md-7 col-sm-7 col-xs-12">
 					<!-- FORM UPDATE DATA -->
 					<form action="{{ route('msc_store_data_siswa') }}" method="POST" id="from__siswa" class="form" enctype="multipart/form-data" @submit.prevent>
 						<div class="main__content__form__layer" id="toggle-form-content" style="display: none;">

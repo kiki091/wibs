@@ -9,11 +9,11 @@
                 <div class="dropdown__select__list" id="selector-dropdown">
                     <span class="display__name">{{ Request::segment(1) }}</span>
                     <ul class="dropdown__content">
+
                         @if(is_array(DataHelper::userSystemLocation()))
                             @foreach(DataHelper::userSystemLocation() as $value)
-                                @if($value['system_slug'] !== 'cms' && $value['system_slug'] !== 'ams')
-                                    <li><a href="{{ url('/'.$value['system_slug']) }}" class="dropdown__content__link">{{ $value['system_name'] or '' }}</a></li>
-                                @endif
+                                
+                                <li><a href="{{ url('/'.$value['system_slug']) }}" class="dropdown__content__link">{{ $value['system_name'] or '' }}</a></li>
                             @endforeach
                         @endif
                     </ul>

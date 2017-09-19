@@ -32,6 +32,14 @@ function crud_report__tahfidz() {
                 kelas: '',
                 tingkatan: '',
             },
+            data_tahfidz : {
+                nama_siswa : '',
+                nilai_hafalan : '',
+            },
+            data_hadis : {
+                nama_siswa : '',
+                nilai_hafalan : '',
+            },
             avatar : '',
             form_title: "QUR'AN RECITATION REPORT",
             form_sub_title: "Laporan Hafalan Qur'an",
@@ -49,6 +57,8 @@ function crud_report__tahfidz() {
                     if(response.status == true) {
                         this.models = response.data
                         this.models_siswa = response.data.siswa
+                        this.data_hadis = response.data.data_hadis
+                        this.data_tahfidz = response.data.data_tahfidz
                     } else {
                         pushNotif(response.status, response.message)
                     }

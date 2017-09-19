@@ -254,7 +254,6 @@ html , body{
     margin-bottom: 35px
 }
 .menu_section h3 {
-    padding-left: 15px;
     color: rgba(255, 255, 255, 0.67);
     text-transform: uppercase;
     letter-spacing: .5px;
@@ -263,7 +262,8 @@ html , body{
     margin-bottom: 0;
     margin-top: 0;
     border-bottom: 1px #d9dee4 solid;
-    padding: 20px;
+    padding: 10px;
+    padding-bottom: 25px;
 }
 .menu_section>ul {
     margin-top: 10px

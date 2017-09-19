@@ -4,6 +4,10 @@ html , body{
  height:100%;
  
 }
+.title_name {
+    font-size: 14px;
+    text-transform: uppercase;
+}
  .bg__gray {
     background: #eee;
  }

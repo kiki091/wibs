@@ -132,6 +132,7 @@ class AuthController extends BaseController
         {
             foreach ($userInfo['system_location'] as $key => $value) {
                 $value['system_slug'];
+                break;
             }
             
             Session::forget('slug_menu');
