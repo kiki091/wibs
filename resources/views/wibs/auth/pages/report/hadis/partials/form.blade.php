@@ -27,7 +27,7 @@
 							<div class="create__form__row" v-if="edit == false">
 								<div class="new__form__field">
 									<label>NAMA SISWA</label>
-									<input name="nis" type="text" class="new__form__input__field" placeholder="Isikan nis" id="form-search-data" :value="responseDataSantri.nama_lengkap" readonly="readonly">
+									<input name="nis" type="text" class="new__form__input__field" placeholder="Nama siswa" id="form-search-data" :value="responseDataSantri.nama_lengkap" readonly="readonly">
 
 									<div class="form--error--message--left" id="form--error--message--nis"></div>
 								</div>
@@ -36,7 +36,7 @@
 							<div class="create__form__row">
 								<div class="new__form__field">
 									<label>KEDISIPLINAN</label>
-									<input name="kedisiplinan" v-model="models.kedisiplinan" type="text" class="new__form__input__field" placeholder="Isikan NILAI kedisiplinan santri">
+									<input name="kedisiplinan" v-model="models.kedisiplinan" type="text" class="new__form__input__field" placeholder="Isikan nilai kedisiplinan">
 
 									<div class="form--error--message--left" id="form--error--message--kedisiplinan"></div>
 								</div>
@@ -45,7 +45,7 @@
 							<div class="create__form__row">
 								<div class="new__form__field">
 									<label>TOTAL HAFALAN</label>
-									<input name="total_hafalan" v-model="models.total_hafalan" type="text" class="new__form__input__field" placeholder="Isikan nilai total hafalan santri">
+									<input name="total_hafalan" v-model="models.total_hafalan" type="text" class="new__form__input__field" placeholder="Isikan nilai total hafalan">
 
 									<div class="form--error--message--left" id="form--error--message--total_hafalan"></div>
 								</div>
@@ -54,7 +54,7 @@
 							<div class="create__form__row">
 								<div class="new__form__field">
 									<label>KEKUATAN HAFALAN</label>
-									<input v-model="models.kekuatan_hafalan" name="kekuatan_hafalan" type="text" id="kekuatan_hafalan" class="new__form__input__field" placeholder="Isikan kekuatan hafalan santri">
+									<input v-model="models.kekuatan_hafalan" name="kekuatan_hafalan" type="text" id="kekuatan_hafalan" class="new__form__input__field" placeholder="Isikan kekuatan hafalan">
 
 									<div class="form--error--message--left" id="form--error--message--kekuatan_hafalan"></div>
 								</div>
@@ -63,7 +63,7 @@
 							<div class="create__form__row">
 								<div class="new__form__field">
 									<label>NILAI HAFALAN</label>
-									<input v-model="models.nilai_hafalan" name="nilai_hafalan" type="text" id="nilai_hafalan" class="new__form__input__field" placeholder="Isikan nilai hafalan santri">
+									<input v-model="models.nilai_hafalan" name="nilai_hafalan" type="text" id="nilai_hafalan" class="new__form__input__field" placeholder="Isikan nilai hafalan">
 
 									<div class="form--error--message--left" id="form--error--message--nilai_hafalan"></div>
 								</div>
@@ -74,7 +74,7 @@
 								<div class="new__form__field">
 									<label>KITAB</label>
 									<select name="kitab_id" v-model="models.kitab_id">
-										<option value="list_kitab.id" v-for="list_kitab in responseDataKitab">@{{ list_kitab.title }}</option>
+										<option :value="list_kitab.id" v-for="list_kitab in responseDataKitab">@{{ list_kitab.title }}</option>
 									</select>
 
 									<div class="form--error--message--left" id="form--error--message--kitab_id"></div>

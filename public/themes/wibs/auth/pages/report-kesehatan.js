@@ -95,9 +95,7 @@ function crud_cms_report_kesehatan() {
                         }
                     },
                     complete: function(response){
-                        setTimeout(function(){
-                            hideLoading()
-                        }, 3000);
+                        hideLoading()
                         
                     }
 
@@ -120,14 +118,14 @@ function crud_cms_report_kesehatan() {
                     form.append(key, payload[key])
                 }
 
-                var domain  = laroute.url(wibs.systemLocation +'/report/kesehatan/edit', []);
+                var domain  = laroute.route('cms_report_kesehatan_edit_data', []);
                 this.$http.post(domain, form).then(function(response) {
 
                     response = response.data
                     if (response.status) {
-                        this.models = response.data.santri;
+                        this.models = response.data;
 
-                        this.form_add_title = "Edit Report Tahfidz Qur'an"
+                        this.form_add_title = "Edit Report Kesehatan"
                         $('.btn__add').click()
 
                     } else {

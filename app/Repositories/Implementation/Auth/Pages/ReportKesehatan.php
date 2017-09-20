@@ -78,15 +78,15 @@ class ReportKesehatan extends BaseImplementation implements ReportKesehatanInter
     {
         try {
 
-            DB::beginTransaction();
+            DB::connection('msc')->beginTransaction();
             
             if(!$this->storeData($data) == true)
             {
-                DB::rollBack();
+                DB::connection('msc')->rollBack();
                 return $this->setResponse($this->message, false);
             }
 
-            DB::commit();
+            DB::connection('msc')->commit();
             return $this->setResponse(trans('message.cms_success_store_data_general'), true);
 
         } catch (\Exception $e) {
