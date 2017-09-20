@@ -31,7 +31,7 @@ class MenuNavigation
             return [
 
                 'id'            => isset($data['id']) ? $data['id'] : '',
-                'title'         => isset($data['display_name']) ? $data['display_name'] : '',
+                'title'         => isset($data['title']) ? $data['title'] : '',
                 'slug'          => isset($data['slug']) ? $data['slug'] : '',
                 'url'           => isset($data['url']) ? $data['url'] : '',
                 'have_sub_menu' => isset($data['have_sub_menu']) ? $data['have_sub_menu'] : '',

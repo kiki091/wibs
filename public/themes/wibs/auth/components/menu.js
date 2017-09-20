@@ -30,11 +30,11 @@ function menuSubNavigation()
 
 // JAVASCRIPT USER ACCOUNT MANAGER
 
-function menuUserAccount()
+function user_account()
 {
     $('.right_col').load(laroute.route('CmsUserAccount', []), function()
     {
-    	initUserAccount()
+    	init_user_account()
     });
 }
 // JAVASCRIPT CMS SANTRI

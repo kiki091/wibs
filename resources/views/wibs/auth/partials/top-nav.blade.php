@@ -56,7 +56,7 @@
                	</button>
                 <h4 class="modal-title" id="myModalLabel">CHANGE PASSWORD</h4>
             </div>
-            <form id="FormChangePassword" action="{{ route('users_chenge_password') }}" method="POST">
+            <form id="FormChangePassword" action="{{ route('CmsUserAccountChangePassword') }}" method="POST">
             <div class="modal-body">
                 <div class="x_panel">
                 	<div class="x_content">

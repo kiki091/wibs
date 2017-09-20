@@ -6,11 +6,12 @@ use App\Custom\RouteMenuLocation;
 use App\Repositories\Contracts\Auth\Users as UserInterface;
 use App\Repositories\Implementation\BaseImplementation;
 use App\Models\Auth\Users as UserModel;
+use App\Models\Auth\UserLocation as UserLocationModel;
 use App\Models\Auth\SystemLocation as SystemLocationModel;
 use App\Models\Auth\UserMenu as UserMenuModel;
 use App\Models\Auth\Role as RoleModel;
 use App\Models\Auth\UserMenu as UserMenuNavigationModel;
-use App\Custom\Facades\DataHelper;
+use DataHelper;
 use App\Services\Transformation\Auth\Users as UserTransformation;
 //use App\Events\UserRegistrationEvent;
 use Cache;
@@ -26,19 +27,21 @@ class Users extends BaseImplementation implements UserInterface
     protected $role;
     protected $userNavigation;
     protected $userMenuNavigation;
+    protected $userLocation;
     protected $userSystemLocation;
     protected $userTransformation;
 
     protected $message;
     protected $lastInsertId;
 
-    function __construct(UserModel $user, SystemLocationModel $userSystemLocation, UserMenuModel $userNavigation, RoleModel $role, UserMenuNavigationModel $userMenuNavigation, UserTransformation $userTransformation)
+    function __construct(UserModel $user, SystemLocationModel $userSystemLocation, UserLocationModel $userLocation, UserMenuModel $userNavigation, RoleModel $role, UserMenuNavigationModel $userMenuNavigation, UserTransformation $userTransformation)
     {
 
         $this->user = $user;
         $this->role = $role;
         $this->userNavigation = $userNavigation;
         $this->userMenuNavigation = $userMenuNavigation;
+        $this->userLocation = $userLocation;
         $this->userSystemLocation = $userSystemLocation;
         $this->userTransformation = $userTransformation;
     }
@@ -108,19 +111,19 @@ class Users extends BaseImplementation implements UserInterface
     public function registered($data)
     {
         try {
-            DB::beginTransaction();
+            DB::connection('auth')->beginTransaction();
 
             if ($this->registeredUser($data)) {
                 //TODO: send mail first
-                DB::commit();
+                DB::connection('auth')->commit();
                 return $this->setResponse(trans('message.user_success_created'), true);
             }
 
-            DB::rollBack();
+            DB::connection('auth')->rollBack();
             return $this->setResponse(trans('message.user_failed_created'), false);
 
         } catch (\Exception $e) {
-            DB::rollBack();
+            DB::connection('auth')->rollBack();
             return $this->setResponse($e->getMessage(), false);
         }
     }
@@ -141,7 +144,7 @@ class Users extends BaseImplementation implements UserInterface
 
                 return $this->setResponse(trans('message.cms_required_id'), false);
 
-            DB::beginTransaction();
+            DB::connection('auth')->beginTransaction();
 
             $oldData = $this->user->userId($data['id'])->first()->toArray();
 
@@ -153,11 +156,11 @@ class Users extends BaseImplementation implements UserInterface
             $changeStatus = $this->user->userId($data['id'])->update($updatedData);
 
             if($changeStatus) {
-                DB::commit();
+                DB::connection('auth')->commit();
                 return $this->setResponse(trans('message.cms_success_update_status_general'), true);
             }
 
-            DB::rollBack();
+            DB::connection('auth')->rollBack();
             return $this->setResponse(trans('message.cms_failed_update_status_general'), false);
         } catch (\Exception $e) {
             return $this->setResponse($e->getMessage(), false);
@@ -171,19 +174,19 @@ class Users extends BaseImplementation implements UserInterface
     public function changePassword($data)
     {
         try {
-            DB::beginTransaction();
+            DB::connection('auth')->beginTransaction();
 
             if ($this->changePasswordUser($data)) {
                 //TODO: send mail first
-                DB::commit();
+                DB::connection('auth')->commit();
                 return $this->setResponse(trans('message.user_success_change_password'), true);
             }
 
-            DB::rollBack();
+            DB::connection('auth')->rollBack();
             return $this->setResponse(trans('message.user_failed_change_password'), false);
 
         } catch (\Exception $e) {
-            DB::rollBack();
+            DB::connection('auth')->rollBack();
             return $this->setResponse($e->getMessage(), false);
         }
     }
@@ -194,19 +197,21 @@ class Users extends BaseImplementation implements UserInterface
      */
     protected function changePasswordUser($data)
     {
-        $userId = Auth::id();
+        $userId = Auth::guard('users')->user();
         
         try {
             
-            $users = UserModel::find($userId);
+            $user = UserModel::find($userId['id'])->toArray();
 
-            if(Hash::check($data['old_password'], $users['password']))
+            if(Hash::check($data['old_password'], $user['password']))
             {
-                $users['password']      = Hash::make($data['new_password']);
-                $save = $users->save();
+                $user->password      = Hash::make($data['confirm_password']);
+                $save = $user->save();
+                
                 return $save;    
             }
             else
+                
                 return false;
         } catch (Exception $e) {
             return $this->setResponse($e->getMessage(), false);
@@ -227,7 +232,6 @@ class Users extends BaseImplementation implements UserInterface
             $store->name                 = isset($data['name']) ? $data['name'] : '';
             $store->email                = isset($data['email']) ? $data['email'] : '';
             $store->is_active            = false;
-            $store->location_id          = "1";
 
             $store->password             = Hash::make($data['confirm_password']);
 
@@ -289,35 +293,40 @@ class Users extends BaseImplementation implements UserInterface
     {
         try {
 
-            DB::beginTransaction();
+            DB::connection('auth')->beginTransaction();
 
             if($this->checkUserMail($data) == true) {
 
                 if ($this->storeUserAccount($data) != true) {
-                    DB::rollBack();
+                    DB::connection('auth')->rollBack();
+                    return $this->setResponse($this->message, false);
+                }
+
+                if ($this->storeUserLocationControl($data) != true) {
+                    DB::connection('auth')->rollBack();
                     return $this->setResponse($this->message, false);
                 }
 
                 if ($this->storeUserSystemControl($data) != true) {
-                    DB::rollBack();
+                    DB::connection('auth')->rollBack();
                     return $this->setResponse($this->message, false);
                 }
 
                 if ($this->storeUserPrivilageControl($data) != true) {
-                    DB::rollBack();
+                    DB::connection('auth')->rollBack();
                     return $this->setResponse($this->message, false);
                 }
 
                 if ($this->storeUserNavigationControl($data) != true) {
-                    DB::rollBack();
+                    DB::connection('auth')->rollBack();
                     return $this->setResponse($this->message, false);
                 }
 
-                DB::commit();
+                DB::connection('auth')->commit();
                 return $this->setResponse(trans('message.cms_success_store_data_general'), true);
 
             } else {
-                DB::rollBack();
+                DB::connection('auth')->rollBack();
                 return $this->setResponse(trans('message.cms_failed_mail_exist'), false);
             }
 
@@ -351,8 +360,6 @@ class Users extends BaseImplementation implements UserInterface
             if(!empty($data['confirm_password'] && !empty($data['password']))) {
                 $store->password    = Hash::make($data['confirm_password']);
             }
-
-            $store->location_id = isset($data['location_id']) ? $data['location_id'] : '';
 
             if($save = $store->save()) {
                 $this->lastInsertId = $store->id;
@@ -396,6 +403,49 @@ class Users extends BaseImplementation implements UserInterface
             }
 
             if ($this->userSystemLocation->insert($finalData) != true) {
+                $this->message = trans('message.cms_failed_store_data_system_access');
+                return false;
+            }
+
+            return true;
+
+        } catch (\Exception $e) {
+            $this->message = $e->getMessage();
+            return false;
+        }
+    }
+
+
+    /**
+     * Store Data User Location Control Into Database
+     * Warning: this function doesn't redis cache
+     * @param array $params
+     * @return array
+     */
+
+    protected function storeUserLocationControl($data)
+    {
+        try {
+
+            if(!isset($data['location_id']))
+                    return true;
+
+            if ($this->isEditMode($data)) {
+                $this->removeUserLocationControl($data['id']);
+            }
+
+            $finalData = [];
+                
+            foreach ($data['location_id'] as $key => $value) {
+
+                $finalData[] = [
+                    "user_id" => $this->lastInsertId,
+                    "location_id" => $value,
+                ];
+                
+            }
+
+            if ($this->userLocation->insert($finalData) != true) {
                 $this->message = trans('message.cms_failed_store_data_system_access');
                 return false;
             }
@@ -500,6 +550,19 @@ class Users extends BaseImplementation implements UserInterface
     }
 
     /**
+     * Remove Data User System Control Into Database
+     * @param $diningOfferId
+     * @return bool
+     */
+    protected function removeUserLocationControl($id)
+    {
+        if (empty($id))
+            return false;
+
+        return $this->userLocation->where('user_id', $id)->delete();
+    }
+
+    /**
      * Remove Data User Privilage Control Into Database
      * @param $diningOfferId
      * @return bool
@@ -541,6 +604,7 @@ class Users extends BaseImplementation implements UserInterface
         
         $data['user'] = $this->userTransformation->getSingleUserEditTransform($userData);
         $data['user_role'] = $this->role($params);
+        $data['location'] = $this->userLocation($params);
         $data['system_location'] = $this->userSystemLocation($params);
         $data['menu_navigation'] = $this->userMenuNavigation($params);
 
@@ -555,7 +619,7 @@ class Users extends BaseImplementation implements UserInterface
      */
     protected function user($params = array(), $orderType = 'asc', $returnType = 'array', $returnSingle = false)
     {
-        $user = $this->user->with(['role','location','user_menu', 'system_location', 'user_location']);
+        $user = $this->user->with(['role','user_menu', 'system_location', 'user_location']);
 
         if(isset($params['id'])) {
             $user->userId($params['id']);
@@ -643,6 +707,37 @@ class Users extends BaseImplementation implements UserInterface
                     return $userSystemLocation->get()->toArray();
                 } else {
                     return $userSystemLocation->first()->toArray();
+                }
+                break;
+        }
+    }
+
+
+    /**
+     * Get All Data System Location
+     * Warning: this function doesn't redis cache
+     * @param array $params
+     * @return array
+     */
+    
+    protected function userLocation($params = array(), $orderType = 'desc', $returnType = 'array', $returnSingle = false)
+    {
+
+        $userLocation = $this->userLocation;
+
+        if(isset($params['id'])) {
+            $userLocation = UserLocationModel::where('user_id', $params['id']);
+        }
+
+        if(!$userLocation->count())
+            return array();
+
+        switch ($returnType) {
+            case 'array':
+                if(!$returnSingle) {
+                    return $userLocation->get()->toArray();
+                } else {
+                    return $userLocation->first()->toArray();
                 }
                 break;
         }

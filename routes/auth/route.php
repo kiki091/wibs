@@ -115,6 +115,7 @@ Route::group(['middleware' => ['web']], function ()
 						Route::post('change-status', 'Wibs\Auth\UserAccountController@changeStatus')->name('CmsUserAccountChangeStatus');
 						Route::post('store', 'Wibs\Auth\UserAccountController@store')->name('CmsUserAccountStoreData');
 						Route::post('edit', 'Wibs\Auth\UserAccountController@edit')->name('CmsUserAccountEditData');
+						Route::post('change-password', 'Wibs\Auth\UserAccountController@changePassword')->name('CmsUserAccountChangePassword');
 					});
 				});
 			});

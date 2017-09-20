@@ -29,7 +29,7 @@ class Users extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token',
     ];
 
     protected $guarded = ['users'];
@@ -43,11 +43,6 @@ class Users extends Authenticatable
     public function user_menu()
     {
         return $this->hasMany('App\Models\Auth\UserMenu', 'user_id', 'id')->with('menu');
-    }
-
-    public function location()
-    {
-        return $this->belongsTo('App\Models\Auth\Location', 'location_id', 'id');
     }
 
     public function system_location()

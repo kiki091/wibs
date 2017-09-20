@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+	$('#close__button').on('click', function(event) {
+		event.preventDefault()
+		clearErrorMessage()
+	    resetForm()
+	})
+
 	$('#FormChangePassword').on('submit',function(event) {
 		event.preventDefault()
 

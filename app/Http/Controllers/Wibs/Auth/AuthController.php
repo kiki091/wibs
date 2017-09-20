@@ -128,7 +128,7 @@ class AuthController extends BaseController
     {
         $userInfo = DataHelper::userInfo();
         
-        if (isset($userInfo['system_location']) && !empty($userInfo['user_location']))
+        if (isset($userInfo['system_location']))
         {
             foreach ($userInfo['system_location'] as $key => $value) {
                 $value['system_slug'];
@@ -162,7 +162,7 @@ class AuthController extends BaseController
 
         } else {
             //TODO: case pass
-            //return $this->users->changePassword($request->except(['_token']));
+            return $this->users->changePassword($request->except(['_token']));
         }
     }
 

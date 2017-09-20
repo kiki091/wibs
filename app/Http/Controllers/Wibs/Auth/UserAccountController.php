@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Ebtke\Cms\Pages\Auth;
+namespace App\Http\Controllers\Wibs\Auth;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\CmsBaseController;
+use App\Http\Controllers\Wibs\BaseController;
 use App\Services\Bridge\Auth\Users as UserAccountServices;
 use App\Services\Bridge\Auth\MenuNavigation as MenuNavigationServices;
 use App\Services\Bridge\Auth\Privilage as PrivilageServices;
 use App\Services\Bridge\Auth\System as SystemServices;
+use App\Services\Bridge\Auth\Location as LocationServices;
 use App\Services\Api\Response as ResponseService;
 use App\Custom\DataHelper;
 
@@ -16,20 +17,22 @@ use Session;
 use Validator;
 use ValidatesRequests;
 
-class UserAccountController extends CmsBaseController
+class UserAccountController extends BaseController
 {
     protected $response;
     protected $userAccount;
     protected $privilage;
     protected $system;
+    protected $location;
     protected $menuNavigation;
     protected $validationMessage = '';
 
-    public function __construct(UserAccountServices $userAccount, PrivilageServices $privilage, SystemServices $system, MenuNavigationServices $menuNavigation, ResponseService $response)
+    public function __construct(UserAccountServices $userAccount, PrivilageServices $privilage, SystemServices $system, LocationServices $location, MenuNavigationServices $menuNavigation, ResponseService $response)
     {
         $this->response = $response;
         $this->userAccount = $userAccount;
         $this->privilage = $privilage;
+        $this->location = $location;
         $this->system = $system;
         $this->menuNavigation = $menuNavigation;
     }
@@ -41,7 +44,7 @@ class UserAccountController extends CmsBaseController
 
     public function index(Request $request)
     {
-        $blade = self::URL_BLADE_CMS. '.auth.user-account.main';
+        $blade = self::URL_BLADE_AUTH. '.user-account.main';
         
         if(view()->exists($blade)) {
         
@@ -61,6 +64,7 @@ class UserAccountController extends CmsBaseController
     {
         $data['user_account'] = $this->userAccount->getData();
         $data['user_role'] = $this->privilage->getData();
+        $data['location'] = $this->location->getData();
         $data['system_location'] = $this->system->getData();
         $data['menu_navigation'] = $this->menuNavigation->getData();
         return $this->response->setResponse(trans('message.cms_success_get_data'), true, $data);
@@ -104,6 +108,38 @@ class UserAccountController extends CmsBaseController
     public function edit(Request $request)
     {
         return $this->userAccount->edit($request->except(['_token']));
+    }
+
+    /**
+     * Change Password
+     * @param Request $request
+     */
+    public function changePassword(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), $this->validationChangePasswordForm($request));
+
+        if ($validator->fails()) {
+            //TODO: case fail
+            return $this->response->setResponseErrorFormValidation($validator->messages(), false);
+
+        } else {
+            //TODO: case pass
+            return $this->userAccount->changePassword($request->except(['_token']));
+        }
+    }
+
+    /**
+     * Validation Change Password Rules
+     * @return array
+     */
+    private function validationChangePasswordForm()
+    {
+        return $rules = array(
+            'old_password'      => 'required',
+            'new_password'      => 'required',
+            'confirm_password'  => 'required|same:new_password',
+        );
     }
 
     /**

@@ -9,7 +9,7 @@
 	</div>
     <div class="col-md-12 col-sm-12 col-xs-12">
     	<!-- Include form -->
-    	@include('ebtke.cms.pages.auth.user-account.partials.form')
+    	@include('wibs.auth.pages.user-account.partials.form')
     	<!-- / End include form -->
 		<div class="main__content__layer">
 			<div class="content__top flex-between">
@@ -24,11 +24,6 @@
 		    	<ul class="news__list sortable" id="sort" v-sort>
 		    		<li class="news__list__wrapper sort-item" v-for="user_account in responseData.user_account" :data-id="user_account.id">
 		    			<div class="news__list__detail">
-		    				<div class="drag__control">
-								<div class="handle">
-									@include('ebtke.cms.svg-logo.ico-handle-drag')
-								</div>
-							</div>
 							<div class="news__list__detail__left">
 								<i style="padding-top: 10px;" class="fa fa-user fa-3x"></i>
 							</div>

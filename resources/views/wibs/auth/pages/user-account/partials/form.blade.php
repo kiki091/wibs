@@ -12,7 +12,7 @@
 					<div class="form__group__row">
 						<div id="form-accordion">
 							<div class="create__form__row">
-								<span class="form__group__title">General Information<a href="javascript:void(0);" class="style__accordion" data-accordion="form-accordion-1"><i>@include('ebtke.cms.svg-logo.ico-expand-arrow')</i></a></span>
+								<span class="form__group__title">General Information<a href="javascript:void(0);" class="style__accordion" data-accordion="form-accordion-1"><i>@include('wibs.auth.svg-logo.ico-expand-arrow')</i></a></span>
 							</div>
 							<div id="form-accordion-1" style="display: block;">
 								<div class="create__form__row">
@@ -54,26 +54,28 @@
 								<hr/>
 							</div>
 							<div class="create__form__row">
-								<span class="form__group__title">User Access Control<a href="javascript:void(0);" class="style__accordion" data-accordion="form-accordion-2"><i>@include('ebtke.cms.svg-logo.ico-expand-arrow')</i></a></span>
+								<span class="form__group__title">User Access Control<a href="javascript:void(0);" class="style__accordion" data-accordion="form-accordion-2"><i>@include('wibs.auth.svg-logo.ico-expand-arrow')</i></a></span>
 							</div>
 							<div id="form-accordion-2" style="display: block;">
+								
 								<div class="create__form__row">
-									<div class="new__form__field full-width">
+									<div class="new__form__field" style="width: 100%">
 										<label>Location Access</label>
-										<ul class="to_do">
-											<li>
-												<div class="radio icheck-primary">
-	    											<input v-model="models.location_id" type="radio" v-bind:value="1" name="location_id" id="location_id_user" />
-												    <label for="location_id_user">USER</label>
-												</div>
-											</li>
-											<li>
-												<div class="radio icheck-primary">
-	    											<input v-model="models.location_id" type="radio" v-bind:value="2" name="location_id" id="location_id_admin" />
-												    <label for="location_id_admin">ADMIN</label>
-												</div>
-											</li>
-										</ul>
+										
+										<div class="field__icon">
+											<div class="">
+												<ul class="to_do">
+													<li v-for="user_location in responseData.location">
+														<p>
+															<div class="checkbox icheck-primary">
+															    <input class="checkbox__data" type="checkbox" name="location_id[]" :id=" 'checkbox-location_id-' + user_location.location_id" :value="user_location.location_id"/>
+															    <label :for=" 'checkbox-location_id-' + user_location.location_id">@{{ user_location.name }}</label>
+															</div>
+														</p>
+													</li>
+												</ul>
+											</div>
+										</div>
 										<div class="form--error--message--left" id="form--error--message--location_id"></div>
 									</div>
 								</div>

@@ -9,7 +9,7 @@
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-function crudUserAccount() {
+function crud_user_account() {
     var token = Vue.http.headers.common['X-CSRF-TOKEN'] = $("#_token").attr("value");
 
     var controller = new Vue({
@@ -20,7 +20,6 @@ function crudUserAccount() {
                 id:'',
                 name: '',
                 email: '',
-                location_id: '',
                 privilage_id: '',
                 password: '',
                 confirm_password: '',
@@ -30,11 +29,15 @@ function crudUserAccount() {
                 {privilage_id: ''}
             ],
             system_location: [
-                {system_id: ''}
+                { system_id: ''}
+            ],
+            location: [
+                { location_id: ''}
             ],
             user_menu: [
                 {menu_id: ''}
             ],
+            location_id: [],
             system_id: [],
             menu_id: [],
             form_add_title: "User Accounr Manager",
@@ -121,10 +124,7 @@ function crudUserAccount() {
                         }
                     },
                     complete: function(response){
-                        setTimeout(function(){
-                            hideLoading()
-                        }, 3000);
-                        
+                        hideLoading()
                     }
 
                 };
@@ -161,6 +161,7 @@ function crudUserAccount() {
                         this.user_role = response.data.user_role
                         this.user_menu = response.data.menu_navigation
                         this.system_location = response.data.system_location
+                        this.location = response.data.location
 
                         $.each(response.data.menu_navigation, function(index, key) {
                             document.getElementById("checkbox-"+key.menu_id).checked = true;
@@ -172,6 +173,10 @@ function crudUserAccount() {
 
                         $.each(response.data.system_location, function(index, key) {
                             document.getElementById("checkbox-system_id-"+key.system_id).checked = true;
+                        });
+
+                        $.each(response.data.location, function(index, key) {
+                            document.getElementById("checkbox-location_id-"+key.location_id).checked = true;
                         });
 
                         this.form_add_title = "Edit User Accounr Manager"

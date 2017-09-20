@@ -378,10 +378,10 @@ function initSubMenuNavigation()
 }
 
 // INIT FUNCTION USER ACCOUNT MANAGEMENT CMS
-function initUserAccount()
+function init_user_account()
 {
     mainGeneral();
-    crudUserAccount();
+    crud_user_account();
     buttonClickOpen();
     buttonClickClose();
     masonry(2500);
