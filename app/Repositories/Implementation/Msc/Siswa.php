@@ -87,20 +87,20 @@ class Siswa extends BaseImplementation implements SiswaInterface
     {
         try {
 
-            DB::beginTransaction();
+            DB::connection('msc')->beginTransaction();
             
             if(!$this->storeData($data) == true)
             {
-                DB::rollBack();
+                DB::connection('msc')->rollBack();
                 return $this->setResponse($this->message, false);
             }
 
             //TODO: THUMBNAIL UPLOAD
             if ($this->uploadFoto($data) != true) {
-                DB::rollBack();
+                DB::connection('msc')->rollBack();
                 return $this->setResponse($this->message, false);
             }
-            DB::commit();
+            DB::connection('msc')->commit();
             return $this->setResponse(trans('message.cms_success_store_data_general'), true);
 
         } catch (\Exception $e) {
@@ -184,6 +184,62 @@ class Siswa extends BaseImplementation implements SiswaInterface
         } else {
             $this->message = $data['foto']->getErrorMessage();
             return false;
+        }
+    }
+
+
+    /**
+     * Change Password
+     * @param $data
+     */
+    public function changePassword($data)
+    {
+        try {
+            DB::connection('msc')->beginTransaction();
+
+            if ($this->changePasswordSiswa($data)) {
+                //TODO: send mail first
+                DB::connection('msc')->commit();
+                return $this->setResponse(trans('message.user_success_change_password'), true);
+            }
+
+            DB::connection('msc')->rollBack();
+            return $this->setResponse(trans('message.user_failed_change_password'), false);
+
+        } catch (\Exception $e) {
+            DB::connection('msc')->rollBack();
+            return $this->setResponse($e->getMessage(), false);
+        }
+    }
+
+    /**
+     * Change Password User
+     * @param $data
+     */
+    protected function changePasswordSiswa($data)
+    {
+        $siswaId = MscDataHelper::siswaId();
+
+        if (empty($siswaId)) {
+           return response()->json(['message' => 'No Privilege', 'status' => false]);
+        }
+
+        try {
+            
+            $userData = $this->siswa->find($siswaId);
+
+            if(Hash::check($data['old_password'], $userData['password']))
+            {
+                $userData->password         = Hash::make($data['confirm_password']);
+                $save = $userData->save();
+                
+                return $save;    
+            }
+            else
+                
+                return false;
+        } catch (Exception $e) {
+            return $this->setResponse($e->getMessage(), false);
         }
     }
 

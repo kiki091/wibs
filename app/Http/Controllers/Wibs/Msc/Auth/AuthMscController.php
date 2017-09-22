@@ -116,25 +116,6 @@ class AuthMscController extends MscBaseController
     }
 
     /**
-     * Change Password
-     * @param Request $request
-     */
-    public function changePassword(Request $request)
-    {
-
-        $validator = Validator::make($request->all(), $this->validationChangePasswordForm($request));
-
-        if ($validator->fails()) {
-            //TODO: case fail
-            return $this->response->setResponseErrorFormValidation($validator->messages(), false);
-
-        } else {
-            //TODO: case pass
-            //return $this->userMsc->changePassword($request->except(['_token']));
-        }
-    }
-
-    /**
      * Validation for authenticate
      * @param $credentials
      * @return bool
@@ -159,19 +140,6 @@ class AuthMscController extends MscBaseController
         return $rules = array(
             'nis'         => 'required',
             'password'      => 'required',
-        );
-    }
-
-    /**
-     * Validation Change Password Rules
-     * @return array
-     */
-    private function validationChangePasswordForm()
-    {
-        return $rules = array(
-            'old_password'      => 'required',
-            'new_password'      => 'required',
-            'confirm_password'  => 'required|same:new_password',
         );
     }
     

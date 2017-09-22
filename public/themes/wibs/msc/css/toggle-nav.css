@@ -108,8 +108,6 @@ a.menu-link { display: none; }
 
 .menu span.has-subnav { display: none; }
 
-.menu li a:hover { color: rgb(164,208,94); }
-
 .menu li li a:hover {
   background: rgba(164,208,94,0.1);
   color: #000;

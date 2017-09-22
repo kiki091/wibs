@@ -25,4 +25,11 @@ interface Siswa
     public function store($params);
 
 
+    /**
+     * @param $params
+     * @return mixed
+     */
+    public function changePassword($params);
+
+
 } 

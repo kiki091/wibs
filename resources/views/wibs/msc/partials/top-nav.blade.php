@@ -5,7 +5,7 @@
       		<ul class="nav navbar-nav navbar-right">
       			<li class="">
                   	<a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    	EMAIL
+                    	{{MscDataHelper::siswaName()}}
                     	<span class=" fa fa-angle-down"></span>
                  	 </a>
                   	<ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -39,7 +39,7 @@
                	</button>
                 <h4 class="modal-title" id="myModalLabel">CHANGE PASSWORD</h4>
             </div>
-            <form id="FormChangePassword" action="#" method="POST">
+            <form id="FormChangePassword" action="{{ route('msc_change_password_data_siswa') }}" method="POST">
             <div class="modal-body">
                 <div class="x_panel">
                 	<div class="x_content">

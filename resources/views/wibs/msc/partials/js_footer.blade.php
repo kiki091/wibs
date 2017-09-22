@@ -27,6 +27,7 @@
 <script src="{{ asset('themes/wibs/msc/components/general.js') }}"></script>
 <script src="{{ asset('themes/wibs/msc/components/menu.js') }}"></script>
 <!-- Javascript Authentication -->
+<script src="{{ asset('themes/wibs/msc/pages/auth/reset-password.js') }}"></script>
 <script src="{{ asset('themes/wibs/msc/pages/auth/logout.js') }}"></script>
 <script src="{{ asset('themes/wibs/msc/pages/siswa.js') }}"></script>
 <script src="{{ asset('themes/wibs/msc/pages/report-health.js') }}"></script>

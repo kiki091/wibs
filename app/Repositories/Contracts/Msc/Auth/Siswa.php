@@ -12,5 +12,4 @@ interface Siswa
      */
     public function setMscAuthSession($params);
 
-
 } 

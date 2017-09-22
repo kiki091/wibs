@@ -38,6 +38,15 @@ class Siswa {
      * @param $params
      * @return mixed
      */
+    public function changePassword($params = array())
+    {
+        return $this->siswa->changePassword($params);
+    }
+
+    /**
+     * @param $params
+     * @return mixed
+     */
     public function store($params = array())
     {
         return $this->siswa->store($params);

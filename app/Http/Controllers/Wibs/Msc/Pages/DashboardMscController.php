@@ -95,6 +95,25 @@ class DashboardMscController extends MscBaseController
 	}
 
     /**
+     * Change Password
+     * @param Request $request
+     */
+    public function changePassword(Request $request)
+    {
+
+        $validator = Validator::make($request->all(), $this->validationChangePasswordForm($request));
+
+        if ($validator->fails()) {
+            //TODO: case fail
+            return $this->response->setResponseErrorFormValidation($validator->messages(), false);
+
+        } else {
+            //TODO: case pass
+            return $this->siswa->changePassword($request->except(['_token']));
+        }
+    }
+
+    /**
      * Validation Store Landing Offers
      * @return array
      */
@@ -111,5 +130,18 @@ class DashboardMscController extends MscBaseController
         }
 
         return $rules;
+    }
+
+    /**
+     * Validation Change Password Rules
+     * @return array
+     */
+    private function validationChangePasswordForm()
+    {
+        return $rules = array(
+            'old_password'      => 'required',
+            'new_password'      => 'required',
+            'confirm_password'  => 'required|same:new_password',
+        );
     }
 }

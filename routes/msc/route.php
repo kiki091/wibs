@@ -18,7 +18,6 @@ Route::group(['middleware' => ['web']], function ()
 		Route::get('/', 'Wibs\Msc\Auth\AuthMscController@index')->name('msc_login');
 		Route::get('/login', 'Wibs\Msc\Auth\AuthMscController@index')->name('login');
 		Route::post('authenticate', 'Wibs\Msc\Auth\AuthMscController@authenticate')->name('msc_authenticate');
-		Route::post('change-password', 'Wibs\Msc\Auth\AuthMscController@changePassword')->name('msc_change_password');
 		Route::get('logout', 'Wibs\Msc\Auth\AuthMscController@logout')->name('msc_logout');
 
 		Route::group(['prefix' => RouteMscLocation::setUsernameMscToSlug(), 'middleware' => ['auth', 'msc.privilege']], function (){
@@ -27,6 +26,7 @@ Route::group(['middleware' => ['web']], function ()
 			Route::get('data', 'Wibs\Msc\Pages\DashboardMscController@getData')->name('msc_get_data_siswa');
 			Route::post('edit', 'Wibs\Msc\Pages\DashboardMscController@edit')->name('msc_edit_data_siswa');
 			Route::post('store', 'Wibs\Msc\Pages\DashboardMscController@store')->name('msc_store_data_siswa');
+			Route::post('change-password', 'Wibs\Msc\Pages\DashboardMscController@changePassword')->name('msc_change_password_data_siswa');
 
 			Route::group(['prefix' => 'report-health'], function (){
 				Route::get('/', 'Wibs\Msc\Pages\ReportHealthController@index')->name('msc_report_health');
