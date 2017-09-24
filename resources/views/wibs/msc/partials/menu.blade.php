@@ -15,14 +15,14 @@
           </a>
       </li>
       <li>
-          <a href="">
+          <a href="#">
               <div class="count">كشف مراقبة الطلاب ومراعاتهم<br/>Students Monitoring</div>
           </a>
           <span class="has-subnav">&#x25BC;</span>
           <ul class="wide level-2">
               <li>
                   <a href="javascript:void(0)" onclick="menu_report_hadis()">
-                      <div class="count">كشف متابعة حفظ القرآن الكريم<br/>Report Hadis</div>
+                      <div class="count">كشف متابعة حفظ القرآن الكريم<br/>Report Hadits</div>
                   </a>
               </li>
               <li>
@@ -35,6 +35,19 @@
                       <div class="count">كشف متابعة حفظ القرآن الكريم<br/>Report Kesehatan</div>
                   </a>
               </li>
+
+
+              <li>
+                  <a href="javascript:void(0)" onclick="menu_default()">
+                      <div class="count">كشف متابعة حفظ القرآن الكريم<br/>Rekapitulasi Ibadah</div>
+                  </a>
+              </li>
+
+              <li>
+                  <a href="javascript:void(0)" onclick="menu_default()">
+                      <div class="count">كشف متابعة حفظ القرآن الكريم<br/>History Keuangan</div>
+                  </a>
+              </li>
           </ul>
       </li>
       
@@ -44,10 +57,16 @@
               <div class="count">Report Kesantrian</div>
           </a>
       </li>
-      <li style="right: 2%">
+      <li>
           <a href="javascript:void(0)" onclick="menu_default()">
               <div class="count">كشف الدرجات</div>
               <div class="count">Report Academic</div>
+          </a>
+      </li>
+      <li style="right: 2%">
+          <a href="javascript:void(0)" onclick="menu_default()">
+              <div class="count">كشف الدرجات</div>
+              <div class="count">History Pembayaran</div>
           </a>
       </li>
     </ul>
