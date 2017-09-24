@@ -14,7 +14,8 @@
 
 Route::group(['middleware' => ['web']], function () 
 {
-	Route::group(['domain' => env('WORLD_WIDE_WEB') . env('AUTH_DOMAIN_PREFIX') . env('APP_DOMAIN')], function()
+	//Route::group(['domain' => env('WORLD_WIDE_WEB') . env('AUTH_DOMAIN_PREFIX') . env('APP_DOMAIN')], function()
+	Route::group(['domain' => env('WORLD_WIDE_WEB') . env('AUTH_DOMAIN_PREFIX')], function()
 	{
 		Route::get('/', 'Wibs\Auth\AuthController@index')->name('users_login');
 		Route::get('register', 'Wibs\Auth\AuthController@register')->name('users_register');

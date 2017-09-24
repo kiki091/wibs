@@ -13,7 +13,8 @@
 
 Route::group(['middleware' => ['web']], function () 
 {
-	Route::group(['domain' => env('WORLD_WIDE_WEB') . env('MSC_DOMAIN_PREFIX'). env('APP_DOMAIN')], function()
+	//Route::group(['domain' => env('WORLD_WIDE_WEB') . env('MSC_DOMAIN_PREFIX'). env('APP_DOMAIN')], function()
+	Route::group(['domain' => env('WORLD_WIDE_WEB') . env('MSC_DOMAIN_PREFIX')], function()
 	{
 		Route::get('/', 'Wibs\Msc\Auth\AuthMscController@index')->name('msc_login');
 		Route::get('/login', 'Wibs\Msc\Auth\AuthMscController@index')->name('login');
