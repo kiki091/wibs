@@ -7,7 +7,7 @@
 			</div>
 			<div class="x_content">
 				<div class="col-md-2 col-sm-2 col-xs-12 profile_left">
-					<div class="profile_img">
+					<div id="profile_img" class="profile_img">
 						<div id="crop-avatar">
 							<img class="img-responsive avatar-view" :src="models_siswa.foto_url" :title="models_siswa.nama_lengkap">
 						</div>
